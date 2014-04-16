@@ -1,5 +1,6 @@
 package signals 
 {
+	import flash.utils.getQualifiedClassName;
 	/**
 	 * ...
 	 * @author Alex Popescu
@@ -7,17 +8,11 @@ package signals
 	public class Signals 
 	{
 		//General signals
-		public static const CHANGE_GAME_STATE:String = "changeGameState";
+		public static const CHANGE_GRAPHICS_STATE:String = "GEchangeGraphicsState";
 		
-		//Lobby signals
-		public static const LOBBY_RESPONSE:String = "lobbyResponded";
-		public static const PLAYER_FOUND:String = "playerFound";
+		//Init signals
+		public static const STARLING_READY:String = "GEstarlingReady";
 		
-		//Arena signals
-		public static const ARENA_INIT:String = "arena_init";
-		
-		//Battle signals
-		public static const ENEMY_MOVING:String = "enemyMoving";
 	}
 
 }
