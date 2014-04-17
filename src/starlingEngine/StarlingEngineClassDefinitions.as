@@ -14,12 +14,20 @@ package starlingEngine
 		
 		private var _engineClassDefinitions:Dictionary = new Dictionary();
 		
+		/**
+		 * 
+		 */
 		public function StarlingEngineClassDefinitions() 
 		{
 			_engineClassDefinitions[IMAGE] = getDefinitionByName("starling.display.Image") as Class;
 			_engineClassDefinitions[MOVIE_CLIP] = getDefinitionByName("starling.display.MovieClip") as Class;
 		}
 		
+		/**
+		 * 
+		 * @param	name
+		 * @return
+		 */
 		public function getClassDefinitionByName(name:String):Class
 		{
 			return _engineClassDefinitions[name]
