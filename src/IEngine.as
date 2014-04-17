@@ -3,8 +3,13 @@ package
 	import flash.events.Event;
 	import starling.animation.Juggler;
 	import starling.display.Image;
+	import starling.display.MovieClip;
 	import starling.display.Stage;
 	import starling.textures.Texture;
+	import bridge.abstract.IAbstractImage;
+	import starlingEngine.elements.EngineImage;
+	import starlingEngine.elements.EngineMovie;
+	import starlingEngine.elements.EngineSprite;
 	/**
 	 * ...
 	 * @author Alex Popescu
@@ -35,14 +40,21 @@ package
 		 * @param	texture
 		 * @return
 		 */
-		function requestImage(texture:Texture):Image
+		function requestImage(texture:Texture):EngineImage
 		/**
 		 * 
 		 * @param	textures
 		 * @param	fps
 		 * @return
 		 */
-		function requestMovie(textures:Vector.<Texture>, fps:uint = 24):Image
+		function requestMovie(textures:Vector.<Texture>, fps:uint = 24):EngineMovie
+		
+		/**
+		 * 
+		 * @return
+		 */
+		function requestSprite():EngineSprite
+		
 		/**
 		 * 
 		 */

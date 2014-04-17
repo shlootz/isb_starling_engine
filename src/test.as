@@ -1,6 +1,10 @@
 package  
 {
 	import abstract.AbstractPool;
+	import bridge.abstract.IAbstractImage;
+	import bridge.abstract.IAbstractMovie;
+	import bridge.abstract.IAbstractSprite;
+	import bridge.abstract.IAbstractTexture;
 	import bridge.BridgeGraphics;
 	import bridge.IBridgeGraphics;
 	import citrus.core.starling.StarlingCitrusEngine;
@@ -15,6 +19,7 @@ package
 	import starling.display.Image;
 	import starling.display.MovieClip;
 	import starling.utils.AssetManager;
+	import starlingEngine.elements.EngineTexture;
 	import starlingEngine.StarlingEngine;
 	
 	/**
@@ -64,14 +69,22 @@ package
 					trace("Loading assets, progress:", ratio);
 					if (ratio == 1)
 					{	
-						var img:Image = _bridgeGraphics.requestImage("Jackpot-Icon") as Image;
-						img.x = 500
-						_bridgeGraphics.addChild(img);
+						var sprite:IAbstractSprite = _bridgeGraphics.requestSprite();
+						_bridgeGraphics.addChild(sprite)
 						
-						var mc:MovieClip = _bridgeGraphics.requestMovie("Bet") as MovieClip;
-						mc.x = 250;
-						mc.y = 250;
-						_bridgeGraphics.addChild(mc);
+						var img:IAbstractImage = _bridgeGraphics.requestImage("Jackpot-Icon");
+						sprite.addNewChild(img);
+						img.x = 150
+						
+						var mc:IAbstractMovie = _bridgeGraphics.requestMovie("Bet", 1);
+						mc.x = 0;
+						mc.y = 0;
+						
+						sprite.addNewChild(mc);
+						
+						sprite.x = 150;
+						sprite.y = 150;
+						sprite.rotation = .1;
 						_bridgeGraphics.defaultJuggler.add(mc);
 					}
 				});

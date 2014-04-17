@@ -1,5 +1,8 @@
 package bridge 
 {
+	import bridge.abstract.IAbstractImage;
+	import bridge.abstract.IAbstractMovie;
+	import bridge.abstract.IAbstractSprite;
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
 	import signals.ISignalsHub;
@@ -167,9 +170,9 @@ package bridge
 		 * @param	name
 		 * @return
 		 */
-		public function requestImage(name:String):Object
+		public function requestImage(name:String):IAbstractImage
 		{
-			return (_graphicsEngine as IEngine).requestImage(_assetsManager.getTexture(name));
+			return (_graphicsEngine as IEngine).requestImage(_assetsManager.getTexture(name)) as IAbstractImage;
 		}
 		
 		/**
@@ -178,9 +181,18 @@ package bridge
 		 * @param	fps
 		 * @return
 		 */
-		public function requestMovie(prefix:String, fps:uint = 24):Object
+		public function requestMovie(prefix:String, fps:uint = 24):IAbstractMovie
 		{
-			return (_graphicsEngine as IEngine).requestMovie(_assetsManager.getTextures(prefix), fps);
+			return (_graphicsEngine as IEngine).requestMovie(_assetsManager.getTextures(prefix), fps) as IAbstractMovie;
+		}
+		
+		/**
+		 * 
+		 * @return
+		 */
+		public function requestSprite():IAbstractSprite
+		{
+			return (_graphicsEngine as IEngine).requestSprite() as IAbstractSprite;
 		}
 		
 		/**

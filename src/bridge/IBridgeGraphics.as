@@ -1,6 +1,9 @@
 package bridge 
 {
+	import bridge.abstract.IAbstractMovie;
 	import flash.utils.Dictionary;
+	import bridge.abstract.IAbstractImage;
+	import bridge.abstract.IAbstractSprite;
 	
 	/**
 	 * ...
@@ -57,14 +60,21 @@ package bridge
 		 * @param	name
 		 * @return
 		 */
-		function requestImage(name:String):Object
+		function requestImage(name:String):IAbstractImage
 		/**
 		 * 
 		 * @param	prefix
 		 * @param	fps
 		 * @return
 		 */
-		function requestMovie(prefix:String, fps:uint = 24):Object
+		function requestMovie(prefix:String, fps:uint = 24):IAbstractMovie
+		
+		/**
+		 * 
+		 * @return
+		 */
+		function requestSprite():IAbstractSprite
+		
 		/**
 		 * 
 		 * @param	child

@@ -1,6 +1,7 @@
 package starlingEngine
 {
 	import abstract.AbstractPool;
+	import bridge.abstract.IAbstractImage;
 	import bridge.BridgeGraphics;
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.core.starling.StarlingState;
@@ -21,6 +22,9 @@ package starlingEngine
 	import starling.display.Stage;
 	import starling.textures.Texture;
 	import starling.utils.AssetManager;
+	import starlingEngine.elements.EngineImage;
+	import starlingEngine.elements.EngineMovie;
+	import starlingEngine.elements.EngineSprite;
 	
 	/**
 	 * ...
@@ -113,9 +117,9 @@ package starlingEngine
 		 * @param	texture
 		 * @return
 		 */
-		public function requestImage(texture:Texture):Image
+		public function requestImage(texture:Texture):EngineImage
 		{
-			var i:Image = new Image(texture);
+			var i:EngineImage = new EngineImage(texture);
 			return i;
 		}
 		
@@ -125,10 +129,20 @@ package starlingEngine
 		 * @param	fps
 		 * @return
 		 */
-		public function requestMovie(textures:Vector.<Texture>, fps:uint = 24):Image
+		public function requestMovie(textures:Vector.<Texture>, fps:uint = 24):EngineMovie
 		{
-			var m:MovieClip = new MovieClip(textures, fps);
+			var m:EngineMovie = new EngineMovie(textures, fps);
 			return m;
+		}
+		
+		/**
+		 * 
+		 * @return
+		 */
+		public function requestSprite():EngineSprite
+		{
+			var s:EngineSprite = new EngineSprite();
+			return s;
 		}
 		
 		/**
