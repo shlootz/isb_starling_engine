@@ -2,23 +2,28 @@ package
 {
 	import abstract.AbstractPool;
 	import bridge.BridgeGraphics;
+	import bridge.IBridgeGraphics;
 	import citrus.core.starling.StarlingCitrusEngine;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import flash.utils.getDefinitionByName;
 	import nape.space.Space;
 	import signals.Signals;
 	import signals.SignalsHub;
 	import starling.animation.Juggler;
+	import starling.display.Image;
+	import starling.display.MovieClip;
 	import starling.utils.AssetManager;
+	import starlingEngine.StarlingEngine;
+	
 	/**
 	 * ...
 	 * @author Alex Popescu
 	 */
 	public class test extends Sprite
 	{
-		private var _graphicsContainer:Sprite = new Sprite();
-		private var _bridgeGraphics:BridgeGraphics = new BridgeGraphics(
+		private var _bridgeGraphics:IBridgeGraphics = new BridgeGraphics(
 																		StarlingEngine,
 																		starling.utils.AssetManager,
 																		signals.SignalsHub,
@@ -59,12 +64,15 @@ package
 					trace("Loading assets, progress:", ratio);
 					if (ratio == 1)
 					{	
-						//_bridgeGraphics.signalsManager.dispatchSignal(Signals.CHANGE_GAME_STATE, "", AllStates.MAIN_MENU_STATE);
-						//trace(_bridgeGraphics.requestImage("Jackpot-Icon"));
-						trace(_bridgeGraphics.requestMovie("Bet"));
-						//_bridgeGraphics.display.addChild(_bridgeGraphics.requestMovie("Bet"));
-						_bridgeGraphics.addChild(_bridgeGraphics.requestImage("Jackpot-Icon"))
-						//trace(_bridgeGraphics.display);
+						var img:Image = _bridgeGraphics.requestImage("Jackpot-Icon") as Image;
+						img.x = 500
+						_bridgeGraphics.addChild(img);
+						
+						var mc:MovieClip = _bridgeGraphics.requestMovie("Bet") as MovieClip;
+						mc.x = 250;
+						mc.y = 250;
+						_bridgeGraphics.addChild(mc);
+						_bridgeGraphics.defaultJuggler.add(mc);
 					}
 				});
 		}

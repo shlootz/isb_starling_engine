@@ -1,4 +1,4 @@
-package 
+package starlingEngine
 {
 	import abstract.AbstractPool;
 	import bridge.BridgeGraphics;
@@ -6,6 +6,7 @@ package
 	import citrus.core.starling.StarlingState;
 	import citrus.core.starling.ViewportMode;
 	import flash.events.Event;
+	import flash.utils.Dictionary;
 	import nape.geom.Vec2;
 	import nape.space.Space;
 	import nape.util.ShapeDebug;
@@ -25,11 +26,11 @@ package
 	 * ...
 	 * @author Alex Popescu
 	 */
-	public class StarlingEngine extends StarlingCitrusEngine 
+	public class StarlingEngine extends StarlingCitrusEngine implements IEngine
 	{		
 		private var _initCompleteCallback:Function;
 		
-		public var engineStage:Stage;
+		private var _engineStage:Stage;
 		/**
 		 * 
 		 */
@@ -55,14 +56,8 @@ package
 		
 		/**
 		 * 
-		 * @param	e
 		 */
-		private function deactivate(e:Event):void 
-		{
-			// make sure the app behaves well (or exits) when in background
-		}
-		
-		private function initEngine():void
+		public function initEngine():void
 		{
 			setUpStarling(true);
 		}
@@ -74,8 +69,7 @@ package
 		{ 
 			initNape();
 			_initCompleteCallback.call();
-			engineStage = starling.stage;
-			//_bridgeGraphics.juggler = _starling.juggler;
+			_engineStage = starling.stage;
 		}
 		
 		/**
@@ -91,18 +85,9 @@ package
 		 * 
 		 * @param	e
 		 */
-		private function loop(e:Event):void
+		public function loop(e:Event):void
 		{
 			//_bridgeGraphics.space.step(1 / 60);
-		}
-		
-		/**
-		 * 
-		 */
-		public function get graphicsBridge():BridgeGraphics
-		{
-			//return _bridgeGraphics;
-			return null
 		}
 		
 		/**
@@ -123,19 +108,44 @@ package
 			starling.juggler.remove(juggler as Juggler);
 		}
 		
+		/**
+		 * 
+		 * @param	texture
+		 * @return
+		 */
 		public function requestImage(texture:Texture):Image
 		{
 			var i:Image = new Image(texture);
 			return i;
 		}
 		
+		/**
+		 * 
+		 * @param	textures
+		 * @param	fps
+		 * @return
+		 */
 		public function requestMovie(textures:Vector.<Texture>, fps:uint = 24):Image
 		{
 			var m:MovieClip = new MovieClip(textures, fps);
 			return m;
 		}
 		
+		/**
+		 * 
+		 */
+		public function get juggler():Juggler
+		{
+			return starling.juggler;
+		}
 		
+		/**
+		 * 
+		 */
+		public function get engineStage():Stage
+		{
+			return _engineStage;
+		}
 	}
 	
 }
