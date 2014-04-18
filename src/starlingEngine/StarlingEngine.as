@@ -2,6 +2,7 @@ package starlingEngine
 {
 	import abstract.AbstractPool;
 	import bridge.abstract.IAbstractImage;
+	import bridge.abstract.IAbstractState;
 	import bridge.BridgeGraphics;
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.core.starling.StarlingState;
@@ -19,12 +20,14 @@ package starlingEngine
 	import starling.core.Starling;
 	import starling.display.Image;
 	import starling.display.MovieClip;
+	import starling.display.Quad;
 	import starling.display.Stage;
 	import starling.textures.Texture;
 	import starling.utils.AssetManager;
 	import starlingEngine.elements.EngineImage;
 	import starlingEngine.elements.EngineMovie;
 	import starlingEngine.elements.EngineSprite;
+	import starlingEngine.elements.EngineState;
 	
 	/**
 	 * ...
@@ -71,6 +74,7 @@ package starlingEngine
 		 */
 		override public function handleStarlingReady():void
 		{ 
+			//state = new TestState();
 			initNape();
 			_initCompleteCallback.call();
 			_engineStage = starling.stage;
@@ -147,6 +151,27 @@ package starlingEngine
 		
 		/**
 		 * 
+		 * @return
+		 */
+		public function requestState():EngineState
+		{
+			return new EngineState();
+		}
+		
+		/**
+		 * 
+		 * @param	newState
+		 */
+		public function tranzitionToState(newState:IAbstractState):void
+		{
+			(newState as StarlingState).initialize();
+			state = newState as StarlingState;
+			(state as StarlingState).initialize();
+			(state as StarlingState).addChild(new Quad(500, 500, Math.random()*0xffffff));
+		}
+		
+		/**
+		 * 
 		 */
 		public function get juggler():Juggler
 		{
@@ -160,6 +185,7 @@ package starlingEngine
 		{
 			return _engineStage;
 		}
+		
 	}
 	
 }

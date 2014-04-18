@@ -4,6 +4,7 @@ package bridge
 	import flash.utils.Dictionary;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractSprite;
+	import bridge.abstract.IAbstractState;
 	
 	/**
 	 * ...
@@ -74,6 +75,18 @@ package bridge
 		 * @return
 		 */
 		function requestSprite():IAbstractSprite
+		
+		/**
+		 * 
+		 * @return
+		 */
+		function requestState():IAbstractState
+		
+		/**
+		 * 
+		 * @param	newState
+		 */
+		function tranzitionToState(newState:IAbstractState):void
 		
 		/**
 		 * 

@@ -3,6 +3,7 @@ package bridge
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
+	import bridge.abstract.IAbstractState;
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
 	import signals.ISignalsHub;
@@ -193,6 +194,24 @@ package bridge
 		public function requestSprite():IAbstractSprite
 		{
 			return (_graphicsEngine as IEngine).requestSprite() as IAbstractSprite;
+		}
+		
+		/**
+		 * 
+		 * @return
+		 */
+		public function requestState():IAbstractState
+		{
+			return (_graphicsEngine as IEngine).requestState() as IAbstractState;
+		}
+		
+		/**
+		 * 
+		 * @param	newState
+		 */
+		public function tranzitionToState(newState:IAbstractState):void
+		{
+			(_graphicsEngine as IEngine).tranzitionToState(newState);
 		}
 		
 		/**

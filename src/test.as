@@ -4,6 +4,7 @@ package
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
+	import bridge.abstract.IAbstractState;
 	import bridge.abstract.IAbstractTexture;
 	import bridge.BridgeGraphics;
 	import bridge.IBridgeGraphics;
@@ -76,7 +77,7 @@ package
 						sprite.addNewChild(img);
 						img.x = 150
 						
-						var mc:IAbstractMovie = _bridgeGraphics.requestMovie("Bet", 1);
+						var mc:IAbstractMovie = _bridgeGraphics.requestMovie("Bet", 30);
 						mc.x = 0;
 						mc.y = 0;
 						
@@ -86,6 +87,10 @@ package
 						sprite.y = 150;
 						sprite.rotation = .1;
 						_bridgeGraphics.defaultJuggler.add(mc);
+						
+						var state:IAbstractState = _bridgeGraphics.requestState();
+						_bridgeGraphics.tranzitionToState(state);
+						
 					}
 				});
 		}

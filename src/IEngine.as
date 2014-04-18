@@ -7,9 +7,11 @@ package
 	import starling.display.Stage;
 	import starling.textures.Texture;
 	import bridge.abstract.IAbstractImage;
+	import bridge.abstract.IAbstractState;
 	import starlingEngine.elements.EngineImage;
 	import starlingEngine.elements.EngineMovie;
 	import starlingEngine.elements.EngineSprite;
+	import starlingEngine.elements.EngineState;
 	/**
 	 * ...
 	 * @author Alex Popescu
@@ -54,6 +56,18 @@ package
 		 * @return
 		 */
 		function requestSprite():EngineSprite
+		
+		/**
+		 * 
+		 * @return
+		 */
+		function requestState():EngineState
+		
+		/**
+		 * 
+		 * @param	newState
+		 */
+		function tranzitionToState(newState:IAbstractState):void
 		
 		/**
 		 * 
