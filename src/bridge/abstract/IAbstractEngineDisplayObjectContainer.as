@@ -80,26 +80,39 @@ package bridge.abstract
 		function removeChildAndDispose (child:IAbstractDisplayObject, dispose:Boolean=false) : IAbstractDisplayObject;
 		/**
 		 * 
+		 * @param	index
+		 * @param	dispose
+		 * @return
 		 */
 		function removeChildAtIndex (index:int, dispose:Boolean=false) : IAbstractDisplayObject;
 		/**
 		 * 
+		 * @param	beginIndex
+		 * @param	endIndex
+		 * @param	dispose
 		 */
 		function removeChildrenFromTo (beginIndex:int=0, endIndex:int=-1, dispose:Boolean=false) : void;
 		/**
 		 * 
+		 * @param	child
+		 * @param	index
 		 */
 		function setChildIndexNr (child:IAbstractDisplayObject, index:int) : void;
 		/**
 		 * 
+		 * @param	compareFunction
 		 */
 		function sortChildrenBy (compareFunction:Function) : void;
 		/**
 		 * 
+		 * @param	child1
+		 * @param	child2
 		 */
 		function swapChildrenF (child1:IAbstractDisplayObject, child2:IAbstractDisplayObject) : void;
 		/**
 		 * 
+		 * @param	index1
+		 * @param	index2
 		 */
 		function swapChildrenAtIndex (index1:int, index2:int) : void;
 	}

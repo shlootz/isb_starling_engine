@@ -3,6 +3,7 @@ package starlingEngine
 	import abstract.AbstractPool;
 	import bridge.abstract.IAbstractDisplayObject;
 	import bridge.abstract.IAbstractImage;
+	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractState;
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import bridge.BridgeGraphics;
@@ -21,6 +22,7 @@ package starlingEngine
 	import signals.SignalsHub;
 	import starling.animation.Juggler;
 	import starling.core.Starling;
+	import starling.display.DisplayObject;
 	import starling.display.Image;
 	import starling.display.MovieClip;
 	import starling.display.Quad;
@@ -166,19 +168,18 @@ package starlingEngine
 		 * 
 		 * @return
 		 */
-		public function requestLayer():EngineLayer
+		public function requestLayer(name:String):EngineLayer
 		{
-			return new EngineLayer();
+			return new EngineLayer(name);
 		}
 		
 		/**
 		 * 
 		 * @param	newState
+		 * @param	transitionEffect
 		 */
 		public function tranzitionToState(newState:IAbstractState, transitionEffect:IAbstractStateTransition = null):void
 		{
-			//(newState as StarlingState).initialize();
-			
 			if (transitionEffect != null)
 			{
 				transitionEffect.injectOnTransitionComplete(tranzitionToStateComplete);
@@ -216,6 +217,38 @@ package starlingEngine
 		public function get engineStage():Stage
 		{
 			return _engineStage;
+		}
+		
+		/**
+		 * 
+		 */
+		public function initLayers(inputLayers:Dictionary):void
+		{
+			_layers = inputLayers;
+			
+			for (var k:Object in _layers) 
+			{
+				var child:EngineLayer = _layers[k] as EngineLayer;
+				_engineStage.addChild(child);
+			}
+		}
+		
+		/**
+		 * 
+		 */
+		public function get layers():Dictionary
+		{
+			return _layers
+		}
+		
+		/**
+		 * 
+		 * @param	layer1
+		 * @param	layer2
+		 */
+		public function swapLayers(layer1:IAbstractLayer, layer2:IAbstractLayer):void
+		{
+			_engineStage.swapChildren(layer1 as DisplayObject, layer2 as DisplayObject);
 		}
 		
 	}

@@ -2,7 +2,9 @@ package
 {
 	import abstract.AbstractPool;
 	import bridge.abstract.IAbstractDisplayObject;
+	import bridge.abstract.IAbstractEngineLayerProxy;
 	import bridge.abstract.IAbstractImage;
+	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
 	import bridge.abstract.IAbstractState;
@@ -15,6 +17,7 @@ package
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import flash.utils.Dictionary;
 	import flash.utils.getDefinitionByName;
 	import nape.space.Space;
 	import signals.Signals;
@@ -23,6 +26,8 @@ package
 	import starling.display.Image;
 	import starling.display.MovieClip;
 	import starling.utils.AssetManager;
+	import starlingEngine.elements.EngineLayer;
+	import starlingEngine.elements.EngineLayerProxy;
 	import starlingEngine.elements.EngineTexture;
 	import starlingEngine.StarlingEngine;
 	import starlingEngine.transitions.EngineStateTransition;
@@ -101,6 +106,14 @@ package
 						var state2:IAbstractState = _bridgeGraphics.requestState();
 						_bridgeGraphics.tranzitionToState(state2, stateTransition);
 						state2.addNewChild(img);
+						
+						var layersProxy:IAbstractEngineLayerProxy = new EngineLayerProxy();
+						layersProxy.addLayer("Layer 1");
+						layersProxy.addLayer("Layer 2");
+						layersProxy.addLayer("Layer 3");
+						layersProxy.addLayer("Layer 4");
+						
+						_bridgeGraphics.initLayers(layersProxy.layers);
 					}
 				});
 		}

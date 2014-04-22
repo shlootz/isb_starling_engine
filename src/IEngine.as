@@ -1,7 +1,9 @@
 package  
 {
+	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import flash.events.Event;
+	import flash.utils.Dictionary;
 	import starling.animation.Juggler;
 	import starling.display.Image;
 	import starling.display.MovieClip;
@@ -69,6 +71,24 @@ package
 		 * @param	newState
 		 */
 		function tranzitionToState(newState:IAbstractState, transitionEffect:IAbstractStateTransition = null):void
+		
+		/**
+		 * 
+		 */
+		function get layers():Dictionary
+		
+		/**
+		 * 
+		 * @param	inputLayers
+		 */
+		function initLayers(inputLayers:Dictionary):void
+		
+		/**
+		 * 
+		 * @param	layer1
+		 * @param	layer2
+		 */
+		function swapLayers(layer1:IAbstractLayer, layer2:IAbstractLayer):void
 		
 		/**
 		 * 

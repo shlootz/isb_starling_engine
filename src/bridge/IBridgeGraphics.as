@@ -1,5 +1,6 @@
 package bridge 
 {
+	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import flash.utils.Dictionary;
@@ -88,6 +89,20 @@ package bridge
 		 * @param	newState
 		 */
 		function tranzitionToState(newState:IAbstractState, transitionEffect:IAbstractStateTransition = null):void
+		
+		/**
+		 * 
+		 * @param	inputLayers
+		 * @return
+		 */
+		function initLayers(inputLayers:Dictionary):void
+		
+		/**
+		 * 
+		 * @param	layer1
+		 * @param	layer2
+		 */
+		function swapLayers(layer1:IAbstractLayer, layer2:IAbstractLayer):void
 		
 		/**
 		 * 

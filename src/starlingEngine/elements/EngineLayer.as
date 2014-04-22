@@ -8,9 +8,31 @@ package starlingEngine.elements
 	 */
 	public class EngineLayer extends EngineSprite implements IAbstractLayer
 	{	
-		public function EngineLayer() 
+		private var _layerName:String;
+		
+		/**
+		 * 
+		 * @param	layerName
+		 */
+		public function EngineLayer(name:String) 
 		{
-			
+			_layerName = name;
+		}
+		
+		/**
+		 * 
+		 */
+		public function set layerName(name:String):void
+		{
+			_layerName = name;
+		}
+		
+		/**
+		 * 
+		 */
+		public function get layerName():String
+		{
+			return _layerName;
 		}
 	}
 	

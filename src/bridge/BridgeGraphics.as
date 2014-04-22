@@ -1,6 +1,7 @@
 package bridge 
 {
 	import bridge.abstract.IAbstractImage;
+	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
 	import bridge.abstract.IAbstractState;
@@ -222,6 +223,25 @@ package bridge
 		public function addChild(child:Object):void
 		{
 			_graphicsEngine.engineStage.addChild(child);
+		}
+		
+		/**
+		 * 
+		 * @param	inputLayers
+		 */
+		public function initLayers(inputLayers:Dictionary):void
+		{
+			_graphicsEngine.initLayers(inputLayers);
+		}
+		
+		/**
+		 * 
+		 * @param	layer1
+		 * @param	layer2
+		 */
+		public function swapLayers(layer1:IAbstractLayer, layer2:IAbstractLayer):void
+		{
+			_graphicsEngine.swapLayers(layer1, layer2);
 		}
 		
 	}
