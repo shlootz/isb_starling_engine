@@ -44,6 +44,7 @@ package starlingEngine
 		private var _initCompleteCallback:Function;
 		private var _engineStage:Stage;
 		private var _layers:Dictionary = new Dictionary(true);
+		private var _space:Space;
 		/**
 		 * 
 		 */
@@ -80,7 +81,6 @@ package starlingEngine
 		 */
 		override public function handleStarlingReady():void
 		{ 
-			//state = new TestState();
 			initNape();
 			_initCompleteCallback.call();
 			_engineStage = starling.stage;
@@ -91,8 +91,8 @@ package starlingEngine
 		 */
 		private function initNape():void
 		{
-			//space = new Space(new Vec2(0, 5));
-			addEventListener(Event.ENTER_FRAME, loop);
+			//_space = new Space(new Vec2(0, 5));
+			//addEventListener(Event.ENTER_FRAME, loop);
 		}
 		
 		/**
@@ -101,7 +101,7 @@ package starlingEngine
 		 */
 		public function loop(e:Event):void
 		{
-			//_bridgeGraphics.space.step(1 / 60);
+			_space.step(1 / 60);
 		}
 		
 		/**

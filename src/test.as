@@ -9,6 +9,7 @@ package
 	import bridge.abstract.IAbstractSprite;
 	import bridge.abstract.IAbstractState;
 	import bridge.abstract.IAbstractTexture;
+	import bridge.abstract.IAbstractVideo;
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import bridge.BridgeGraphics;
 	import bridge.IBridgeGraphics;
@@ -16,7 +17,13 @@ package
 	import com.greensock.TweenLite;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.events.AsyncErrorEvent;
 	import flash.events.MouseEvent;
+	import flash.events.NetStatusEvent;
+	import flash.geom.Rectangle;
+	import flash.net.NetConnection;
+	import flash.net.NetStream;
+	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
 	import flash.utils.getDefinitionByName;
 	import nape.space.Space;
@@ -29,15 +36,18 @@ package
 	import starlingEngine.elements.EngineLayer;
 	import starlingEngine.elements.EngineLayerProxy;
 	import starlingEngine.elements.EngineTexture;
+	import starlingEngine.elements.EngineVideo;
 	import starlingEngine.StarlingEngine;
 	import starlingEngine.transitions.EngineStateTransition;
+	import starlingEngine.video.display.Video;
+	import starlingEngine.video.events.VideoEvent;
 	
 	/**
 	 * ...
 	 * @author Alex Popescu
 	 */
 	public class test extends Sprite
-	{
+	{	
 		private var _bridgeGraphics:IBridgeGraphics = new BridgeGraphics(
 																		StarlingEngine,
 																		starling.utils.AssetManager,
@@ -82,7 +92,7 @@ package
 						var sprite:IAbstractSprite = _bridgeGraphics.requestSprite();
 						_bridgeGraphics.addChild(sprite)
 						
-						var img:IAbstractImage = _bridgeGraphics.requestImage("Jackpot-Icon");
+						var img:IAbstractImage = _bridgeGraphics.requestImage("Background");
 						sprite.addNewChild(img);
 						img.x = 150
 						
@@ -99,6 +109,7 @@ package
 						
 						var state:IAbstractState = _bridgeGraphics.requestState();
 						_bridgeGraphics.tranzitionToState(state);
+						state.addNewChild(_bridgeGraphics.requestImage("Feature-Screen"));
 						state.addNewChild(mc);
 						
 						var stateTransition:IAbstractStateTransition = new EngineStateTransition();
@@ -114,6 +125,10 @@ package
 						layersProxy.addLayer("Layer 4");
 						
 						_bridgeGraphics.initLayers(layersProxy.layers);
+						
+						var video:IAbstractVideo = new EngineVideo();
+						video.addVideoPath("../bin/assets/test.flv");
+						state2.addNewChild(video);
 					}
 				});
 		}
