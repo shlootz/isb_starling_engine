@@ -1,9 +1,12 @@
 package starlingEngine
 {
 	import abstract.AbstractPool;
+	import bridge.abstract.IAbstractDisplayObject;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractState;
+	import bridge.abstract.transitions.IAbstractStateTransition;
 	import bridge.BridgeGraphics;
+	import citrus.core.IState;
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.core.starling.StarlingState;
 	import citrus.core.starling.ViewportMode;
@@ -162,12 +165,31 @@ package starlingEngine
 		 * 
 		 * @param	newState
 		 */
-		public function tranzitionToState(newState:IAbstractState):void
+		public function tranzitionToState(newState:IAbstractState, transitionEffect:IAbstractStateTransition = null):void
 		{
-			(newState as StarlingState).initialize();
-			state = newState as StarlingState;
-			(state as StarlingState).initialize();
-			(state as StarlingState).addChild(new Quad(500, 500, Math.random()*0xffffff));
+			//(newState as StarlingState).initialize();
+			
+			if (transitionEffect != null)
+			{
+				transitionEffect.injectOnTransitionComplete(tranzitionToStateComplete);
+				futureState = newState as IState;
+				transitionEffect.doTransition(state as IAbstractDisplayObject, futureState as IAbstractDisplayObject);
+			}
+			else
+			{
+				state = newState as StarlingState;
+				(state as StarlingState).initialize();
+			}
+		}
+		
+		/**
+		 * 
+		 * @param	oldState
+		 * @param	newState
+		 */
+		private function tranzitionToStateComplete():void
+		{
+			state = futureState;
 		}
 		
 		/**

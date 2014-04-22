@@ -1,5 +1,6 @@
 package  
 {
+	import bridge.abstract.transitions.IAbstractStateTransition;
 	import flash.events.Event;
 	import starling.animation.Juggler;
 	import starling.display.Image;
@@ -67,7 +68,7 @@ package
 		 * 
 		 * @param	newState
 		 */
-		function tranzitionToState(newState:IAbstractState):void
+		function tranzitionToState(newState:IAbstractState, transitionEffect:IAbstractStateTransition = null):void
 		
 		/**
 		 * 

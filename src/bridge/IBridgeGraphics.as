@@ -1,6 +1,7 @@
 package bridge 
 {
 	import bridge.abstract.IAbstractMovie;
+	import bridge.abstract.transitions.IAbstractStateTransition;
 	import flash.utils.Dictionary;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractSprite;
@@ -86,7 +87,7 @@ package bridge
 		 * 
 		 * @param	newState
 		 */
-		function tranzitionToState(newState:IAbstractState):void
+		function tranzitionToState(newState:IAbstractState, transitionEffect:IAbstractStateTransition = null):void
 		
 		/**
 		 * 

@@ -4,6 +4,7 @@ package bridge
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
 	import bridge.abstract.IAbstractState;
+	import bridge.abstract.transitions.IAbstractStateTransition;
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
 	import signals.ISignalsHub;
@@ -209,9 +210,9 @@ package bridge
 		 * 
 		 * @param	newState
 		 */
-		public function tranzitionToState(newState:IAbstractState):void
+		public function tranzitionToState(newState:IAbstractState, transitionEffect:IAbstractStateTransition = null):void
 		{
-			(_graphicsEngine as IEngine).tranzitionToState(newState);
+			(_graphicsEngine as IEngine).tranzitionToState(newState, transitionEffect);
 		}
 		
 		/**

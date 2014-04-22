@@ -1,14 +1,17 @@
 package  
 {
 	import abstract.AbstractPool;
+	import bridge.abstract.IAbstractDisplayObject;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
 	import bridge.abstract.IAbstractState;
 	import bridge.abstract.IAbstractTexture;
+	import bridge.abstract.transitions.IAbstractStateTransition;
 	import bridge.BridgeGraphics;
 	import bridge.IBridgeGraphics;
 	import citrus.core.starling.StarlingCitrusEngine;
+	import com.greensock.TweenLite;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
@@ -22,6 +25,7 @@ package
 	import starling.utils.AssetManager;
 	import starlingEngine.elements.EngineTexture;
 	import starlingEngine.StarlingEngine;
+	import starlingEngine.transitions.EngineStateTransition;
 	
 	/**
 	 * ...
@@ -81,7 +85,7 @@ package
 						mc.x = 0;
 						mc.y = 0;
 						
-						sprite.addNewChild(mc);
+						//sprite.addNewChild(mc);
 						
 						sprite.x = 150;
 						sprite.y = 150;
@@ -90,7 +94,13 @@ package
 						
 						var state:IAbstractState = _bridgeGraphics.requestState();
 						_bridgeGraphics.tranzitionToState(state);
+						state.addNewChild(mc);
 						
+						var stateTransition:IAbstractStateTransition = new EngineStateTransition();
+						
+						var state2:IAbstractState = _bridgeGraphics.requestState();
+						_bridgeGraphics.tranzitionToState(state2, stateTransition);
+						state2.addNewChild(img);
 					}
 				});
 		}

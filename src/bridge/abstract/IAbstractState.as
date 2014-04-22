@@ -5,7 +5,7 @@ package bridge.abstract
 	 * ...
 	 * @author Alex Popescu
 	 */
-	public interface IAbstractState 
+	public interface IAbstractState extends IAbstractSprite 
 	{
 		
 	}
