@@ -4,6 +4,7 @@ package starlingEngine.elements
 	import bridge.abstract.IAbstractSprite;
 	import flash.geom.Rectangle;
 	import starling.display.DisplayObject;
+	import starling.display.DisplayObjectContainer;
 	import starling.display.Sprite;
 	/**
 	 * ...
@@ -92,6 +93,62 @@ package starlingEngine.elements
 		public function removeChildAndDispose (child:IAbstractDisplayObject, dispose:Boolean = false) : IAbstractDisplayObject
 		{
 			return super.removeChild(child as DisplayObject, dispose) as IAbstractDisplayObject;
+		}
+		
+		/**
+		 * 
+		 * @param	index
+		 * @param	dispose
+		 * @return
+		 */
+		public function removeChildAtIndex (index:int, dispose:Boolean = false) : IAbstractDisplayObject
+		{
+			return super.removeChildAt(index, dispose) as IAbstractDisplayObject;
+		}
+		/**
+		 * 
+		 * @param	beginIndex
+		 * @param	endIndex
+		 * @param	dispose
+		 */
+		public function removeChildrenFromTo (beginIndex:int = 0, endIndex:int = -1, dispose:Boolean = false) : void
+		{
+			return super.removeChildren(beginIndex, endIndex, dispose);
+		}
+		/**
+		 * 
+		 * @param	child
+		 * @param	index
+		 */
+		public function setChildIndexNr (child:IAbstractDisplayObject, index:int) : void
+		{
+			super.setChildIndex(child as DisplayObject, index);
+		}
+		/**
+		 * 
+		 * @param	compareFunction
+		 */
+		public function sortChildrenBy (compareFunction:Function) : void
+		{
+			super.sortChildren(compareFunction);
+		}
+		/**
+		 * 
+		 * @param	child1
+		 * @param	child2
+		 */
+		public function swapChildrenF (child1:IAbstractDisplayObject, child2:IAbstractDisplayObject) : void
+		{
+			super.swapChildren(child1 as DisplayObject, child2 as DisplayObject);
+		}
+		/**
+		 * 
+		 * @param	index1
+		 * @param	index2
+		 */
+		public function swapChildrenAtIndex (index1:int, index2:int) : void
+		{
+			super.swapChildrenAt(index1, index2);
 		}
 		
 	}

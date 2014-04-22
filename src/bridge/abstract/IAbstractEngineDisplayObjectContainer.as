@@ -81,27 +81,27 @@ package bridge.abstract
 		/**
 		 * 
 		 */
-		//function removeChildAt (index:int, dispose:Boolean=false) : IAbstractDisplayObject;
+		function removeChildAtIndex (index:int, dispose:Boolean=false) : IAbstractDisplayObject;
 		/**
 		 * 
 		 */
-		//function removeChildren (beginIndex:int=0, endIndex:int=-1, dispose:Boolean=false) : void;
+		function removeChildrenFromTo (beginIndex:int=0, endIndex:int=-1, dispose:Boolean=false) : void;
 		/**
 		 * 
 		 */
-		//function setChildIndex (child:IAbstractDisplayObject, index:int) : void;
+		function setChildIndexNr (child:IAbstractDisplayObject, index:int) : void;
 		/**
 		 * 
 		 */
-		//function sortChildren (compareFunction:Function) : void;
+		function sortChildrenBy (compareFunction:Function) : void;
 		/**
 		 * 
 		 */
-		//function swapChildren (child1:IAbstractDisplayObject, child2:IAbstractDisplayObject) : void;
+		function swapChildrenF (child1:IAbstractDisplayObject, child2:IAbstractDisplayObject) : void;
 		/**
 		 * 
 		 */
-		//function swapChildrenAt (index1:int, index2:int) : void;
+		function swapChildrenAtIndex (index1:int, index2:int) : void;
 	}
 	
 }

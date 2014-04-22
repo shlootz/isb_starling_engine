@@ -28,6 +28,7 @@ package starlingEngine
 	import starling.textures.Texture;
 	import starling.utils.AssetManager;
 	import starlingEngine.elements.EngineImage;
+	import starlingEngine.elements.EngineLayer;
 	import starlingEngine.elements.EngineMovie;
 	import starlingEngine.elements.EngineSprite;
 	import starlingEngine.elements.EngineState;
@@ -39,8 +40,8 @@ package starlingEngine
 	public class StarlingEngine extends StarlingCitrusEngine implements IEngine
 	{		
 		private var _initCompleteCallback:Function;
-		
 		private var _engineStage:Stage;
+		private var _layers:Dictionary = new Dictionary(true);
 		/**
 		 * 
 		 */
@@ -159,6 +160,15 @@ package starlingEngine
 		public function requestState():EngineState
 		{
 			return new EngineState();
+		}
+		
+		/**
+		 * 
+		 * @return
+		 */
+		public function requestLayer():EngineLayer
+		{
+			return new EngineLayer();
 		}
 		
 		/**

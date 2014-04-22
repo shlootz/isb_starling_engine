@@ -35,7 +35,7 @@ package starlingEngine.transitions
 		 */
 		public function doTransition(object1:IAbstractDisplayObject, object2:IAbstractDisplayObject):void
 		{
-			TweenLite.to(object1, 1, { alpha:0 } )
+			TweenLite.to(object1, 1, { alpha:.5 } );
 			
 			TweenLite.to(object2, 1, { x:30, onComplete: onTransitionComplete, onCompleteParams:[object1, object2]})
 		}
