@@ -111,9 +111,11 @@ package
 						sprite.rotation = .1;
 						_bridgeGraphics.defaultJuggler.add(mc);
 						
-						//var state:IAbstractState = _bridgeGraphics.requestState();
-						//_bridgeGraphics.tranzitionToState(state);
-						//state.addNewChild(_bridgeGraphics.requestImage("Feature-Screen"));
+						var state:IAbstractState = _bridgeGraphics.requestState();
+						var stateTransition:IAbstractStateTransition = new EngineStateTransition();
+						
+						_bridgeGraphics.tranzitionToState(state, stateTransition);
+						state.addNewChild(_bridgeGraphics.requestImage("Feature-Screen"));
 						//state.addNewChild(mc);
 						//
 						//var stateTransition:IAbstractStateTransition = new EngineStateTransition();

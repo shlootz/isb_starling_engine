@@ -47,7 +47,7 @@ package starlingEngine
 		private var _engineStage:Stage;
 		private var _layers:Dictionary = new Dictionary(true);
 		private var _space:Space;
-		private var _initState:EngineState;
+		private var _currentState:EngineState;
 		/**
 		 * 
 		 */
@@ -86,8 +86,8 @@ package starlingEngine
 		{ 
 			initNape();
 			
-			_initState = requestState();
-			state = _initState;
+			_currentState = requestState();
+			state = _currentState;
 			
 			_initCompleteCallback.call();
 			_engineStage = starling.stage;
@@ -195,7 +195,8 @@ package starlingEngine
 			}
 			else
 			{
-				state = newState as StarlingState;
+				_currentState = newState as EngineState;
+				state = _currentState;
 				(state as StarlingState).initialize();
 			}
 		}
@@ -207,7 +208,8 @@ package starlingEngine
 		 */
 		private function tranzitionToStateComplete():void
 		{
-			state = futureState;
+			_currentState = futureState as EngineState;
+			state = _currentState;
 		}
 		
 		/**
@@ -236,7 +238,7 @@ package starlingEngine
 			for (var k:Object in _layers) 
 			{
 				var child:EngineLayer = _layers[k] as EngineLayer;
-				_initState.addChild(child);
+				_currentState.addChild(child);
 			}
 		}
 		
@@ -252,7 +254,7 @@ package starlingEngine
 				for (var i:uint = 0; i < inLayers.length; i++ )
 				{
 					insertLayerInDictionary(inLayers[i]);
-					_initState.addChild(inLayers[i] as EngineLayer);
+					_currentState.addChild(inLayers[i] as EngineLayer);
 					
 					if (inTransition != null)
 					{
@@ -267,7 +269,7 @@ package starlingEngine
 				for (var j:uint = 0; j < outLayers.length; j++ )
 				{
 					removeLayerFromDictionary(outLayers[j]);
-					_initState.removeChild(outLayers[j] as EngineLayer);
+					_currentState.removeChild(outLayers[j] as EngineLayer);
 					
 					if (outTransition != null)
 					{
@@ -348,7 +350,7 @@ package starlingEngine
 		 */
 		public function swapLayers(layer1:IAbstractLayer, layer2:IAbstractLayer):void
 		{
-			_initState.swapChildren(layer1 as DisplayObject, layer2 as DisplayObject);
+			_currentState.swapChildren(layer1 as DisplayObject, layer2 as DisplayObject);
 		}
 		
 	}
