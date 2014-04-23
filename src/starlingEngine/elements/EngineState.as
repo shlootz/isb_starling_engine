@@ -151,6 +151,20 @@ package starlingEngine.elements
 			super.swapChildrenAt(index1, index2);
 		}
 		
+		/**
+		 * 
+		 * @param	...rest
+		 */
+		public function killAll (...rest) : void
+		{
+			super.killAllObjects()
+		}
+		
+		public function destroyAll () : void
+		{
+			super.destroy();
+		}
+		
 	}
 
 }

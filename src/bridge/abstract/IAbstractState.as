@@ -7,7 +7,7 @@ package bridge.abstract
 	 */
 	public interface IAbstractState extends IAbstractSprite 
 	{
-		
+		function killAll (...rest) : void
 	}
 	
 }

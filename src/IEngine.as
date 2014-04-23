@@ -15,6 +15,8 @@ package
 	import starlingEngine.elements.EngineMovie;
 	import starlingEngine.elements.EngineSprite;
 	import starlingEngine.elements.EngineState;
+	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
+	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
 	/**
 	 * ...
 	 * @author Alex Popescu
@@ -89,6 +91,13 @@ package
 		 * @param	layer2
 		 */
 		function swapLayers(layer1:IAbstractLayer, layer2:IAbstractLayer):void
+		
+		/**
+		 * 
+		 * @param	inLayers
+		 * @param	outLayers
+		 */
+		function updateLayers(inLayers:Vector.<IAbstractLayer> = null, outLayers:Vector.<IAbstractLayer> = null, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut= null):void
 		
 		/**
 		 * 

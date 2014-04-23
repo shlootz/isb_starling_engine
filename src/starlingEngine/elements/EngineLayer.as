@@ -6,7 +6,7 @@ package starlingEngine.elements
 	 * ...
 	 * @author Alex Popescu
 	 */
-	public class EngineLayer extends EngineSprite implements IAbstractLayer
+	public class EngineLayer extends EngineState implements IAbstractLayer
 	{	
 		private var _layerName:String;
 		

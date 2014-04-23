@@ -7,6 +7,8 @@ package bridge
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractSprite;
 	import bridge.abstract.IAbstractState;
+	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
+	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	
 	/**
 	 * ...
@@ -99,10 +101,22 @@ package bridge
 		
 		/**
 		 * 
+		 * @param	inLayers
+		 * @param	outLayers
+		 */
+		function updateLayers(inLayers:Vector.<IAbstractLayer> = null, outLayers:Vector.<IAbstractLayer> = null, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut= null ):void
+		
+		/**
+		 * 
 		 * @param	layer1
 		 * @param	layer2
 		 */
 		function swapLayers(layer1:IAbstractLayer, layer2:IAbstractLayer):void
+		
+		/**
+		 * 
+		 */
+		function get layers():Dictionary
 		
 		/**
 		 * 

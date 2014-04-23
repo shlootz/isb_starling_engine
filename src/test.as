@@ -10,6 +10,8 @@ package
 	import bridge.abstract.IAbstractState;
 	import bridge.abstract.IAbstractTexture;
 	import bridge.abstract.IAbstractVideo;
+	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
+	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import bridge.BridgeGraphics;
 	import bridge.IBridgeGraphics;
@@ -38,6 +40,8 @@ package
 	import starlingEngine.elements.EngineTexture;
 	import starlingEngine.elements.EngineVideo;
 	import starlingEngine.StarlingEngine;
+	import starlingEngine.transitions.EngineLayerTransitionIn;
+	import starlingEngine.transitions.EngineLayerTransitionOut;
 	import starlingEngine.transitions.EngineStateTransition;
 	import starlingEngine.video.display.Video;
 	import starlingEngine.video.events.VideoEvent;
@@ -90,7 +94,7 @@ package
 					if (ratio == 1)
 					{	
 						var sprite:IAbstractSprite = _bridgeGraphics.requestSprite();
-						_bridgeGraphics.addChild(sprite)
+						//_bridgeGraphics.addChild(sprite)
 						
 						var img:IAbstractImage = _bridgeGraphics.requestImage("Background");
 						sprite.addNewChild(img);
@@ -107,16 +111,16 @@ package
 						sprite.rotation = .1;
 						_bridgeGraphics.defaultJuggler.add(mc);
 						
-						var state:IAbstractState = _bridgeGraphics.requestState();
-						_bridgeGraphics.tranzitionToState(state);
-						state.addNewChild(_bridgeGraphics.requestImage("Feature-Screen"));
-						state.addNewChild(mc);
-						
-						var stateTransition:IAbstractStateTransition = new EngineStateTransition();
-						
-						var state2:IAbstractState = _bridgeGraphics.requestState();
-						_bridgeGraphics.tranzitionToState(state2, stateTransition);
-						state2.addNewChild(img);
+						//var state:IAbstractState = _bridgeGraphics.requestState();
+						//_bridgeGraphics.tranzitionToState(state);
+						//state.addNewChild(_bridgeGraphics.requestImage("Feature-Screen"));
+						//state.addNewChild(mc);
+						//
+						//var stateTransition:IAbstractStateTransition = new EngineStateTransition();
+						//
+						//var state2:IAbstractState = _bridgeGraphics.requestState();
+						//_bridgeGraphics.tranzitionToState(state2, stateTransition);
+						//state2.addNewChild(img);
 						
 						var layersProxy:IAbstractEngineLayerProxy = new EngineLayerProxy();
 						layersProxy.addLayer("Layer 1");
@@ -124,11 +128,38 @@ package
 						layersProxy.addLayer("Layer 3");
 						layersProxy.addLayer("Layer 4");
 						
+						var layer:IAbstractLayer = layersProxy.retrieveLayer("Layer 1");
+						layer.addNewChild(mc);
+						
 						_bridgeGraphics.initLayers(layersProxy.layers);
 						
-						var video:IAbstractVideo = new EngineVideo();
-						video.addVideoPath("../bin/assets/test.flv");
-						state2.addNewChild(video);
+						///////////////////////////////////////////////////////////////////////////////////////////
+						var transIn:IAbstractLayerTransitionIn = new EngineLayerTransitionIn();
+						var transOut:IAbstractLayerTransitionOut = new EngineLayerTransitionOut();
+						
+						var outLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
+						outLayers.push(layersProxy.retrieveLayer("Layer 1"));
+						
+						var newLayer:IAbstractLayer = new EngineLayer("Tzeapa");
+						newLayer.addNewChild(_bridgeGraphics.requestImage("Preloader-Background"));
+						
+						var inLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
+						inLayers.push(newLayer);
+						
+						_bridgeGraphics.updateLayers(inLayers, null, transIn, transOut);
+						
+						for (var k:Object in _bridgeGraphics.layers) 
+						{
+							var child:EngineLayer = _bridgeGraphics.layers[k] as EngineLayer;
+							trace(k);
+						}
+						
+						_bridgeGraphics.swapLayers(layersProxy.retrieveLayer("Layer 1"), layersProxy.retrieveLayer("Tzeapa"));
+						//////////////////////////////////////////////////////////////////////////////////////////
+						
+						//var video:IAbstractVideo = new EngineVideo();
+						//video.addVideoPath("../bin/assets/test.flv");
+						//state2.addNewChild(video);
 					}
 				});
 		}

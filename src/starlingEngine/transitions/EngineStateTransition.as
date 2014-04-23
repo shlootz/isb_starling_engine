@@ -45,7 +45,7 @@ package starlingEngine.transitions
 		 * @param	object1
 		 * @param	object2
 		 */
-		private function onTransitionComplete(object1:IAbstractDisplayObject, object2:IAbstractDisplayObject):void
+		public function onTransitionComplete(object1:IAbstractDisplayObject, object2:IAbstractDisplayObject):void
 		{	
 			if (_onTransitionComplete != null)
 			{

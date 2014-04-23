@@ -5,6 +5,8 @@ package starlingEngine
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractState;
+	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
+	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import bridge.BridgeGraphics;
 	import citrus.core.IState;
@@ -45,6 +47,7 @@ package starlingEngine
 		private var _engineStage:Stage;
 		private var _layers:Dictionary = new Dictionary(true);
 		private var _space:Space;
+		private var _initState:EngineState;
 		/**
 		 * 
 		 */
@@ -82,6 +85,10 @@ package starlingEngine
 		override public function handleStarlingReady():void
 		{ 
 			initNape();
+			
+			_initState = requestState();
+			state = _initState;
+			
 			_initCompleteCallback.call();
 			_engineStage = starling.stage;
 		}
@@ -229,7 +236,100 @@ package starlingEngine
 			for (var k:Object in _layers) 
 			{
 				var child:EngineLayer = _layers[k] as EngineLayer;
-				_engineStage.addChild(child);
+				_initState.addChild(child);
+			}
+		}
+		
+		/**
+		 * 
+		 * @param	inLayers
+		 * @param	outLayers
+		 */
+		public function updateLayers(inLayers:Vector.<IAbstractLayer> = null, outLayers:Vector.<IAbstractLayer> = null, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut = null ):void
+		{
+			if (inLayers != null)
+			{
+				for (var i:uint = 0; i < inLayers.length; i++ )
+				{
+					insertLayerInDictionary(inLayers[i]);
+					_initState.addChild(inLayers[i] as EngineLayer);
+					
+					if (inTransition != null)
+					{
+						inTransition.injectOnTransitionComplete(tranzitionToLayerInComplete);
+						inTransition.doTransition(inLayers[i] as EngineLayer, null);
+					}
+				}
+			}
+			
+			if (outLayers != null)
+			{
+				for (var j:uint = 0; j < outLayers.length; j++ )
+				{
+					removeLayerFromDictionary(outLayers[j]);
+					_initState.removeChild(outLayers[j] as EngineLayer);
+					
+					if (outTransition != null)
+					{
+						outTransition.injectOnTransitionComplete(tranzitionToLayerOutComplete);
+						outTransition.doTransition(outLayers[j] as EngineLayer, null);
+					}
+				}
+			}
+		}
+		
+		/**
+		 * 
+		 */
+		public function tranzitionToLayerInComplete():void
+		{
+			
+		}
+		
+		/**
+		 * 
+		 */
+		public function tranzitionToLayerOutComplete():void
+		{
+			
+		}
+		
+		/**
+		 * 
+		 * @param	layer
+		 */
+		private function insertLayerInDictionary(layer:IAbstractLayer):void
+		{
+			var alreadyExisting:Boolean = false;
+			
+			for (var k:Object in _layers) 
+			{
+				var child:IAbstractLayer = _layers[k] as IAbstractLayer;
+				if (child.layerName == layer.layerName)
+				{
+					alreadyExisting = true;
+				}
+			}
+			
+			if (!alreadyExisting)
+			{
+				_layers[layer.layerName] = layer;
+			}
+		}
+		
+		/**
+		 * 
+		 * @param	layer
+		 */
+		private function removeLayerFromDictionary(layer:IAbstractLayer):void
+		{
+			for (var k:Object in _layers) 
+			{
+				var child:IAbstractLayer = _layers[k] as IAbstractLayer;
+				if (child.layerName == layer.layerName)
+				{
+					delete _layers[layer.layerName];
+				}
 			}
 		}
 		
@@ -248,7 +348,7 @@ package starlingEngine
 		 */
 		public function swapLayers(layer1:IAbstractLayer, layer2:IAbstractLayer):void
 		{
-			_engineStage.swapChildren(layer1 as DisplayObject, layer2 as DisplayObject);
+			_initState.swapChildren(layer1 as DisplayObject, layer2 as DisplayObject);
 		}
 		
 	}

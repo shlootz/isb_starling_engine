@@ -5,6 +5,8 @@ package bridge
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
 	import bridge.abstract.IAbstractState;
+	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
+	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
@@ -232,6 +234,24 @@ package bridge
 		public function initLayers(inputLayers:Dictionary):void
 		{
 			_graphicsEngine.initLayers(inputLayers);
+		}
+		
+		/**
+		 * 
+		 * @param	inLayers
+		 * @param	outLayers
+		 */
+		public function updateLayers(inLayers:Vector.<IAbstractLayer> = null, outLayers:Vector.<IAbstractLayer> = null, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut= null ):void
+		{
+			_graphicsEngine.updateLayers(inLayers, outLayers, inTransition, outTransition);
+		}
+		
+		/**
+		 * 
+		 */
+		public function get layers():Dictionary
+		{
+			return _graphicsEngine.layers;
 		}
 		
 		/**
