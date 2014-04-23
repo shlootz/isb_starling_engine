@@ -21,9 +21,9 @@ package starlingEngine.elements
 		 * 
 		 * @param	layerName
 		 */
-		public function addLayer(layerName:String):void
+		public function addLayer(layerName:String, depth:uint = 0):void
 		{
-			_layers[layerName] = new EngineLayer(layerName);
+			_layers[layerName] = new EngineLayer(layerName, depth);
 		}
 		
 		/**

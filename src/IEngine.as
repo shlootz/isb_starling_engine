@@ -83,7 +83,7 @@ package
 		 * 
 		 * @param	inputLayers
 		 */
-		function initLayers(inputLayers:Dictionary):void
+		function initLayers(inputLayers:Dictionary, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut = null):void
 		
 		/**
 		 * 

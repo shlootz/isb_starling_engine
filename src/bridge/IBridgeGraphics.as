@@ -23,7 +23,7 @@ package bridge
 		/**
 		 * 
 		 */
-		function get engine():Object
+		function get engine():IEngine
 		/**
 		 * 
 		 */
@@ -97,7 +97,7 @@ package bridge
 		 * @param	inputLayers
 		 * @return
 		 */
-		function initLayers(inputLayers:Dictionary):void
+		function initLayers(inputLayers:Dictionary, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut = null):void
 		
 		/**
 		 * 

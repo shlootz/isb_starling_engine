@@ -97,7 +97,7 @@ package
 						//_bridgeGraphics.addChild(sprite)
 						
 						var img:IAbstractImage = _bridgeGraphics.requestImage("Background");
-						sprite.addNewChild(img);
+						//sprite.addNewChild(img);
 						img.x = 150
 						
 						var mc:IAbstractMovie = _bridgeGraphics.requestMovie("Bet", 30);
@@ -111,11 +111,11 @@ package
 						sprite.rotation = .1;
 						_bridgeGraphics.defaultJuggler.add(mc);
 						
-						var state:IAbstractState = _bridgeGraphics.requestState();
-						var stateTransition:IAbstractStateTransition = new EngineStateTransition();
-						
-						_bridgeGraphics.tranzitionToState(state, stateTransition);
-						state.addNewChild(_bridgeGraphics.requestImage("Feature-Screen"));
+						//var state:IAbstractState = _bridgeGraphics.requestState();
+						//var stateTransition:IAbstractStateTransition = new EngineStateTransition();
+						//
+						//_bridgeGraphics.tranzitionToState(state, stateTransition);
+						//state.addNewChild(_bridgeGraphics.requestImage("Feature-Screen"));
 						//state.addNewChild(mc);
 						//
 						//var stateTransition:IAbstractStateTransition = new EngineStateTransition();
@@ -125,13 +125,13 @@ package
 						//state2.addNewChild(img);
 						
 						var layersProxy:IAbstractEngineLayerProxy = new EngineLayerProxy();
-						layersProxy.addLayer("Layer 1");
-						layersProxy.addLayer("Layer 2");
-						layersProxy.addLayer("Layer 3");
-						layersProxy.addLayer("Layer 4");
+						layersProxy.addLayer("Layer 1", 0);
+						layersProxy.addLayer("Layer 2", 1);
+						layersProxy.addLayer("Layer 3", 2);
+						layersProxy.addLayer("Layer 4", 3);
 						
-						var layer:IAbstractLayer = layersProxy.retrieveLayer("Layer 1");
-						layer.addNewChild(mc);
+						//var layer:IAbstractLayer = layersProxy.retrieveLayer("Layer 1");
+						layersProxy.retrieveLayer("Layer 3").addNewChild(mc);
 						
 						_bridgeGraphics.initLayers(layersProxy.layers);
 						
@@ -140,23 +140,23 @@ package
 						var transOut:IAbstractLayerTransitionOut = new EngineLayerTransitionOut();
 						
 						var outLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
-						outLayers.push(layersProxy.retrieveLayer("Layer 1"));
+						outLayers.push(layersProxy.retrieveLayer("Layer 2"));
 						
-						var newLayer:IAbstractLayer = new EngineLayer("Tzeapa");
+						var newLayer:IAbstractLayer = new EngineLayer("Tzeapa", 0);
 						newLayer.addNewChild(_bridgeGraphics.requestImage("Preloader-Background"));
 						
 						var inLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
 						inLayers.push(newLayer);
 						
 						_bridgeGraphics.updateLayers(inLayers, null, transIn, transOut);
+						//
+						//for (var k:Object in _bridgeGraphics.layers) 
+						//{
+							//var child:EngineLayer = _bridgeGraphics.layers[k] as EngineLayer;
+							//trace(k+" at depth "+child.layerDepth);
+						//}
 						
-						for (var k:Object in _bridgeGraphics.layers) 
-						{
-							var child:EngineLayer = _bridgeGraphics.layers[k] as EngineLayer;
-							trace(k);
-						}
-						
-						_bridgeGraphics.swapLayers(layersProxy.retrieveLayer("Layer 1"), layersProxy.retrieveLayer("Tzeapa"));
+						//_bridgeGraphics.swapLayers(layersProxy.retrieveLayer("Layer 1"), layersProxy.retrieveLayer("Tzeapa"));
 						//////////////////////////////////////////////////////////////////////////////////////////
 						
 						//var video:IAbstractVideo = new EngineVideo();

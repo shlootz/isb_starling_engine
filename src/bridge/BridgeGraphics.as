@@ -15,6 +15,29 @@ package bridge
 	/**
 	 * ...
 	 * @author Alex Popescu
+	 * @version 1.0.0
+	 *  
+	 * <p>The BridgeGraphics class represents the linkage between the logic end of the app and the actual
+	 * display. The display itself can differ: DisplayList, Stage3D, etc. It uses a collection of abstract
+	 * interfaces that make the actual liasion.</p>
+	 * 
+	 * <p>It is recommended to store the Bridge instance as a member variable, to make sure
+     * that the Garbage Collector does not destroy it. This is how to instatiate it:</p>
+	 * 
+	 * <pre>var bridge:IBridgeGraphics = new BridgeGraphics(GraphicsEngine,AssetManager,SignalsHub,AbstractPool,Juggler,Space);</pre>
+	 * 
+	 * <p>The first paramater is the class of the actual Graphics Engine. The second paramater is the
+	 * class for the assets manager - sometimes the assets manager can be included in the graphics
+	 * engine itself, eg. StarlingEngine. The third paramater is the signals manager class that makes
+	 * the entire communication throughout the graphics bridge and engine. The forth paramater is the
+	 * class for an abstract pool. The fifth paramater is the juggler - it is a container for animations.
+	 * The sixth paramater is the space for physics.</p>
+	 * 
+	 * <p>The bridge is actually injected with the above so that there is no direct connection with the 
+	 * engine, making the access to methods allowed only via interfaces</p>
+	 * 
+	 * <p>The bridge makes all the necessary instantiations and dispatches a native signal when the system
+	 * is up and running - e.g. for StarlingEngine: Signals :: trying to dispatch GEstarlingReady</p>
 	 */
 	public class BridgeGraphics implements IBridgeGraphics
 	{
@@ -39,13 +62,19 @@ package bridge
 		private var _juggler:Object;
 		private var _space:Object;
 		
-		/**
+		/** Creates a new BridgeGraphics instance
 		 * 
-		 * @param	assetsManagerClass
-		 * @param	signalsManagerClass
-		 * @param	poolClass
-		 * @param	juggler
-		 * @param	space
+		 * @param	graphicsEngineClass		Entry Point of the actual graphics engine.
+		 * @param	assetsManagerClass		Class for assets management. Sometimes the graphicsEngineClass
+		 * 									may already contain such system
+		 * @param	signalsManagerClass		Manager for signals
+		 * @param	poolClass				Abstract pool for any kind of objects
+		 * @param	juggler					Animator for different graphics engine
+		 * 									<li>Pass null should the engine already have an animator,
+		 * 									- e.g. display list </li>
+		 * @param	space					Physics space
+		 * 									<li>Pass null should the engine already have a physics space
+		 * 									or you don't need physics in your project</li>
 		 */
 		public function BridgeGraphics( 
 										graphicsEngineClass:Class,
@@ -71,8 +100,8 @@ package bridge
 			_space = new space();
 		}
 		
-		/**
-		 * 
+		/** Callback from the engine to mark the succesful init of the engine.
+		 * It will further dispatch a signal Signals.STARLING_READY
 		 */
 		public function graphicsEngineInited():void
 		{	
@@ -91,15 +120,21 @@ package bridge
 		}
 		
 		/**
-		 * 
+		 * @return Returns the instance of the engine.
 		 */
-		public function get engine():Object
+		public function get engine():IEngine
 		{
-			return _graphicsEngine;
+			return _graphicsEngine as IEngine;
 		}
 		
 		/**
-		 * 
+		 * @return Returns a dictionary containing the list of injected classes. The defaults are:
+		 * 			<li>graphicsEngine</li>
+		 * 			<li>assetsManager</li>
+		 * 			<li>signalsManager</li>
+		 * 			<li>pool</li>
+		 * 			<li>juggler</li>
+		 * 			<li>space</li>
 		 */
 		public function get injectedClasses():Dictionary
 		{
@@ -107,7 +142,9 @@ package bridge
 		}
 		
 		/**
+		 * @return Returns the instance of the assets manager.
 		 * 
+		 * @TODO Build an interface for the assets manager
 		 */
 		public function get assetsManager():Object
 		{
@@ -115,7 +152,9 @@ package bridge
 		}
 		
 		/**
+		 * @return Returns the instance of the signals manager.
 		 * 
+		 * @TODO Build an interface for the signals manager.
 		 */
 		public function get signalsManager():Object
 		{
@@ -123,7 +162,7 @@ package bridge
 		}
 		
 		/**
-		 * 
+		 * @return Returns the class for the abstract pool.
 		 */
 		public function get poolClass():Class
 		{
@@ -131,7 +170,9 @@ package bridge
 		}
 		
 		/**
+		 * @return Returns the class for the custom juggler
 		 * 
+		 * @TODO Build an interface for the juggler
 		 */
 		public function get juggler():Object
 		{
@@ -139,7 +180,9 @@ package bridge
 		}
 		
 		/**
+		 * @return Returns the class for the default juggler
 		 * 
+		 * @TODO Build an interface for the juggler
 		 */
 		public function get defaultJuggler():Object
 		{
@@ -147,71 +190,76 @@ package bridge
 		}
 		
 		/**
+		 * @return Returns the class for the physics space.
 		 * 
+		 * @TODO Build an interface for the space
 		 */
 		public function get space():Object
 		{
 			return _space;
 		}
 		
-		/**
-		 * 
+		/** Set a custom juggler.
+		 * @param	val a generic object as juggler
+		 * @TODO Build an interface for the juggler
 		 */
 		public function set juggler(val:Object):void
 		{
 			_juggler = juggler;
 		}
 		
-		/**
-		 * 
+		/** Set a custom space
+		 * @param	val a generic object as space
+		 * @TODO Build an interface for the space
 		 */
 		public function set space(val:Object):void
 		{
 			_space = space;
 		}
 		
-		/**
+		/** Request an image
 		 * 
 		 * @param	name
-		 * @return
+		 * @return Returns an @see bridge.abstract.IAbstractImage
 		 */
 		public function requestImage(name:String):IAbstractImage
 		{
 			return (_graphicsEngine as IEngine).requestImage(_assetsManager.getTexture(name)) as IAbstractImage;
 		}
 		
-		/**
+		/** Uses a prefix to build an animation from images in an atlas.
 		 * 
-		 * @param	prefix
-		 * @param	fps
-		 * @return
+		 * @param	prefix - retrieves all the images from an atlas using this prefix
+		 * @param	fps - sets the frames per second that the movie clip will play at independently
+		 * @return Returns an @see bridge.abstract.IAbstractMovie
 		 */
 		public function requestMovie(prefix:String, fps:uint = 24):IAbstractMovie
 		{
 			return (_graphicsEngine as IEngine).requestMovie(_assetsManager.getTextures(prefix), fps) as IAbstractMovie;
 		}
 		
-		/**
+		/** Build an empty sprite
 		 * 
-		 * @return
+		 * @return Returns an @see bridge.abstract.IAbstractSprite
 		 */
 		public function requestSprite():IAbstractSprite
 		{
 			return (_graphicsEngine as IEngine).requestSprite() as IAbstractSprite;
 		}
 		
-		/**
+		/** Builds an empty state
 		 * 
-		 * @return
+		 * @return Returns an @see bridge.abstract.IAbstractState
 		 */
 		public function requestState():IAbstractState
 		{
 			return (_graphicsEngine as IEngine).requestState() as IAbstractState;
 		}
 		
-		/**
+		/** Makes the transition to a new state
 		 * 
-		 * @param	newState
+		 * @param	newState @see bridge.abstract.IAbstractState
+		 * @param	transitionEffect @see bridge.abstract.transitions.IAbstractStateTransition
 		 */
 		public function tranzitionToState(newState:IAbstractState, transitionEffect:IAbstractStateTransition = null):void
 		{
@@ -231,9 +279,9 @@ package bridge
 		 * 
 		 * @param	inputLayers
 		 */
-		public function initLayers(inputLayers:Dictionary):void
+		public function initLayers(inputLayers:Dictionary, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut = null):void
 		{
-			_graphicsEngine.initLayers(inputLayers);
+			_graphicsEngine.initLayers(inputLayers, inTransition, outTransition);
 		}
 		
 		/**
@@ -247,14 +295,14 @@ package bridge
 		}
 		
 		/**
-		 * 
+		 * @return Returns layers Dictionary containing all the currently displayed layers
 		 */
 		public function get layers():Dictionary
 		{
 			return _graphicsEngine.layers;
 		}
 		
-		/**
+		/** Swaps the depth of two layers.
 		 * 
 		 * @param	layer1
 		 * @param	layer2

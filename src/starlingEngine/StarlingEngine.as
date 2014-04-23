@@ -231,15 +231,59 @@ package starlingEngine
 		/**
 		 * 
 		 */
-		public function initLayers(inputLayers:Dictionary):void
+		public function initLayers(inputLayers:Dictionary, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut = null):void
 		{
 			_layers = inputLayers;
+			
+			var orderedLayers:Vector.<EngineLayer> = new Vector.<EngineLayer>();
 			
 			for (var k:Object in _layers) 
 			{
 				var child:EngineLayer = _layers[k] as EngineLayer;
-				_currentState.addChild(child);
+				orderedLayers.push(child);
 			}
+			
+			orderedLayers.sort(sortDepths);
+			
+			for (var j:uint = 0; j < orderedLayers.length; j++ )
+			{
+				if (_currentState.getChildByName(orderedLayers[j].name) == null)
+				{
+					trace("add "+orderedLayers[j].name);
+					_currentState.addChildAt(orderedLayers[j], j);
+					
+					if (inTransition != null)
+					{
+						inTransition.injectOnTransitionComplete(tranzitionToLayerInComplete);
+						inTransition.doTransition(orderedLayers[j] as EngineLayer, null);
+					}
+				}
+			}
+		}
+		
+		/**
+		 * 
+		 * @param	a
+		 * @param	b
+		 * @return
+		 */
+		private function sortDepths(a:EngineLayer, b:EngineLayer):int
+		{
+			var depth1:uint = (a as EngineLayer).layerDepth;
+			var depth2:uint = (b as EngineLayer).layerDepth;
+			
+			if (depth1 < depth2) 
+			{ 
+				return -1; 
+			} 
+			else if (depth1 > depth2) 
+			{ 
+				return 1; 
+			} 
+			else 
+			{ 
+				return 0; 
+			} 
 		}
 		
 		/**
@@ -254,13 +298,6 @@ package starlingEngine
 				for (var i:uint = 0; i < inLayers.length; i++ )
 				{
 					insertLayerInDictionary(inLayers[i]);
-					_currentState.addChild(inLayers[i] as EngineLayer);
-					
-					if (inTransition != null)
-					{
-						inTransition.injectOnTransitionComplete(tranzitionToLayerInComplete);
-						inTransition.doTransition(inLayers[i] as EngineLayer, null);
-					}
 				}
 			}
 			
@@ -278,6 +315,8 @@ package starlingEngine
 					}
 				}
 			}
+			
+			initLayers(_layers, inTransition, outTransition);
 		}
 		
 		/**
