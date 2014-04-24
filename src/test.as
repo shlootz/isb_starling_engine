@@ -37,6 +37,7 @@ package
 	import starling.animation.Juggler;
 	import starling.display.Image;
 	import starling.display.MovieClip;
+	import starling.events.Event;
 	import starling.utils.AssetManager;
 	import starlingEngine.elements.EngineLayer;
 	import starlingEngine.elements.EngineLayerProxy;
@@ -108,12 +109,20 @@ package
 			_bridgeGraphics.addChild(uiHolder);
 			
 			var button:EngineButton = new EngineButton();
-			button.downSkin = _bridgeGraphics.requestImage("Spin-Button-Down") as Image;
-			button.upSkin = _bridgeGraphics.requestImage("Spin-Button") as Image;
-			button.hoverSkin = _bridgeGraphics.requestImage("Spin-Button-Hover") as Image;
+			button.downSkin_ = _bridgeGraphics.requestImage("Spin-Button-Down") as IAbstractDisplayObject;
+			button.upSkin_ = _bridgeGraphics.requestImage("Spin-Button") as IAbstractDisplayObject;
+			button.hoverSkin_ = _bridgeGraphics.requestImage("Spin-Button-Hover") as IAbstractDisplayObject;
 			button.useHandCursor = true;
 			
+			button.addEventListener(Event.TRIGGERED, button_triggeredHandler);
+			
 			uiHolder.addNewChild(button as IAbstractDisplayObject);
+		}
+		
+		private function button_triggeredHandler(e:Event):void
+		{
+			(e.currentTarget as IAbstractDisplayObject).x += 10;
+			showThings();
 		}
 		
 		private function showThings():void

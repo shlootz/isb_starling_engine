@@ -1,5 +1,6 @@
 package starlingEngine.ui 
 {
+	import bridge.abstract.IAbstractDisplayObject;
 	import bridge.abstract.ui.IAbstractButton;
 	import feathers.controls.Button;
 	import starling.display.DisplayObject;
@@ -25,22 +26,22 @@ package starlingEngine.ui
 			super.autoFlatten = value;
 		}
 
-		override protected function get currentState () : String
+		public function get currentState_ () : String
 		{
 			return super.currentState;
 		}
-		override protected function set currentState (value:String) : void
+		public function set currentState_ (value:String) : void
 		{
 			super.currentState = value;
 		}
 
-		override public function get defaultIcon () : DisplayObject
+		public function get defaultIcon_ () : IAbstractDisplayObject
 		{
-			return super.defaultIcon;
+			return super.defaultIcon as IAbstractDisplayObject;
 		}
-		override public function set defaultIcon (value:DisplayObject) : void
+		public function set defaultIcon_ (value:IAbstractDisplayObject) : void
 		{
-			super.defaultIcon = value;
+			super.defaultIcon = value as DisplayObject;
 		}
 
 		override public function get defaultLabelProperties () : Object
@@ -52,13 +53,13 @@ package starlingEngine.ui
 			super.defaultLabelProperties = value;
 		}
 
-		override public function get defaultSelectedIcon () : DisplayObject
+		public function get defaultSelectedIcon_ () : IAbstractDisplayObject
 		{
-			return super.defaultSelectedIcon;
+			return super.defaultSelectedIcon  as IAbstractDisplayObject;
 		}
-		override public function set defaultSelectedIcon (value:DisplayObject) : void
+		public function set defaultSelectedIcon_ (value:IAbstractDisplayObject) : void
 		{
-			super.defaultSelectedIcon = value;
+			super.defaultSelectedIcon = value as DisplayObject;
 		}
 
 		override public function get defaultSelectedLabelProperties () : Object
@@ -70,31 +71,31 @@ package starlingEngine.ui
 			super.defaultSelectedLabelProperties = value;
 		}
 
-		override public function get defaultSelectedSkin () : DisplayObject
+		public function get defaultSelectedSkin_ () : IAbstractDisplayObject
 		{
-			return super.defaultSelectedSkin;
+			return super.defaultSelectedSkin as IAbstractDisplayObject;
 		}
-		override public function set defaultSelectedSkin (value:DisplayObject) : void
+		public function set defaultSelectedSkin_ (value:IAbstractDisplayObject) : void
 		{
-			super.defaultSelectedSkin = value;
-		}
-
-		override public function get defaultSkin () : DisplayObject
-		{
-			return super.defaultSkin;
-		}
-		override public function set defaultSkin (value:DisplayObject) : void
-		{
-			super.defaultSkin = value;
+			super.defaultSelectedSkin = value as DisplayObject;
 		}
 
-		override public function get disabledIcon () : DisplayObject
+		public function get defaultSkin_ () : IAbstractDisplayObject
 		{
-			return super.disabledIcon;
+			return super.defaultSkin as IAbstractDisplayObject;
 		}
-		override public function set disabledIcon (value:DisplayObject) : void
+		public function set defaultSkin_ (value:IAbstractDisplayObject) : void
 		{
-			super.disabledIcon = value;
+			super.defaultSkin = value as DisplayObject;
+		}
+
+		public function get disabledIcon_ () : IAbstractDisplayObject
+		{
+			return super.disabledIcon as IAbstractDisplayObject;
+		}
+		public function set disabledIcon_ (value:IAbstractDisplayObject) : void
+		{
+			super.disabledIcon = value as DisplayObject;
 		}
 
 		override public function get disabledLabelProperties () : Object
@@ -102,22 +103,22 @@ package starlingEngine.ui
 			return super.disabledLabelProperties;
 		}
 
-		override public function get disabledSkin () : DisplayObject
+		public function get disabledSkin_ () : IAbstractDisplayObject
 		{
-			return super.disabledSkin;
+			return super.disabledSkin as IAbstractDisplayObject;
 		}
-		override public function set disabledSkin (value:DisplayObject) : void
+		public function set disabledSkin_ (value:IAbstractDisplayObject) : void
 		{
-			super.disabledSkin = value;
+			super.disabledSkin = value as DisplayObject;
 		}
 
-		override public function get downIcon () : DisplayObject
+		public function get downIcon_ () : IAbstractDisplayObject
 		{
-			return super.downIcon;
+			return super.downIcon as IAbstractDisplayObject;
 		}
-		override public function set downIcon (value:DisplayObject) : void
+		public function set downIcon_ (value:IAbstractDisplayObject) : void
 		{
-			super.downIcon = value;
+			super.downIcon = value as DisplayObject;
 		}
 
 		override public function get downLabelProperties () : Object
@@ -129,13 +130,13 @@ package starlingEngine.ui
 			super.downLabelProperties = value;
 		}
 
-		override public function get downSkin () : DisplayObject
+		public function get downSkin_ () : IAbstractDisplayObject
 		{
-			return super.downSkin;
+			return super.downSkin as IAbstractDisplayObject;
 		}
-		override public function set downSkin (value:DisplayObject) : void
+		public function set downSkin_ (value:IAbstractDisplayObject) : void
 		{
-			super.downSkin = value;
+			super.downSkin = value as DisplayObject;
 		}
 
 		override public function get gap () : Number
@@ -156,13 +157,13 @@ package starlingEngine.ui
 			super.horizontalAlign = value;
 		}
 
-		override public function get hoverIcon () : DisplayObject
+		public function get hoverIcon_ () : IAbstractDisplayObject
 		{
-			return super.hoverIcon;
+			return super.hoverIcon as IAbstractDisplayObject;
 		}
-		override public function set hoverIcon (value:DisplayObject) : void
+		public function set hoverIcon_ (value:IAbstractDisplayObject) : void
 		{
-			super.hoverIcon = value;
+			super.hoverIcon = value as DisplayObject;
 		}
 
 		override public function get hoverLabelProperties () : Object
@@ -174,13 +175,13 @@ package starlingEngine.ui
 			super.hoverLabelProperties = value;
 		}
 
-		override public function get hoverSkin () : DisplayObject
+		public function get hoverSkin_ () : IAbstractDisplayObject
 		{
-			return super.hoverSkin;
+			return super.hoverSkin as IAbstractDisplayObject;
 		}
-		override public function set hoverSkin (value:DisplayObject) : void
+		public function set hoverSkin_ (value:IAbstractDisplayObject) : void
 		{
-			super.hoverSkin = value;
+			super.hoverSkin = value as DisplayObject;
 		}
 
 		override public function get iconOffsetX () : Number
@@ -332,13 +333,13 @@ package starlingEngine.ui
 			super.paddingTop = value;
 		}
 
-		override public function get selectedDisabledIcon () : DisplayObject
+		public function get selectedDisabledIcon_ () : IAbstractDisplayObject
 		{
-			return super.selectedDisabledIcon;
+			return super.selectedDisabledIcon as IAbstractDisplayObject;
 		}
-		override public function set selectedDisabledIcon (value:DisplayObject) : void
+		public function set selectedDisabledIcon_ (value:IAbstractDisplayObject) : void
 		{
-			super.selectedDisabledIcon = value;
+			super.selectedDisabledIcon = value as DisplayObject;
 		}
 
 		override public function get selectedDisabledLabelProperties () : Object
@@ -350,22 +351,22 @@ package starlingEngine.ui
 			super.selectedDisabledLabelProperties = value;
 		}
 
-		override public function get selectedDisabledSkin () : DisplayObject
+		public function get selectedDisabledSkin_ () : IAbstractDisplayObject
 		{
-			return super.selectedDisabledSkin;
+			return super.selectedDisabledSkin as IAbstractDisplayObject;
 		}
-		override public function set selectedDisabledSkin (value:DisplayObject) : void
+		public function set selectedDisabledSkin_ (value:IAbstractDisplayObject) : void
 		{
-			super.selectedDisabledSkin = value;
+			super.selectedDisabledSkin = value as DisplayObject;
 		}
 
-		override public function get selectedDownIcon () : DisplayObject
+		public function get selectedDownIcon_ () : IAbstractDisplayObject
 		{
-			return super.selectedDownIcon;
+			return super.selectedDownIcon as IAbstractDisplayObject;
 		}
-		override public function set selectedDownIcon (value:DisplayObject) : void
+		public function set selectedDownIcon_ (value:IAbstractDisplayObject) : void
 		{
-			super.selectedDownIcon = value;
+			super.selectedDownIcon = value as DisplayObject;
 		}
 
 		override public function get selectedDownLabelProperties () : Object
@@ -377,22 +378,22 @@ package starlingEngine.ui
 			super.selectedDownLabelProperties = value;
 		}
 
-		override public function get selectedDownSkin () : DisplayObject
+		public function get selectedDownSkin_ () : IAbstractDisplayObject
 		{
-			return super.selectedDownSkin;
+			return super.selectedDownSkin as IAbstractDisplayObject;
 		}
-		override public function set selectedDownSkin (value:DisplayObject) : void
+		public function set selectedDownSkin_ (value:IAbstractDisplayObject) : void
 		{
-			super.selectedDownSkin = value;
+			super.selectedDownSkin = value as DisplayObject;
 		}
 
-		override public function get selectedHoverIcon () : DisplayObject
+		public function get selectedHoverIcon_ () : IAbstractDisplayObject
 		{
-			return super.selectedHoverIcon;
+			return super.selectedHoverIcon as IAbstractDisplayObject;
 		}
-		override public function set selectedHoverIcon (value:DisplayObject) : void
+		public function set selectedHoverIcon_ (value:IAbstractDisplayObject) : void
 		{
-			super.selectedHoverIcon = value;
+			super.selectedHoverIcon = value as DisplayObject;
 		}
 
 		override public function get selectedHoverLabelProperties () : Object
@@ -404,22 +405,22 @@ package starlingEngine.ui
 			super.selectedHoverLabelProperties = value;
 		}
 
-		override public function get selectedHoverSkin () : DisplayObject
+		public function get selectedHoverSkin_ () : IAbstractDisplayObject
 		{
-			return super.selectedHoverSkin;
+			return super.selectedHoverSkin as IAbstractDisplayObject;
 		}
-		override public function set selectedHoverSkin (value:DisplayObject) : void
+		public function set selectedHoverSkin_ (value:IAbstractDisplayObject) : void
 		{
-			super.selectedHoverSkin = value;
+			super.selectedHoverSkin = value as DisplayObject;
 		}
 
-		override public function get selectedUpIcon () : DisplayObject
+		public function get selectedUpIcon_ () : IAbstractDisplayObject
 		{
-			return super.selectedUpIcon;
+			return super.selectedUpIcon as IAbstractDisplayObject;
 		}
-		override public function set selectedUpIcon (value:DisplayObject) : void
+		public function set selectedUpIcon_ (value:IAbstractDisplayObject) : void
 		{
-			super.selectedUpIcon = value;
+			super.selectedUpIcon = value as DisplayObject;
 		}
 
 		override public function get selectedUpLabelProperties () : Object
@@ -431,16 +432,16 @@ package starlingEngine.ui
 			super.selectedUpLabelProperties = value;
 		}
 
-		override public function get selectedUpSkin () : DisplayObject
+		public function get selectedUpSkin_ () : IAbstractDisplayObject
 		{
-			return super.selectedUpSkin;
+			return super.selectedUpSkin as IAbstractDisplayObject;
 		}
-		override public function set selectedUpSkin (value:DisplayObject) : void
+		public function set selectedUpSkin_ (value:IAbstractDisplayObject) : void
 		{
-			super.selectedUpSkin = value;
+			super.selectedUpSkin = value as DisplayObject;
 		}
 
-		override protected function get stateNames () : Vector.<String>
+		public function get stateNames_ () : Vector.<String>
 		{
 			return super.stateNames;
 		}
@@ -472,13 +473,13 @@ package starlingEngine.ui
 			super.stateToSkinFunction = value;
 		}
 
-		override public function get upIcon () : DisplayObject
+		public function get upIcon_ () : IAbstractDisplayObject
 		{
-			return super.upIcon;
+			return super.upIcon as IAbstractDisplayObject;
 		}
-		override public function set upIcon (value:DisplayObject) : void
+		public function set upIcon_ (value:IAbstractDisplayObject) : void
 		{
-			super.upIcon = value;
+			super.upIcon = value as DisplayObject;
 		}
 
 		override public function get upLabelProperties () : Object
@@ -490,13 +491,13 @@ package starlingEngine.ui
 			super.upLabelProperties = value;
 		}
 
-		override public function get upSkin () : DisplayObject
+		public function get upSkin_ () : IAbstractDisplayObject
 		{
-			return super.upSkin;
+			return super.upSkin as IAbstractDisplayObject;
 		}
-		override public function set upSkin (value:DisplayObject) : void
+		public function set upSkin_ (value:IAbstractDisplayObject) : void
 		{
-			super.upSkin = value;
+			super.upSkin = value as DisplayObject;
 		}
 
 		override public function get verticalAlign () : String
@@ -508,82 +509,82 @@ package starlingEngine.ui
 			super.verticalAlign = value;
 		}
 
-		override protected function autoSizeIfNeeded () : Boolean
+		public function autoSizeIfNeeded_ () : Boolean
 		{
 			return super.autoSizeIfNeeded();
 		}
 
-		override protected function button_removedFromStageHandler (event:Event) : void
+		public function button_removedFromStageHandler_ (event:Event) : void
 		{
 			super.button_removedFromStageHandler(event);
 		}
 
-		override protected function createLabel () : void
+		public function createLabel_ () : void
 		{
 			super.createLabel();
 		}
 
-		override protected function draw () : void
+		public function draw_ () : void
 		{
 			super.draw();
 		}
 
-		override protected function focusInHandler (event:Event) : void
+		public function focusInHandler_ (event:Event) : void
 		{
 			super.focusInHandler(event);
 		}
 
-		override protected function focusOutHandler (event:Event) : void
+		public function focusOutHandler_ (event:Event) : void
 		{
 			super.focusOutHandler(event);
 		}
 
-		override protected function layoutContent () : void
+		public function layoutContent_ () : void
 		{
 			super.layoutContent();
 		}
 
-		override protected function longPress_enterFrameHandler (event:Event) : void
+		public function longPress_enterFrameHandler_ (event:Event) : void
 		{
 			super.longPress_enterFrameHandler(event);
 		}
 
-		override protected function positionLabelAndIcon () : void
+		public function positionLabelAndIcon_ () : void
 		{
 			super.positionLabelAndIcon();
 		}
 
-		override protected function positionSingleChild (displayObject:DisplayObject) : void
+		public function positionSingleChild_ (displayObject:IAbstractDisplayObject) : void
 		{
-			super.positionSingleChild(displayObject);
+			super.positionSingleChild(displayObject as DisplayObject);
 		}
 
-		override protected function refreshIcon () : void
+		public function refreshIcon_ () : void
 		{
 			super.refreshIcon();
 		}
 
-		override protected function refreshLabel () : void
+		public function refreshLabel_ () : void
 		{
 			super.refreshLabel();
 		}
 
-		override protected function refreshLabelStyles () : void
+		public function refreshLabelStyles_ () : void
 		{
 			super.refreshLabelStyles();
 		}
 
-		override protected function refreshMaxLabelWidth (forMeasurement:Boolean) : void
+		public function refreshMaxLabelWidth_ (forMeasurement:Boolean) : void
 		{
 			super.refreshMaxLabelWidth(forMeasurement);
 		}
 
-		override protected function refreshSkin () : void
+		public function refreshSkin_ () : void
 		{
 			super.refreshSkin();
 		}
 
-		override protected function scaleSkin () : void
+		public function scaleSkin_ () : void
 		{
 			super.scaleSkin();
 		}
