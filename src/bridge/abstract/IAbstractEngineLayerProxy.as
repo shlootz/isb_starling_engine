@@ -5,6 +5,10 @@ package bridge.abstract
 	/**
 	 * ...
 	 * @author Alex Popescu
+	 * 
+	 * The layer proxy manages a dictionary of layers.
+	 * Creates and retrieves lauers.
+	 * @see bridge.abstract.IAbstractLayer
 	 */
 	public interface IAbstractEngineLayerProxy 
 	{
@@ -20,7 +24,7 @@ package bridge.abstract
 		 */
 		function retrieveLayer(layerName:String):IAbstractLayer
 		/**
-		 * 
+		 * @return Returns the layers dictionary
 		 */
 		function get layers():Dictionary
 	}

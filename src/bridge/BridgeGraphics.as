@@ -12,6 +12,7 @@ package bridge
 	import flash.utils.getQualifiedClassName;
 	import signals.ISignalsHub;
 	import signals.Signals;
+	import starlingEngine.IEngine;
 	/**
 	 * ...
 	 * @author Alex Popescu
@@ -266,7 +267,7 @@ package bridge
 			(_graphicsEngine as IEngine).tranzitionToState(newState, transitionEffect);
 		}
 		
-		/**
+		/** Adds child to the default Stage
 		 * 
 		 * @param	child
 		 */

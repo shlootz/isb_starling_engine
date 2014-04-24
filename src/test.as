@@ -104,25 +104,10 @@ package
 						mc.x = 0;
 						mc.y = 0;
 						
-						//sprite.addNewChild(mc);
-						
 						sprite.x = 150;
 						sprite.y = 150;
 						sprite.rotation = .1;
 						_bridgeGraphics.defaultJuggler.add(mc);
-						
-						//var state:IAbstractState = _bridgeGraphics.requestState();
-						//var stateTransition:IAbstractStateTransition = new EngineStateTransition();
-						//
-						//_bridgeGraphics.tranzitionToState(state, stateTransition);
-						//state.addNewChild(_bridgeGraphics.requestImage("Feature-Screen"));
-						//state.addNewChild(mc);
-						//
-						//var stateTransition:IAbstractStateTransition = new EngineStateTransition();
-						//
-						//var state2:IAbstractState = _bridgeGraphics.requestState();
-						//_bridgeGraphics.tranzitionToState(state2, stateTransition);
-						//state2.addNewChild(img);
 						
 						var layersProxy:IAbstractEngineLayerProxy = new EngineLayerProxy();
 						layersProxy.addLayer("Layer 1", 0);
@@ -130,12 +115,10 @@ package
 						layersProxy.addLayer("Layer 3", 2);
 						layersProxy.addLayer("Layer 4", 3);
 						
-						//var layer:IAbstractLayer = layersProxy.retrieveLayer("Layer 1");
 						layersProxy.retrieveLayer("Layer 3").addNewChild(mc);
 						
 						_bridgeGraphics.initLayers(layersProxy.layers);
 						
-						///////////////////////////////////////////////////////////////////////////////////////////
 						var transIn:IAbstractLayerTransitionIn = new EngineLayerTransitionIn();
 						var transOut:IAbstractLayerTransitionOut = new EngineLayerTransitionOut();
 						
@@ -149,19 +132,14 @@ package
 						inLayers.push(newLayer);
 						
 						_bridgeGraphics.updateLayers(inLayers, null, transIn, transOut);
-						//
-						//for (var k:Object in _bridgeGraphics.layers) 
-						//{
-							//var child:EngineLayer = _bridgeGraphics.layers[k] as EngineLayer;
-							//trace(k+" at depth "+child.layerDepth);
-						//}
 						
-						//_bridgeGraphics.swapLayers(layersProxy.retrieveLayer("Layer 1"), layersProxy.retrieveLayer("Tzeapa"));
-						//////////////////////////////////////////////////////////////////////////////////////////
+						var state2:IAbstractState = _bridgeGraphics.requestState();
+						var stateTransition:IAbstractStateTransition = new EngineStateTransition();
+						_bridgeGraphics.tranzitionToState(state2, stateTransition);
 						
-						//var video:IAbstractVideo = new EngineVideo();
-						//video.addVideoPath("../bin/assets/test.flv");
-						//state2.addNewChild(video);
+						var video:IAbstractVideo = new EngineVideo();
+						video.addVideoPath("../bin/assets/test.flv");
+						state2.addNewChild(video);
 					}
 				});
 		}

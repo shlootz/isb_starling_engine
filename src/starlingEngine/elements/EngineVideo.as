@@ -62,6 +62,11 @@ package starlingEngine.elements
 			_netStream.close();
 		}
 		
+		public function start(forceRecording:Boolean = false):void
+		{
+			_video.start(forceRecording);
+		}
+		
 		/**
 		 * 
 		 */

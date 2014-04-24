@@ -4,6 +4,8 @@ package starlingEngine
 	import bridge.abstract.IAbstractDisplayObject;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractLayer;
+	import bridge.abstract.IAbstractMovie;
+	import bridge.abstract.IAbstractSprite;
 	import bridge.abstract.IAbstractState;
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
@@ -47,7 +49,7 @@ package starlingEngine
 		private var _engineStage:Stage;
 		private var _layers:Dictionary = new Dictionary(true);
 		private var _space:Space;
-		private var _currentState:EngineState;
+		private var _currentState:IAbstractState;
 		/**
 		 * 
 		 */
@@ -87,7 +89,7 @@ package starlingEngine
 			initNape();
 			
 			_currentState = requestState();
-			state = _currentState;
+			state = _currentState as IState;
 			
 			_initCompleteCallback.call();
 			_engineStage = starling.stage;
@@ -134,9 +136,9 @@ package starlingEngine
 		 * @param	texture
 		 * @return
 		 */
-		public function requestImage(texture:Texture):EngineImage
+		public function requestImage(texture:Texture):IAbstractImage
 		{
-			var i:EngineImage = new EngineImage(texture);
+			var i:IAbstractImage = new EngineImage(texture) as IAbstractImage;
 			return i;
 		}
 		
@@ -146,9 +148,9 @@ package starlingEngine
 		 * @param	fps
 		 * @return
 		 */
-		public function requestMovie(textures:Vector.<Texture>, fps:uint = 24):EngineMovie
+		public function requestMovie(textures:Vector.<Texture>, fps:uint = 24):IAbstractMovie
 		{
-			var m:EngineMovie = new EngineMovie(textures, fps);
+			var m:IAbstractMovie = new EngineMovie(textures, fps) as IAbstractMovie;
 			return m;
 		}
 		
@@ -156,9 +158,9 @@ package starlingEngine
 		 * 
 		 * @return
 		 */
-		public function requestSprite():EngineSprite
+		public function requestSprite():IAbstractSprite
 		{
-			var s:EngineSprite = new EngineSprite();
+			var s:IAbstractSprite = new EngineSprite() as IAbstractSprite;
 			return s;
 		}
 		
@@ -166,9 +168,9 @@ package starlingEngine
 		 * 
 		 * @return
 		 */
-		public function requestState():EngineState
+		public function requestState():IAbstractState
 		{
-			return new EngineState();
+			return new EngineState() as IAbstractState;
 		}
 		
 		/**
@@ -196,7 +198,7 @@ package starlingEngine
 			else
 			{
 				_currentState = newState as EngineState;
-				state = _currentState;
+				state = _currentState as IState;
 				(state as StarlingState).initialize();
 			}
 		}
@@ -209,7 +211,7 @@ package starlingEngine
 		private function tranzitionToStateComplete():void
 		{
 			_currentState = futureState as EngineState;
-			state = _currentState;
+			state = _currentState as IState;
 		}
 		
 		/**
@@ -247,10 +249,9 @@ package starlingEngine
 			
 			for (var j:uint = 0; j < orderedLayers.length; j++ )
 			{
-				if (_currentState.getChildByName(orderedLayers[j].name) == null)
+				if (_currentState.getChildByNameStr(orderedLayers[j].name) == null)
 				{
-					trace("add "+orderedLayers[j].name);
-					_currentState.addChildAt(orderedLayers[j], j);
+					_currentState.addNewChildAt(orderedLayers[j], j);
 					
 					if (inTransition != null)
 					{
@@ -306,7 +307,7 @@ package starlingEngine
 				for (var j:uint = 0; j < outLayers.length; j++ )
 				{
 					removeLayerFromDictionary(outLayers[j]);
-					_currentState.removeChild(outLayers[j] as EngineLayer);
+					_currentState.removeChildAndDispose(outLayers[j] as EngineLayer);
 					
 					if (outTransition != null)
 					{
@@ -389,7 +390,7 @@ package starlingEngine
 		 */
 		public function swapLayers(layer1:IAbstractLayer, layer2:IAbstractLayer):void
 		{
-			_currentState.swapChildren(layer1 as DisplayObject, layer2 as DisplayObject);
+			_currentState.swapChildrenF(layer1 as IAbstractLayer, layer2 as IAbstractLayer);
 		}
 		
 	}

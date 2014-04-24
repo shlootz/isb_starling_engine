@@ -1,27 +1,16 @@
-package  
+package bridge.abstract 
 {
-	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import flash.events.Event;
-	import flash.utils.Dictionary;
-	import starling.animation.Juggler;
-	import starling.display.Image;
-	import starling.display.MovieClip;
-	import starling.display.Stage;
-	import starling.textures.Texture;
-	import bridge.abstract.IAbstractImage;
-	import bridge.abstract.IAbstractState;
-	import starlingEngine.elements.EngineImage;
-	import starlingEngine.elements.EngineMovie;
-	import starlingEngine.elements.EngineSprite;
-	import starlingEngine.elements.EngineState;
-	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
+	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
+	import bridge.abstract.transitions.IAbstractStateTransition;
+	import flash.utils.Dictionary
 	/**
 	 * ...
 	 * @author Alex Popescu
 	 */
-	public interface IEngine
+	public interface IAbstractEngine 
 	{
 		/**
 		 * 
@@ -42,31 +31,18 @@ package
 		 * @param	juggler
 		 */
 		function removeJuggler(juggler:Object):void
-		/**
-		 * 
-		 * @param	texture
-		 * @return
-		 */
-		function requestImage(texture:Texture):EngineImage
-		/**
-		 * 
-		 * @param	textures
-		 * @param	fps
-		 * @return
-		 */
-		function requestMovie(textures:Vector.<Texture>, fps:uint = 24):EngineMovie
 		
 		/**
 		 * 
 		 * @return
 		 */
-		function requestSprite():EngineSprite
+		function requestSprite():IAbstractSprite
 		
 		/**
 		 * 
 		 * @return
 		 */
-		function requestState():EngineState
+		function requestState():IAbstractState
 		
 		/**
 		 * 
@@ -99,15 +75,6 @@ package
 		 */
 		function updateLayers(inLayers:Vector.<IAbstractLayer> = null, outLayers:Vector.<IAbstractLayer> = null, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut= null):void
 		
-		/**
-		 * 
-		 */
-		function get juggler():Juggler
-		
-		/**
-		 * 
-		 */
-		function get engineStage():Stage
 	}
 	
 }
