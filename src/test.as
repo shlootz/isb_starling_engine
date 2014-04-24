@@ -2,6 +2,7 @@ package
 {
 	import abstract.AbstractPool;
 	import away3d.controllers.SpringController;
+	import bridge.abstract.events.IAbstractEvent;
 	import bridge.abstract.IAbstractDisplayObject;
 	import bridge.abstract.IAbstractEngineLayerProxy;
 	import bridge.abstract.IAbstractImage;
@@ -43,6 +44,7 @@ package
 	import starlingEngine.elements.EngineLayerProxy;
 	import starlingEngine.elements.EngineTexture;
 	import starlingEngine.elements.EngineVideo;
+	import starlingEngine.events.EngineEvent;
 	import starlingEngine.StarlingEngine;
 	import starlingEngine.transitions.EngineLayerTransitionIn;
 	import starlingEngine.transitions.EngineLayerTransitionOut;
@@ -121,7 +123,6 @@ package
 		
 		private function button_triggeredHandler(e:Event):void
 		{
-			(e.currentTarget as IAbstractDisplayObject).x += 10;
 			showThings();
 		}
 		
