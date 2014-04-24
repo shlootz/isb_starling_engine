@@ -1,6 +1,7 @@
 package starlingEngine.elements 
 {
 	import bridge.abstract.IAbstractImage;
+	import bridge.abstract.IAbstractTexture;
 	import starling.display.Image;
 	import starling.textures.Texture;
 	/**
@@ -12,7 +13,7 @@ package starlingEngine.elements
 		
 		public function EngineImage(texture:Texture) 
 		{
-			super(texture);
+			super(texture as Texture);
 		}
 		
 	}

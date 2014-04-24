@@ -52,6 +52,10 @@ package starlingEngine
 		private var _currentState:IAbstractState;
 		/**
 		 * 
+		 * @param	initCompleteCallback
+		 * @param	baseWidth
+		 * @param	baseHeight
+		 * @param	viewportMode
 		 */
 		public function StarlingEngine(initCompleteCallback:Function, baseWidth:int = 800, baseHeight:int = 600, viewportMode:String = ViewportMode.FULLSCREEN):void 
 		{

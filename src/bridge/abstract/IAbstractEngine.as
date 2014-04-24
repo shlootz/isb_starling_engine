@@ -9,44 +9,53 @@ package bridge.abstract
 	/**
 	 * ...
 	 * @author Alex Popescu
+	 * 
+	 * <p> The IAbstractEngine interface contains all the methods required by the client, except for the tightly coupled ones
+	 * that are included in IEngine, an interface extending IAbstractEngine</p>
 	 */
 	public interface IAbstractEngine 
 	{
 		/**
-		 * 
+		 * Initializes the engine.
+		 * <b>Without propor init, the graphics will not be displayed</b>
 		 */
 		function initEngine():void
+		
 		/**
-		 * 
+		 * Engine step
 		 * @param	e
 		 */
 		function loop(e:Event):void
+		
 		/**
-		 * 
+		 * Adds a new custom juggler. A juggler is an animator for movieclips
 		 * @param	newJuggler
 		 */
 		function addJuggler(newJuggler:Object):void
+		
 		/**
-		 * 
+		 * Removes a juggler
 		 * @param	juggler
 		 */
 		function removeJuggler(juggler:Object):void
 		
-		/**
-		 * 
-		 * @return
-		 */
-		function requestSprite():IAbstractSprite
 		
 		/**
 		 * 
-		 * @return
+		 * @return @see bridge.abstract.IAbstractSprite
+		 */
+		function requestSprite():IAbstractSprite
+		
+		
+		/**
+		 * 
+		 * @return @see bridge.abstract.IAbstractState
 		 */
 		function requestState():IAbstractState
 		
 		/**
 		 * 
-		 * @param	newState
+		 * @param	newState @see bridge.abstract.IAbstractState
 		 */
 		function tranzitionToState(newState:IAbstractState, transitionEffect:IAbstractStateTransition = null):void
 		
@@ -57,7 +66,9 @@ package bridge.abstract
 		
 		/**
 		 * 
-		 * @param	inputLayers
+		 * @param	inputLayers 
+		 * @see bridge.abstract.IAbstractLayerTransitionIn 
+		 * @see bridge.abstract.IAbstractLayerTransitionOut 
 		 */
 		function initLayers(inputLayers:Dictionary, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut = null):void
 		
@@ -65,6 +76,7 @@ package bridge.abstract
 		 * 
 		 * @param	layer1
 		 * @param	layer2
+		 * @see bridge.abstract.IAbstractLayer 
 		 */
 		function swapLayers(layer1:IAbstractLayer, layer2:IAbstractLayer):void
 		
@@ -72,6 +84,9 @@ package bridge.abstract
 		 * 
 		 * @param	inLayers
 		 * @param	outLayers
+		 * @see bridge.abstract.IAbstractLayer 
+		 * @see bridge.abstract.IAbstractLayerTransitionIn 
+		 * @see bridge.abstract.IAbstractLayerTransitionOut 
 		 */
 		function updateLayers(inLayers:Vector.<IAbstractLayer> = null, outLayers:Vector.<IAbstractLayer> = null, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut= null):void
 		
