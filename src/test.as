@@ -21,6 +21,8 @@ package
 	import citrus.core.starling.StarlingCitrusEngine;
 	import com.greensock.TweenLite;
 	import feathers.controls.Button;
+	import feathers.controls.text.TextFieldTextRenderer;
+	import feathers.themes.MetalWorksMobileTheme;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.AsyncErrorEvent;
@@ -39,7 +41,11 @@ package
 	import starling.display.Image;
 	import starling.display.MovieClip;
 	import starling.events.Event;
+	import starling.text.BitmapFont;
+	import starling.text.TextField;
+	import starling.textures.Texture;
 	import starling.utils.AssetManager;
+	import starling.utils.Color;
 	import starlingEngine.elements.EngineLayer;
 	import starlingEngine.elements.EngineLayerProxy;
 	import starlingEngine.elements.EngineTexture;
@@ -59,6 +65,18 @@ package
 	 */
 	public class test extends Sprite
 	{	
+		[Embed(source = "../bin/assets/bitmapfonts/Arial.fnt", mimeType = "application/octet-stream")]
+		private static const FontXml : Class;
+		
+		[Embed(source = "../bin/assets/bitmapfonts/Arial_0.png")]
+		private static const FontTexture : Class;
+		
+		[Embed(source = "../bin/assets/bitmapfonts/Times.fnt", mimeType = "application/octet-stream")]
+		private static const TimesXml : Class;
+		
+		[Embed(source = "../bin/assets/bitmapfonts/Times_0.png")]
+		private static const TimesTexture : Class;
+		
 		private var _bridgeGraphics:IBridgeGraphics = new BridgeGraphics(
 																		StarlingEngine,
 																		starling.utils.AssetManager,
@@ -99,7 +117,6 @@ package
 					trace("Loading assets, progress:", ratio);
 					if (ratio == 1)
 					{	
-						//showThings();
 						buildUI();
 					}
 				});
@@ -110,19 +127,27 @@ package
 			var uiHolder:IAbstractSprite = _bridgeGraphics.requestSprite();
 			_bridgeGraphics.addChild(uiHolder);
 			
-			var button:EngineButton = new EngineButton();
+			var button:IAbstractButton = _bridgeGraphics.requestButton();
 			button.downSkin_ = _bridgeGraphics.requestImage("Spin-Button-Down") as IAbstractDisplayObject;
 			button.upSkin_ = _bridgeGraphics.requestImage("Spin-Button") as IAbstractDisplayObject;
 			button.hoverSkin_ = _bridgeGraphics.requestImage("Spin-Button-Hover") as IAbstractDisplayObject;
+			button.disabledSkin_ = _bridgeGraphics.requestImage("Spin-Button-Hover") as IAbstractDisplayObject;
 			button.useHandCursor = true;
+			button.label = "Click Me";
+			
+			button.x = 50;
+			button.y = 50;
 			
 			button.addEventListener(Event.TRIGGERED, button_triggeredHandler);
 			
 			uiHolder.addNewChild(button as IAbstractDisplayObject);
+			
+			trace(button.label);
 		}
 		
 		private function button_triggeredHandler(e:Event):void
 		{
+			(e.currentTarget as IAbstractButton).isEnabled  = false;
 			showThings();
 		}
 		
@@ -176,6 +201,15 @@ package
 			video.addVideoPath("../bin/assets/test.flv");
 			state2.addNewChild(video);
 			
+ 
+			var texture:Texture = Texture.fromBitmap(new TimesTexture());
+			var xml:XML = XML(new TimesXml());
+			TextField.registerBitmapFont(new BitmapFont(texture, xml))
+			
+			var tField:TextField = new TextField(150, 150, "äöüßÖ", "Times", 50);
+			tField.x = 100;
+			tField.y = 200;
+			_bridgeGraphics.addChild(tField);
 		}
 		
 	}

@@ -5,6 +5,7 @@ package bridge.abstract
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractStateTransition;
+	import bridge.abstract.ui.IAbstractButton;
 	import flash.utils.Dictionary
 	/**
 	 * ...
@@ -45,6 +46,12 @@ package bridge.abstract
 		 * @return @see bridge.abstract.IAbstractSprite
 		 */
 		function requestSprite():IAbstractSprite
+		
+		/**
+		 * 
+		 * @return @see bridge.abstract.IAbstractButton
+		 */
+		function requestButton():IAbstractButton
 		
 		
 		/**

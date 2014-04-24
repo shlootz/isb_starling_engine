@@ -10,6 +10,7 @@ package starlingEngine
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractStateTransition;
+	import bridge.abstract.ui.IAbstractButton;
 	import bridge.BridgeGraphics;
 	import citrus.core.IState;
 	import citrus.core.starling.StarlingCitrusEngine;
@@ -38,6 +39,7 @@ package starlingEngine
 	import starlingEngine.elements.EngineMovie;
 	import starlingEngine.elements.EngineSprite;
 	import starlingEngine.elements.EngineState;
+	import starlingEngine.ui.EngineButton;
 	
 	/**
 	 * ...
@@ -135,6 +137,7 @@ package starlingEngine
 			starling.juggler.remove(juggler as Juggler);
 		}
 		
+		
 		/**
 		 * 
 		 * @param	texture
@@ -166,6 +169,16 @@ package starlingEngine
 		{
 			var s:IAbstractSprite = new EngineSprite() as IAbstractSprite;
 			return s;
+		}
+		
+		/**
+		 * 
+		 * @return
+		 */
+		public function requestButton():IAbstractButton
+		{
+			var b:IAbstractButton = new EngineButton();
+			return b;
 		}
 		
 		/**

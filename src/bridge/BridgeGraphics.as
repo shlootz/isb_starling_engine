@@ -5,9 +5,11 @@ package bridge
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
 	import bridge.abstract.IAbstractState;
+	import bridge.abstract.IAbstractTexture;
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractStateTransition;
+	import bridge.abstract.ui.IAbstractButton;
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
 	import signals.ISignalsHub;
@@ -218,6 +220,16 @@ package bridge
 			_space = space;
 		}
 		
+		/** Retrieves a new texture from stored Atlas
+		 * 
+		 * @param	name
+		 * @return @see bridge.abstract.IAbstractTexture
+		 */
+		public function requestTexture(name:String):IAbstractTexture
+		{
+			return _assetsManager.getTexture(name) as IAbstractTexture
+		}
+		
 		/** Request an image
 		 * 
 		 * @param	name
@@ -246,6 +258,15 @@ package bridge
 		public function requestSprite():IAbstractSprite
 		{
 			return (_graphicsEngine as IEngine).requestSprite() as IAbstractSprite;
+		}
+		
+		/** Builds an empty button
+		 * 
+		 * @return Returns @see bridge.abstract.IAbstractButton
+		 */
+		public function requestButton():IAbstractButton
+		{
+			return(_graphicsEngine as IEngine).requestButton() as IAbstractButton;
 		}
 		
 		/** Builds an empty state

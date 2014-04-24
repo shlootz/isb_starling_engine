@@ -10,6 +10,8 @@ package bridge
 	import bridge.abstract.IAbstractState;
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
+	import bridge.abstract.ui.IAbstractButton;
+	import bridge.abstract.IAbstractTexture;
 	import starlingEngine.IEngine;
 	
 	/**
@@ -114,6 +116,13 @@ package bridge
 		 */
 		function set space(val:Object):void
 		
+		/** Retrieves a new texture from stored Atlas
+		 * 
+		 * @param	name
+		 * @return @see bridge.abstract.IAbstractTexture
+		 */
+		function requestTexture(name:String):IAbstractTexture
+		
 		/** Request an image
 		 * 
 		 * @param	name
@@ -134,6 +143,12 @@ package bridge
 		 * @return Returns an @see bridge.abstract.IAbstractSprite
 		 */
 		function requestSprite():IAbstractSprite
+		
+		/** Build an empty button
+		 * 
+		 * @return Returns an @see bridge.abstract.IAbstractButton
+		 */
+		function requestButton():IAbstractButton
 		
 		/** Builds an empty state
 		 * 
