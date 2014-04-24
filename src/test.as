@@ -1,6 +1,7 @@
 package  
 {
 	import abstract.AbstractPool;
+	import away3d.controllers.SpringController;
 	import bridge.abstract.IAbstractDisplayObject;
 	import bridge.abstract.IAbstractEngineLayerProxy;
 	import bridge.abstract.IAbstractImage;
@@ -13,10 +14,12 @@ package
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractStateTransition;
+	import bridge.abstract.ui.IAbstractButton;
 	import bridge.BridgeGraphics;
 	import bridge.IBridgeGraphics;
 	import citrus.core.starling.StarlingCitrusEngine;
 	import com.greensock.TweenLite;
+	import feathers.controls.Button;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.AsyncErrorEvent;
@@ -43,6 +46,7 @@ package
 	import starlingEngine.transitions.EngineLayerTransitionIn;
 	import starlingEngine.transitions.EngineLayerTransitionOut;
 	import starlingEngine.transitions.EngineStateTransition;
+	import starlingEngine.ui.EngineButton;
 	import starlingEngine.video.display.Video;
 	import starlingEngine.video.events.VideoEvent;
 	
@@ -69,7 +73,6 @@ package
 			btn.graphics.endFill();
 			addChild(btn);
 			btn.addEventListener(MouseEvent.CLICK, doStuff);
-			//_bridgeGraphics.start();
 			addChild(_bridgeGraphics.engine as DisplayObject);
 		}
 		
@@ -93,55 +96,76 @@ package
 					trace("Loading assets, progress:", ratio);
 					if (ratio == 1)
 					{	
-						var sprite:IAbstractSprite = _bridgeGraphics.requestSprite();
-						_bridgeGraphics.addChild(sprite)
-						
-						var img:IAbstractImage = _bridgeGraphics.requestImage("Background");
-						sprite.addNewChild(img);
-						img.x = 150
-						
-						//var mc:IAbstractMovie = _bridgeGraphics.requestMovie("Bet", 30);
-						//mc.x = 0;
-						//mc.y = 0;
-						//
-						//sprite.x = 150;
-						//sprite.y = 150;
-						//sprite.rotation = .1;
-						//_bridgeGraphics.defaultJuggler.add(mc);
-						//
-						//var layersProxy:IAbstractEngineLayerProxy = new EngineLayerProxy();
-						//layersProxy.addLayer("Layer 1", 0);
-						//layersProxy.addLayer("Layer 2", 1);
-						//layersProxy.addLayer("Layer 3", 2);
-						//layersProxy.addLayer("Layer 4", 3);
-						//
-						//layersProxy.retrieveLayer("Layer 3").addNewChild(mc);
-						//
-						//_bridgeGraphics.initLayers(layersProxy.layers);
-						//
-						//var transIn:IAbstractLayerTransitionIn = new EngineLayerTransitionIn();
-						//var transOut:IAbstractLayerTransitionOut = new EngineLayerTransitionOut();
-						//
-						//var outLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
-						//outLayers.push(layersProxy.retrieveLayer("Layer 2"));
-						//
-						//var newLayer:IAbstractLayer = new EngineLayer("Tzeapa", 0);
-						//newLayer.addNewChild(_bridgeGraphics.requestImage("Preloader-Background"));
-						//
-						//var inLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
-						//inLayers.push(newLayer);
-						//
-						//_bridgeGraphics.updateLayers(inLayers, null, transIn, transOut);
-						//
-						//var state2:IAbstractState = _bridgeGraphics.requestState();
-						//var stateTransition:IAbstractStateTransition = new EngineStateTransition();
-						//_bridgeGraphics.tranzitionToState(state2, stateTransition);
-						//
-						//var video:IAbstractVideo = new EngineVideo();
-						//video.addVideoPath("../bin/assets/test.flv");
-						//state2.addNewChild(video);
+						//showThings();
+						buildUI();
 					}
 				});
+		}
+		
+		private function buildUI():void
+		{
+			var uiHolder:IAbstractSprite = _bridgeGraphics.requestSprite();
+			_bridgeGraphics.addChild(uiHolder);
+			
+			var button:EngineButton = new EngineButton();
+			button.downSkin = _bridgeGraphics.requestImage("Spin-Button-Down") as Image;
+			button.upSkin = _bridgeGraphics.requestImage("Spin-Button") as Image;
+			button.hoverSkin = _bridgeGraphics.requestImage("Spin-Button-Hover") as Image;
+			button.useHandCursor = true;
+			
+			uiHolder.addNewChild(button as IAbstractDisplayObject);
+		}
+		
+		private function showThings():void
+		{
+			var sprite:IAbstractSprite = _bridgeGraphics.requestSprite();
+			_bridgeGraphics.addChild(sprite)
+						
+			var img:IAbstractImage = _bridgeGraphics.requestImage("Background");
+			sprite.addNewChild(img);
+			img.x = 150
+						
+			var mc:IAbstractMovie = _bridgeGraphics.requestMovie("Bet", 30);
+			mc.x = 0;
+			mc.y = 0;
+						
+			sprite.x = 150;
+			sprite.y = 150;
+			sprite.rotation = .1;
+			_bridgeGraphics.defaultJuggler.add(mc);
+						
+			var layersProxy:IAbstractEngineLayerProxy = new EngineLayerProxy();
+			layersProxy.addLayer("Layer 1", 0);
+			layersProxy.addLayer("Layer 2", 1);
+			layersProxy.addLayer("Layer 3", 2);
+			layersProxy.addLayer("Layer 4", 3);
+						
+			layersProxy.retrieveLayer("Layer 3").addNewChild(mc);
+						
+			_bridgeGraphics.initLayers(layersProxy.layers);
+						
+			var transIn:IAbstractLayerTransitionIn = new EngineLayerTransitionIn();
+			var transOut:IAbstractLayerTransitionOut = new EngineLayerTransitionOut();
+						
+			var outLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
+			outLayers.push(layersProxy.retrieveLayer("Layer 2"));
+						
+			var newLayer:IAbstractLayer = new EngineLayer("Tzeapa", 0);
+			newLayer.addNewChild(_bridgeGraphics.requestImage("Preloader-Background"));
+						
+			var inLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
+			inLayers.push(newLayer);
+						
+			_bridgeGraphics.updateLayers(inLayers, null, transIn, transOut);
+						
+			var state2:IAbstractState = _bridgeGraphics.requestState();
+			var stateTransition:IAbstractStateTransition = new EngineStateTransition();
+			_bridgeGraphics.tranzitionToState(state2, stateTransition);
+				
+			var video:IAbstractVideo = new EngineVideo();
+			video.addVideoPath("../bin/assets/test.flv");
+			state2.addNewChild(video);
+			
 		}
 		
 	}

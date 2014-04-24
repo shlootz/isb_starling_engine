@@ -1,16 +1,12 @@
-package bridge.ui 
+package bridge.abstract.ui 
 {
+	import bridge.abstract.IAbstractDisplayObject;
 	/**
 	 * ...
 	 * @author Alex Popescu
 	 */
-	public class IAbstractButton 
+	public interface IAbstractButton extends IAbstractDisplayObject
 	{
-		
-		public function IAbstractButton() 
-		{
-			
-		}
 		
 	}
 
