@@ -14,10 +14,12 @@ package  starlingEngine
 	import starling.textures.Texture;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractState;
+	import bridge.abstract.IAbstractTexture;
 	import starlingEngine.elements.EngineImage;
 	import starlingEngine.elements.EngineMovie;
 	import starlingEngine.elements.EngineSprite;
 	import starlingEngine.elements.EngineState;
+	import bridge.abstract.IAbstractTextField;
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
 	/**
@@ -36,6 +38,17 @@ package  starlingEngine
 	{
 		/**
 		 * 
+		 * @param	assetsManager
+		 */
+		function injectAssetsManager(assetsManager:Object):void
+		/**
+		 * 
+		 * @param	name
+		 * @return
+		 */
+		function requestTexture(name:String):IAbstractTexture
+		/**
+		 * 
 		 * @param	texture
 		 * @return @see bridge.abstract.IAbstractImage
 		 */
@@ -47,6 +60,19 @@ package  starlingEngine
 		 * @return@see bridge.abstract.IAbstractMovie
 		 */
 		function requestMovie(textures:Vector.<Texture>, fps:uint = 24):IAbstractMovie
+		
+		/**
+		 * 
+		 * @param	width
+		 * @param	height
+		 * @param	text
+		 * @param	fontName
+		 * @param	fontSize
+		 * @param	color
+		 * @param	bold
+		 * @return
+		 */
+		function requestTextField(width:int, height:int, text:String, fontName:String="Verdana", fontSize:Number=12, color:uint=0, bold:Boolean=false):IAbstractTextField
 		
 		/**
 		 * @TODO build a abstractization for Juggler

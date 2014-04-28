@@ -8,6 +8,7 @@ package bridge
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractSprite;
 	import bridge.abstract.IAbstractState;
+	import bridge.abstract.IAbstractTextField;
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.ui.IAbstractButton;
@@ -155,6 +156,19 @@ package bridge
 		 * @return Returns an @see bridge.abstract.IAbstractState
 		 */
 		function requestState():IAbstractState
+		
+		/** Return a a new textField @see bridge.abstract.IAbstractTextField
+		 * 
+		 * @param	width
+		 * @param	height
+		 * @param	text
+		 * @param	fontName
+		 * @param	fontSize
+		 * @param	color
+		 * @param	bold
+		 * @return
+		 */
+		function requestTextField(width:int, height:int, text:String, fontName:String="Verdana", fontSize:Number=12, color:uint=0, bold:Boolean=false):IAbstractTextField
 		
 		/** Makes the transition to a new state
 		 * 

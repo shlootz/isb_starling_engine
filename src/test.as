@@ -10,6 +10,7 @@ package
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
 	import bridge.abstract.IAbstractState;
+	import bridge.abstract.IAbstractTextField;
 	import bridge.abstract.IAbstractTexture;
 	import bridge.abstract.IAbstractVideo;
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
@@ -208,6 +209,9 @@ package
 			tField.x = 100;
 			tField.y = 200;
 			_bridgeGraphics.addChild(tField);
+			
+			var t:IAbstractTextField = _bridgeGraphics.requestTextField(350, 350, "Yaaaay", "Times", 80);
+			_bridgeGraphics.addChild(t);
 		}
 		
 	}

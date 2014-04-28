@@ -7,6 +7,8 @@ package starlingEngine
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
 	import bridge.abstract.IAbstractState;
+	import bridge.abstract.IAbstractTexture;
+	import bridge.abstract.IAbstractTextField;
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractStateTransition;
@@ -32,6 +34,7 @@ package starlingEngine
 	import starling.display.MovieClip;
 	import starling.display.Quad;
 	import starling.display.Stage;
+	import starling.text.TextField;
 	import starling.textures.Texture;
 	import starling.utils.AssetManager;
 	import starlingEngine.elements.EngineImage;
@@ -39,6 +42,8 @@ package starlingEngine
 	import starlingEngine.elements.EngineMovie;
 	import starlingEngine.elements.EngineSprite;
 	import starlingEngine.elements.EngineState;
+	import starlingEngine.elements.EngineTextField;
+	import starlingEngine.elements.EngineTexture;
 	import starlingEngine.ui.EngineButton;
 	
 	/**
@@ -52,6 +57,7 @@ package starlingEngine
 		private var _layers:Dictionary = new Dictionary(true);
 		private var _space:Space;
 		private var _currentState:IAbstractState;
+		private var _assetsManager:starling.utils.AssetManager;
 		/**
 		 * 
 		 * @param	initCompleteCallback
@@ -67,6 +73,15 @@ package starlingEngine
 			_assetSizes = [1, 1.5, 2];
 			
 			_initCompleteCallback = initCompleteCallback;
+		}
+		
+		/**
+		 * 
+		 * @param	assetsManager
+		 */
+		public function injectAssetsManager(assetsManager:Object):void
+		{
+			_assetsManager = assetsManager as starling.utils.AssetManager;
 		}
 		
 		/**
@@ -137,6 +152,17 @@ package starlingEngine
 			starling.juggler.remove(juggler as Juggler);
 		}
 		
+		/**
+		 * @TODO this function still return null for some reason
+		 * @param	name
+		 * @return
+		 */
+		public function requestTexture(name:String ):IAbstractTexture
+		{
+			var t:IAbstractTexture = new EngineTexture() as IAbstractTexture;
+			t = _assetsManager.getTexture(name) as IAbstractTexture;
+			return t as IAbstractTexture;
+		}
 		
 		/**
 		 * 
@@ -197,6 +223,16 @@ package starlingEngine
 		public function requestLayer(name:String):EngineLayer
 		{
 			return new EngineLayer(name);
+		}
+		
+		/**
+		 * 
+		 * @return
+		 */
+		public function requestTextField(width:int, height:int, text:String, fontName:String="Verdana", fontSize:Number=12, color:uint=0, bold:Boolean=false):IAbstractTextField
+		{
+			var t:IAbstractTextField = new EngineTextField(width, height, text, fontName, fontSize, color, bold) as IAbstractTextField;
+			return t;
 		}
 		
 		/**

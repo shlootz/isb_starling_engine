@@ -6,14 +6,18 @@ package bridge
 	import bridge.abstract.IAbstractSprite;
 	import bridge.abstract.IAbstractState;
 	import bridge.abstract.IAbstractTexture;
+	import bridge.abstract.IAbstractTextField;
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import bridge.abstract.ui.IAbstractButton;
+	import bridge.abstract.IAbstractTextField;
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
 	import signals.ISignalsHub;
 	import signals.Signals;
+	import starling.text.TextField;
+	import starling.text.TextFieldAutoSize;
 	import starlingEngine.IEngine;
 	/**
 	 * ...
@@ -98,6 +102,7 @@ package bridge
 			_graphicsEngine = new graphicsEngineClass(graphicsEngineInited) as IEngine;
 			_assetsManager = new assetsManagerClass();
 			_signalsManager = new signalsManagerClass();
+			(_graphicsEngine as IEngine).injectAssetsManager(_assetsManager);
 			_poolClass = poolClass;
 			_juggler = new juggler();
 			_space = new space();
@@ -227,7 +232,7 @@ package bridge
 		 */
 		public function requestTexture(name:String):IAbstractTexture
 		{
-			return _assetsManager.getTexture(name) as IAbstractTexture
+			return (_graphicsEngine as IEngine).requestTexture(name) as IAbstractTexture;
 		}
 		
 		/** Request an image
@@ -276,6 +281,16 @@ package bridge
 		public function requestState():IAbstractState
 		{
 			return (_graphicsEngine as IEngine).requestState() as IAbstractState;
+		}
+		
+		/**
+		 * 
+		 * @return
+		 */
+		public function requestTextField(width:int, height:int, text:String, fontName:String="Verdana", fontSize:Number=12, color:uint=0, bold:Boolean=false):IAbstractTextField
+		{
+			var t:IAbstractTextField = (_graphicsEngine as IEngine).requestTextField(width, height, text, fontName, fontSize, color);
+			return t;
 		}
 		
 		/** Makes the transition to a new state
