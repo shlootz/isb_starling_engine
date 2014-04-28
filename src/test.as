@@ -109,7 +109,8 @@ package
 													"../bin/assets/spritesheets/spriteSheetElements.png",
 													"../bin/assets/spritesheets/spriteSheetElements.xml",
 													"../bin/assets/spritesheets/spriteSheetElements.xml",
-													"../bin/assets/spritesheets/spriteSheetPayTable.xml"
+													"../bin/assets/spritesheets/spriteSheetPayTable.xml",
+													"../bin/assets/layouts/layerLayout.xml"
 													);
 			
 			(_bridgeGraphics.assetsManager).loadQueue(function(ratio:Number):void
@@ -212,6 +213,11 @@ package
 			
 			var t:IAbstractTextField = _bridgeGraphics.requestTextField(350, 350, "Yaaaay", "Times", 80);
 			_bridgeGraphics.addChild(t);
+			
+			t.text = "Overwrite";
+			
+			var x:XML = _bridgeGraphics.requestXML("layerLayout");
+			trace(x);
 		}
 		
 	}

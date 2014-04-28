@@ -12,12 +12,12 @@ package bridge
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import bridge.abstract.ui.IAbstractButton;
 	import bridge.abstract.IAbstractTextField;
+	import flash.media.Sound;
+	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
 	import signals.ISignalsHub;
 	import signals.Signals;
-	import starling.text.TextField;
-	import starling.text.TextFieldAutoSize;
 	import starlingEngine.IEngine;
 	/**
 	 * ...
@@ -293,6 +293,16 @@ package bridge
 			return t;
 		}
 		
+		/**
+		 * 
+		 * @param	name
+		 * @return
+		 */
+		public function requestXML(name:String):XML
+		{
+			return _assetsManager.getXml(name);
+		}
+		
 		/** Makes the transition to a new state
 		 * 
 		 * @param	newState @see bridge.abstract.IAbstractState
@@ -349,6 +359,55 @@ package bridge
 			_graphicsEngine.swapLayers(layer1, layer2);
 		}
 		
+		/**
+		 * 
+		 * @param	name
+		 * @param	byteArray
+		 */
+		public function storeByteArray(name:String, byteArray:ByteArray):void
+		{
+			_assetsManager.addByteArray(name, byteArray);
+		}
+		
+		/**
+		 * 
+		 * @param	name
+		 * @param	object
+		 */
+		public function storeObject(name:String, object:Object):void
+		{
+			_assetsManager.addObject(name, object);
+		}
+		
+		/**
+		 * 
+		 * @param	name
+		 * @param	sound
+		 */
+		public function storeSound(name:String, sound:Sound):void
+		{
+			_assetsManager.addSound(name, sound)
+		}
+		
+		/**
+		 * @todo make abstract assets manager methods
+		 * @param	name
+		 * @param	texture
+		 */
+		public function storeTexture(name:String, texture:IAbstractTexture):void
+		{
+			_assetsManager.addTexture(name, texture)
+		}
+		
+		/**
+		 * 
+		 * @param	name
+		 * @param	xml
+		 */
+		public function storeXML(name:String, xml:XML):void
+		{
+			_assetsManager.addXml(name, xml)
+		}
 	}
 
 }

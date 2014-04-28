@@ -14,6 +14,8 @@ package bridge
 	import bridge.abstract.ui.IAbstractButton;
 	import bridge.abstract.IAbstractTexture;
 	import starlingEngine.IEngine;
+	import flash.utils.ByteArray;
+	import flash.media.Sound;
 	
 	/**
 	 * ...
@@ -170,6 +172,13 @@ package bridge
 		 */
 		function requestTextField(width:int, height:int, text:String, fontName:String="Verdana", fontSize:Number=12, color:uint=0, bold:Boolean=false):IAbstractTextField
 		
+		/**
+		 * 
+		 * @param	name
+		 * @return
+		 */
+		function requestXML(name:String):XML
+		
 		/** Makes the transition to a new state
 		 * 
 		 * @param	newState @see bridge.abstract.IAbstractState
@@ -207,6 +216,34 @@ package bridge
 		 * @param	child
 		 */
 		function addChild(child:Object):void
+		
+		/**
+		 * 
+		 * @param	name
+		 * @param	byteArray
+		 */
+		function storeByteArray(name:String, byteArray:ByteArray):void
+		
+		/**
+		 * 
+		 * @param	name
+		 * @param	object
+		 */
+		function storeObject(name:String, object:Object):void
+		
+		/**
+		 * 
+		 * @param	name
+		 * @param	sound
+		 */
+		function storeSound(name:String, sound:Sound):void
+		
+		/**
+		 * 
+		 * @param	name
+		 * @param	texture
+		 */
+		function storeTexture(name:String, texture:IAbstractTexture):void
 	}
 	
 }
