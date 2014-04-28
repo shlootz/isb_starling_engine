@@ -22,7 +22,6 @@ package
 	import com.greensock.TweenLite;
 	import feathers.controls.Button;
 	import feathers.controls.text.TextFieldTextRenderer;
-	import feathers.themes.MetalWorksMobileTheme;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.events.AsyncErrorEvent;
@@ -133,7 +132,6 @@ package
 			button.hoverSkin_ = _bridgeGraphics.requestImage("Spin-Button-Hover") as IAbstractDisplayObject;
 			button.disabledSkin_ = _bridgeGraphics.requestImage("Spin-Button-Hover") as IAbstractDisplayObject;
 			button.useHandCursor = true;
-			button.label = "Click Me";
 			
 			button.x = 50;
 			button.y = 50;
