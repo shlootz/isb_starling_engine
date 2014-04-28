@@ -1,6 +1,6 @@
 package bridge.abstract 
 {
-	
+	import flash.utils.Dictionary
 	/**
 	 * ...
 	 * @author Alex Popescu
@@ -31,6 +31,18 @@ package bridge.abstract
 		 * @param val set the depth of the layer. The bigger the val, the highest the Layer will be in the display tree.
 		 */
 		function set layerDepth(val:uint ):void
+		
+		/**
+		 * 
+		 */
+		function get layout():Dictionary
+		
+		/**
+		 * Inserts the XML layout of the elements
+		 * @param	layout
+		 * @param	applyNow
+		 */
+		function injectLayout(layout:XML, applyNow:Boolean = false):void
 	}
 	
 }

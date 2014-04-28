@@ -40,6 +40,7 @@ package
 	import starling.animation.Juggler;
 	import starling.display.Image;
 	import starling.display.MovieClip;
+	import starling.display.Quad;
 	import starling.events.Event;
 	import starling.text.BitmapFont;
 	import starling.text.TextField;
@@ -133,7 +134,6 @@ package
 			button.upSkin_ = _bridgeGraphics.requestImage("Spin-Button") as IAbstractDisplayObject;
 			button.hoverSkin_ = _bridgeGraphics.requestImage("Spin-Button-Hover") as IAbstractDisplayObject;
 			button.disabledSkin_ = _bridgeGraphics.requestImage("Spin-Button-Hover") as IAbstractDisplayObject;
-			button.useHandCursor = true;
 			
 			button.x = 50;
 			button.y = 50;
@@ -169,11 +169,14 @@ package
 			sprite.rotation = .1;
 			_bridgeGraphics.defaultJuggler.add(mc);
 						
+			var x:XML = new XML();
+			x = _bridgeGraphics.requestXML("layerLayout");
+			
 			var layersProxy:IAbstractEngineLayerProxy = new EngineLayerProxy();
 			layersProxy.addLayer("Layer 1", 0);
 			layersProxy.addLayer("Layer 2", 1);
 			layersProxy.addLayer("Layer 3", 2);
-			layersProxy.addLayer("Layer 4", 3);
+			layersProxy.addLayer("Layer 4", 3, x);
 						
 			layersProxy.retrieveLayer("Layer 3").addNewChild(mc);
 						
@@ -215,9 +218,13 @@ package
 			_bridgeGraphics.addChild(t);
 			
 			t.text = "Overwrite";
-			
-			var x:XML = _bridgeGraphics.requestXML("layerLayout");
-			trace(x);
+			cleanUp();
+		}
+		
+		private function cleanUp():void
+		{
+			_bridgeGraphics.cleanUp();
+			_bridgeGraphics = null;
 		}
 		
 	}
