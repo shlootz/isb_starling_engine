@@ -160,6 +160,9 @@ package starlingEngine.elements
 			super.killAllObjects()
 		}
 		
+		/**
+		 * 
+		 */
 		public function destroyAll () : void
 		{
 			super.destroy();

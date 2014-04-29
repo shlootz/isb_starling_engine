@@ -134,6 +134,20 @@ package starlingEngine.elements
 		{
 			return _addToStage;
 		}
+		
+		/**
+		 * 
+		 */
+		override public function destroyAll():void
+		{
+			while (this.numChildren > 0)
+			{
+				this.removeChildAndDispose(this.getChildAtIndex(0));
+			}
+			
+			super.dispose();
+			super.killAllObjects();
+		}
 	}
 	
 }

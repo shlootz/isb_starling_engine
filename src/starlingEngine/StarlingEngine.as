@@ -433,6 +433,9 @@ package starlingEngine
 			{
 				trace("Transition out complete for: " + target1);
 				_currentState.removeChildAndDispose(target1 as EngineLayer);
+				
+				(target1 as EngineLayer).destroyAll();
+				
 			}
 		}
 		
