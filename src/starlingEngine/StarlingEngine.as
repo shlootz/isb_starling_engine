@@ -502,6 +502,8 @@ package starlingEngine
 					case ENGINE_IMAGE:
 						var img:IAbstractImage = requestImage(_assetsManager.getTexture(sortedElements[i].name));
 						layer.addNewChildAt(img, i);
+						img.x = Number(sortedElements[i].x);
+						img.y = Number(sortedElements[i].y);
 						break;
 						
 					case ENGINE_BUTTON:
@@ -510,6 +512,8 @@ package starlingEngine
 						btn.idName = sortedElements[i].name;
 						btn.upSkin_ = upSkin;
 						layer.addNewChildAt(btn, i);
+						btn.x = Number(sortedElements[i].x);
+						btn.y = Number(sortedElements[i].y);
 						(btn as IAbstractButton).addEventListener(EngineEvent.TRIGGERED, button_triggeredHandler);
 					default:
 						break;

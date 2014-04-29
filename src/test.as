@@ -175,10 +175,10 @@ package
 			x = _bridgeGraphics.requestXML("layerLayout");
 			
 			var layersVO:IAbstractEngineLayerVO = _bridgeGraphics.requestLayersVO();
-			layersVO.addLayer("Layer 1", 0);
-			layersVO.addLayer("Layer 2", 1);
+			layersVO.addLayer("UI", 0);
+			layersVO.addLayer("Overground", 1);
 			layersVO.addLayer("Layer 3", 2);
-			layersVO.addLayer("Layer 4", 3, x);
+			layersVO.addLayer("Stuff with layout", 3, x);
 						
 			layersVO.retrieveLayer("Layer 3").addNewChild(mc);
 						//
@@ -224,7 +224,6 @@ package
 			//
 			//t.text = "Overwrite";
 			
-			cleanUp();
 		}
 		
 		private function buttonPressed(type:String, event:Object):void
