@@ -12,9 +12,22 @@ package starlingEngine.ui
 	public class EngineButton extends Button implements IAbstractButton
 	{
 		
+		private var _idName:String;
+		
 		public function EngineButton() 
 		{
 			super();
+			this.useHandCursor = true;
+		}
+		
+		public function set idName(value:String):void
+		{
+			_idName = value;
+		}
+		
+		public function get idName():String
+		{
+			return _idName;
 		}
 		
 		override public function get autoFlatten () : Boolean

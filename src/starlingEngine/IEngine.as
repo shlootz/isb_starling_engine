@@ -41,6 +41,13 @@ package  starlingEngine
 		 * @param	assetsManager
 		 */
 		function injectAssetsManager(assetsManager:Object):void
+		
+		/**
+		 * 
+		 * @param	signalsHub
+		 */
+		function injectSignalsHub(signalsHub:Object):void
+		 
 		/**
 		 * 
 		 * @param	name
@@ -87,6 +94,11 @@ package  starlingEngine
 		 * @return Returns the engine stage
 		 */
 		function get engineStage():Stage
+		
+		/**
+		 * 
+		 */
+		 function cleanUp():void
 	}
 	
 }

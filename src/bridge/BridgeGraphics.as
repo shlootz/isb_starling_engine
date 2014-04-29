@@ -103,6 +103,7 @@ package bridge
 			_assetsManager = new assetsManagerClass();
 			_signalsManager = new signalsManagerClass();
 			(_graphicsEngine as IEngine).injectAssetsManager(_assetsManager);
+			(_graphicsEngine as IEngine).injectSignalsHub(_signalsManager);
 			_poolClass = poolClass;
 			_juggler = new juggler();
 			_space = new space();
@@ -407,6 +408,14 @@ package bridge
 		public function storeXML(name:String, xml:XML):void
 		{
 			_assetsManager.addXml(name, xml)
+		}
+		
+		/**
+		 * 
+		 */
+		public function cleanUp():void
+		{
+			(_graphicsEngine as IEngine).cleanUp();
 		}
 	}
 

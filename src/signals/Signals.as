@@ -13,6 +13,9 @@ package signals
 		//Init signals
 		public static const STARLING_READY:String = "GEstarlingReady";
 		
+		//Generic button
+		public static const GENERIC_BUTTON_PRESSED:String = "GEbuttonPressed";
+		
 	}
 
 }

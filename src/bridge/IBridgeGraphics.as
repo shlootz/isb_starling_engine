@@ -244,6 +244,11 @@ package bridge
 		 * @param	texture
 		 */
 		function storeTexture(name:String, texture:IAbstractTexture):void
+		
+		/**
+		 * 
+		 */
+		function cleanUp():void
 	}
 	
 }

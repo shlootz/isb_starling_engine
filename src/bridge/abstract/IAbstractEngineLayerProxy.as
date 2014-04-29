@@ -16,7 +16,7 @@ package bridge.abstract
 		 * 
 		 * @param	layerName
 		 */
-		function addLayer(layerName:String, depth:uint = 0):void
+		function addLayer(layerName:String, depth:uint = 0, xml:XML = null):void
 		/**
 		 * 
 		 * @param	layerName

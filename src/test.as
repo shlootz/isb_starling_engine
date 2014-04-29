@@ -31,10 +31,12 @@ package
 	import flash.geom.Rectangle;
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
+	import flash.system.System;
 	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
 	import flash.utils.getDefinitionByName;
 	import nape.space.Space;
+	import org.osflash.signals.Signal;
 	import signals.Signals;
 	import signals.SignalsHub;
 	import starling.animation.Juggler;
@@ -153,22 +155,22 @@ package
 		
 		private function showThings():void
 		{
-			var sprite:IAbstractSprite = _bridgeGraphics.requestSprite();
-			_bridgeGraphics.addChild(sprite)
-						
-			var img:IAbstractImage = _bridgeGraphics.requestImage("Background");
-			sprite.addNewChild(img);
-			img.x = 150
-						
-			var mc:IAbstractMovie = _bridgeGraphics.requestMovie("Bet", 30);
-			mc.x = 0;
-			mc.y = 0;
-						
-			sprite.x = 150;
-			sprite.y = 150;
-			sprite.rotation = .1;
-			_bridgeGraphics.defaultJuggler.add(mc);
-						
+			//var sprite:IAbstractSprite = _bridgeGraphics.requestSprite();
+			//_bridgeGraphics.addChild(sprite)
+						//
+			//var img:IAbstractImage = _bridgeGraphics.requestImage("Background");
+			//sprite.addNewChild(img);
+			//img.x = 150
+						//
+			//var mc:IAbstractMovie = _bridgeGraphics.requestMovie("Bet", 30);
+			//mc.x = 0;
+			//mc.y = 0;
+						//
+			//sprite.x = 150;
+			//sprite.y = 150;
+			//sprite.rotation = .1;
+			//_bridgeGraphics.defaultJuggler.add(mc);
+						//
 			var x:XML = new XML();
 			x = _bridgeGraphics.requestXML("layerLayout");
 			
@@ -178,53 +180,61 @@ package
 			layersProxy.addLayer("Layer 3", 2);
 			layersProxy.addLayer("Layer 4", 3, x);
 						
-			layersProxy.retrieveLayer("Layer 3").addNewChild(mc);
-						
+			//layersProxy.retrieveLayer("Layer 3").addNewChild(mc);
+						//
 			_bridgeGraphics.initLayers(layersProxy.layers);
-						
-			var transIn:IAbstractLayerTransitionIn = new EngineLayerTransitionIn();
-			var transOut:IAbstractLayerTransitionOut = new EngineLayerTransitionOut();
-						
-			var outLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
-			outLayers.push(layersProxy.retrieveLayer("Layer 2"));
-						
-			var newLayer:IAbstractLayer = new EngineLayer("Tzeapa", 0);
-			newLayer.addNewChild(_bridgeGraphics.requestImage("Preloader-Background"));
-						
-			var inLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
-			inLayers.push(newLayer);
-						
-			_bridgeGraphics.updateLayers(inLayers, null, transIn, transOut);
-						
-			var state2:IAbstractState = _bridgeGraphics.requestState();
-			var stateTransition:IAbstractStateTransition = new EngineStateTransition();
-			_bridgeGraphics.tranzitionToState(state2, stateTransition);
-				
-			var video:IAbstractVideo = new EngineVideo();
-			video.addVideoPath("../bin/assets/test.flv");
-			state2.addNewChild(video);
-			
- 
-			var texture:Texture = Texture.fromBitmap(new TimesTexture());
-			var xml:XML = XML(new TimesXml());
-			TextField.registerBitmapFont(new BitmapFont(texture, xml))
-			
-			var tField:TextField = new TextField(150, 150, "äöüßÖ", "Times", 50);
-			tField.x = 100;
-			tField.y = 200;
-			_bridgeGraphics.addChild(tField);
-			
-			var t:IAbstractTextField = _bridgeGraphics.requestTextField(350, 350, "Yaaaay", "Times", 80);
-			_bridgeGraphics.addChild(t);
-			
-			t.text = "Overwrite";
-			cleanUp();
+			var anchors:Vector.<Function> = new Vector.<Function>;
+			anchors.push(buttonPressed);
+			(_bridgeGraphics.signalsManager as SignalsHub).addSignal(Signals.GENERIC_BUTTON_PRESSED, new Signal(), anchors);
+						//
+			//var transIn:IAbstractLayerTransitionIn = new EngineLayerTransitionIn();
+			//var transOut:IAbstractLayerTransitionOut = new EngineLayerTransitionOut();
+						//
+			//var outLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
+			//outLayers.push(layersProxy.retrieveLayer("Layer 2"));
+						//
+			//var newLayer:IAbstractLayer = new EngineLayer("Tzeapa", 0);
+			//newLayer.addNewChild(_bridgeGraphics.requestImage("Preloader-Background"));
+						//
+			//var inLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
+			//inLayers.push(newLayer);
+						//
+			//_bridgeGraphics.updateLayers(inLayers, null, transIn, transOut);
+						//
+			//var state2:IAbstractState = _bridgeGraphics.requestState();
+			//var stateTransition:IAbstractStateTransition = new EngineStateTransition();
+			//_bridgeGraphics.tranzitionToState(state2, stateTransition);
+				//
+			//var video:IAbstractVideo = new EngineVideo();
+			//video.addVideoPath("../bin/assets/test.flv");
+			//state2.addNewChild(video);
+			//
+ //
+			//var texture:Texture = Texture.fromBitmap(new TimesTexture());
+			//var xml:XML = XML(new TimesXml());
+			//TextField.registerBitmapFont(new BitmapFont(texture, xml))
+			//
+			//var tField:TextField = new TextField(150, 150, "äöüßÖ", "Times", 50);
+			//tField.x = 100;
+			//tField.y = 200;
+			//_bridgeGraphics.addChild(tField);
+			//
+			//var t:IAbstractTextField = _bridgeGraphics.requestTextField(350, 350, "Yaaaay", "Times", 80);
+			//_bridgeGraphics.addChild(t);
+			//
+			//t.text = "Overwrite";
+		}
+		
+		private function buttonPressed(type:String, event:Object):void
+		{
+			trace("Caught "+type+" "+event)
 		}
 		
 		private function cleanUp():void
 		{
 			_bridgeGraphics.cleanUp();
 			_bridgeGraphics = null;
+			System.gc();
 		}
 		
 	}

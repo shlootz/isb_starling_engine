@@ -7,6 +7,9 @@ package bridge.abstract.ui
 	 */
 	public interface IAbstractButton extends IAbstractDisplayObject
 	{
+		function set idName(value:String):void
+		function get idName():String
+		
 		function get autoFlatten () : Boolean
 		
 		function set autoFlatten (value:Boolean) : void

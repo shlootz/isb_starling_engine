@@ -39,11 +39,13 @@ package starlingEngine
 	import starling.utils.AssetManager;
 	import starlingEngine.elements.EngineImage;
 	import starlingEngine.elements.EngineLayer;
+	import starlingEngine.elements.EngineLayerLayoutElementVo;
 	import starlingEngine.elements.EngineMovie;
 	import starlingEngine.elements.EngineSprite;
 	import starlingEngine.elements.EngineState;
 	import starlingEngine.elements.EngineTextField;
 	import starlingEngine.elements.EngineTexture;
+	import starlingEngine.events.EngineEvent;
 	import starlingEngine.ui.EngineButton;
 	
 	/**
@@ -52,12 +54,19 @@ package starlingEngine
 	 */
 	public class StarlingEngine extends StarlingCitrusEngine implements IEngine
 	{		
+		
+		public static const ENGINE_IMAGE:String = "image";
+		public static const ENGINE_MOVIE_CLIP:String = "movie";
+		public static const ENGINE_FLV:String = "flv";
+		public static const ENGINE_BUTTON:String = "button";
+		
 		private var _initCompleteCallback:Function;
 		private var _engineStage:Stage;
 		private var _layers:Dictionary = new Dictionary(true);
 		private var _space:Space;
 		private var _currentState:IAbstractState;
 		private var _assetsManager:starling.utils.AssetManager;
+		private var _signalsHub:SignalsHub;
 		/**
 		 * 
 		 * @param	initCompleteCallback
@@ -82,6 +91,15 @@ package starlingEngine
 		public function injectAssetsManager(assetsManager:Object):void
 		{
 			_assetsManager = assetsManager as starling.utils.AssetManager;
+		}
+		
+		/**
+		 * 
+		 * @param	signalsHub
+		 */
+		public function injectSignalsHub(signalsHub:Object):void
+		{
+			_signalsHub = signalsHub as SignalsHub;
 		}
 		
 		/**
@@ -305,11 +323,16 @@ package starlingEngine
 				if (_currentState.getChildByNameStr(orderedLayers[j].name) == null)
 				{
 					_currentState.addNewChildAt(orderedLayers[j], j);
+					drawLayerLayout(orderedLayers[j]);
 					
 					if (inTransition != null)
 					{
 						inTransition.injectOnTransitionComplete(tranzitionToLayerInComplete);
 						inTransition.doTransition(orderedLayers[j] as EngineLayer, null);
+					}
+					else
+					{
+						tranzitionToLayerInComplete();
 					}
 				}
 			}
@@ -321,10 +344,10 @@ package starlingEngine
 		 * @param	b
 		 * @return
 		 */
-		private function sortDepths(a:EngineLayer, b:EngineLayer):int
+		private function sortDepths(a:Object, b:Object):int
 		{
-			var depth1:uint = (a as EngineLayer).layerDepth;
-			var depth2:uint = (b as EngineLayer).layerDepth;
+			var depth1:uint = (a as Object).layerDepth;
+			var depth2:uint = (b as Object).layerDepth;
 			
 			if (depth1 < depth2) 
 			{ 
@@ -366,6 +389,10 @@ package starlingEngine
 					{
 						outTransition.injectOnTransitionComplete(tranzitionToLayerOutComplete);
 						outTransition.doTransition(outLayers[j] as EngineLayer, null);
+					}
+					else
+					{
+						tranzitionToLayerOutComplete();
 					}
 				}
 			}
@@ -430,6 +457,66 @@ package starlingEngine
 		
 		/**
 		 * 
+		 * @param	layer
+		 */
+		private function drawLayerLayout(layer:IAbstractLayer):void
+		{
+			var layoutDict:Dictionary = layer.layout;
+			var layerElements:Vector.<EngineLayerLayoutElementVo> = new Vector.<EngineLayerLayoutElementVo>();
+			
+			for (var key:String in layoutDict)
+			{
+				layerElements.push(layoutDict[key] as EngineLayerLayoutElementVo);
+			}
+			
+			layerElements.sort(sortDepths);
+			
+			if (layerElements.length > 0)
+			{
+				autoAddItems(layer, layerElements);
+			}
+		}
+		
+		/**
+		 * 
+		 * @param	layer
+		 * @param	sortedElements
+		 */
+		private function autoAddItems(layer:IAbstractLayer, sortedElements:Vector.<EngineLayerLayoutElementVo>): void
+		{
+			for (var i:uint = 0; i < sortedElements.length; i++ )
+			{
+				switch (sortedElements[i].type) 
+				{
+					case ENGINE_IMAGE:
+						var img:IAbstractImage = requestImage(_assetsManager.getTexture(sortedElements[i].name));
+						layer.addNewChildAt(img, i);
+						break;
+						
+					case ENGINE_BUTTON:
+						var btn:IAbstractButton = requestButton();
+						var upSkin:IAbstractImage = requestImage(_assetsManager.getTexture(sortedElements[i].name));
+						btn.idName = sortedElements[i].name;
+						btn.upSkin_ = upSkin;
+						layer.addNewChildAt(btn, i);
+						(btn as IAbstractButton).addEventListener(EngineEvent.TRIGGERED, button_triggeredHandler);
+					default:
+						break;
+				}
+			}
+		}
+		
+		/**
+		 * 
+		 * @param	e
+		 */
+		private function button_triggeredHandler(e:Object):void
+		{
+			_signalsHub.dispatchSignal(Signals.GENERIC_BUTTON_PRESSED, (e.currentTarget as EngineButton).idName, e);
+		}
+		
+		/**
+		 * 
 		 */
 		public function get layers():Dictionary
 		{
@@ -444,6 +531,14 @@ package starlingEngine
 		public function swapLayers(layer1:IAbstractLayer, layer2:IAbstractLayer):void
 		{
 			_currentState.swapChildrenF(layer1 as IAbstractLayer, layer2 as IAbstractLayer);
+		}
+		
+		/**
+		 * 
+		 */
+		public function cleanUp():void
+		{
+			super.destroy();
 		}
 		
 	}
