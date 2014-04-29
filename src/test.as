@@ -177,8 +177,8 @@ package
 			var layersVO:IAbstractEngineLayerVO = _bridgeGraphics.requestLayersVO();
 			layersVO.addLayer("UI", 0);
 			layersVO.addLayer("Overground", 1);
-			layersVO.addLayer("Layer 3", 2);
-			layersVO.addLayer("Stuff with layout", 3, x);
+			layersVO.addLayer("Layer 3", 2, x);
+			layersVO.addLayer("Stuff with layout", 3);
 						
 			layersVO.retrieveLayer("Layer 3").addNewChild(mc);
 						//
@@ -186,6 +186,19 @@ package
 			var anchors:Vector.<Function> = new Vector.<Function>;
 			anchors.push(buttonPressed);
 			(_bridgeGraphics.signalsManager as SignalsHub).addSignal(Signals.GENERIC_BUTTON_PRESSED, new Signal(), anchors);
+			
+			layersVO.addLayer("TEST", 4, x);
+			
+			var inLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
+			var outLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
+			
+			var outTransition:IAbstractLayerTransitionOut = new EngineLayerTransitionOut();
+			var inTransition:IAbstractLayerTransitionIn = new EngineLayerTransitionIn();
+			
+			inLayers.push(layersVO.retrieveLayer("TEST"));
+			outLayers.push(layersVO.retrieveLayer("Layer 3"));
+			
+			_bridgeGraphics.updateLayers(inLayers, outLayers, inTransition, outTransition);
 						//
 			//var transIn:IAbstractLayerTransitionIn = new EngineLayerTransitionIn();
 			//var transOut:IAbstractLayerTransitionOut = new EngineLayerTransitionOut();

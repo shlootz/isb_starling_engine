@@ -345,7 +345,7 @@ package starlingEngine
 						}
 						else
 						{
-							tranzitionToLayerInComplete();
+							tranzitionToLayerInComplete(orderedLayers[j], null);
 						}
 					}
 				}
@@ -397,7 +397,6 @@ package starlingEngine
 				for (var j:uint = 0; j < outLayers.length; j++ )
 				{
 					removeLayerFromDictionary(outLayers[j]);
-					_currentState.removeChildAndDispose(outLayers[j] as EngineLayer);
 					
 					if (outTransition != null)
 					{
@@ -406,7 +405,7 @@ package starlingEngine
 					}
 					else
 					{
-						tranzitionToLayerOutComplete();
+						tranzitionToLayerOutComplete(outLayers[j], null);
 					}
 				}
 			}
@@ -417,17 +416,24 @@ package starlingEngine
 		/**
 		 * 
 		 */
-		public function tranzitionToLayerInComplete():void
+		public function tranzitionToLayerInComplete(target1:Object = null, target2:Object = null):void
 		{
-			
+			if(target1)
+			{
+				trace("Transition in complete for: " + (target1 as EngineLayer).layerName)
+			}
 		}
 		
 		/**
 		 * 
 		 */
-		public function tranzitionToLayerOutComplete():void
+		public function tranzitionToLayerOutComplete(target1:Object = null, target2:Object = null):void
 		{
-			
+			if (target1)
+			{
+				trace("Transition out complete for: " + target1);
+				_currentState.removeChildAndDispose(target1 as EngineLayer);
+			}
 		}
 		
 		/**

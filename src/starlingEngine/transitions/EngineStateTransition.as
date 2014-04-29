@@ -49,6 +49,7 @@ package starlingEngine.transitions
 		{	
 			if (_onTransitionComplete != null)
 			{
+				_onTransitionComplete.apply(null, [object1, object2]);
 				_onTransitionComplete.call();
 			}
 		}
