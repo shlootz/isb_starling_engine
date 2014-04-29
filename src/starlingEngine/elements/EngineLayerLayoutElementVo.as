@@ -17,6 +17,8 @@ package starlingEngine.elements
 		public var width:Number;
 		public var height:Number;
 		
+		public var fps:uint = 30;
+		
 		public var layerDepth:Number;
 					
 		public function EngineLayerLayoutElementVo() 

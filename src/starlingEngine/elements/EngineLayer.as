@@ -13,15 +13,17 @@ package starlingEngine.elements
 		private var _layerDepth:uint = 0;
 		private var _layout:XML;
 		private var _layoutDictionary:Dictionary = new Dictionary(true);
+		private var _addToStage:Boolean = false;
 		
 		/**
 		 * 
 		 * @param	layerName
 		 */
-		public function EngineLayer(name:String, depth:uint = 0, layout:XML = null ) 
+		public function EngineLayer(name:String, depth:uint = 0, layout:XML = null, addToStage:Boolean = true ) 
 		{
 			_layerName = name;
 			_layerDepth = depth;
+			_addToStage = addToStage;
 			this.name = name;
 			
 			if (layout != null)
@@ -107,6 +109,7 @@ package starlingEngine.elements
 				var y:String = _layout.child("Element")[i].attribute("y");
 				var w:String = _layout.child("Element")[i].attribute("width");
 				var h:String = _layout.child("Element")[i].attribute("height");
+				var fps:uint = uint(_layout.child("Element")[i].attribute("fps"));
 				var depth:String = _layout.child("Element")[i].attribute("depth");
 				
 				var o:EngineLayerLayoutElementVo = new EngineLayerLayoutElementVo();
@@ -117,10 +120,19 @@ package starlingEngine.elements
 				o.y = Number(y);
 				o.width = Number(w);
 				o.height = Number(h);
+				o.fps = fps;
 				o.layerDepth = Number(depth)
 				
 				_layoutDictionary[name] = o;
 			}
+		}
+		
+		/**
+		 * 
+		 */
+		public function get addToStage():Boolean
+		{
+			return _addToStage;
 		}
 	}
 	

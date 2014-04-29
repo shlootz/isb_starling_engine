@@ -21,7 +21,7 @@ package starlingEngine.elements
 		 * 
 		 * @param	layerName
 		 */
-		public function addLayer(layerName:String, depth:uint = 0, xml:XML = null):void
+		public function addLayer(layerName:String, depth:uint = 0, xml:XML = null, addToStage:Boolean = true):void
 		{
 			_layers[layerName] = new EngineLayer(layerName, depth, xml);
 		}

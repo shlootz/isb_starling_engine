@@ -333,17 +333,20 @@ package starlingEngine
 			{
 				if (_currentState.getChildByNameStr(orderedLayers[j].name) == null)
 				{
-					_currentState.addNewChildAt(orderedLayers[j], j);
-					drawLayerLayout(orderedLayers[j]);
-					
-					if (inTransition != null)
+					if (orderedLayers[j].addToStage)
 					{
-						inTransition.injectOnTransitionComplete(tranzitionToLayerInComplete);
-						inTransition.doTransition(orderedLayers[j] as EngineLayer, null);
-					}
-					else
-					{
-						tranzitionToLayerInComplete();
+						_currentState.addNewChildAt(orderedLayers[j], j);
+						drawLayerLayout(orderedLayers[j]);
+						
+						if (inTransition != null)
+						{
+							inTransition.injectOnTransitionComplete(tranzitionToLayerInComplete);
+							inTransition.doTransition(orderedLayers[j] as EngineLayer, null);
+						}
+						else
+						{
+							tranzitionToLayerInComplete();
+						}
 					}
 				}
 			}
@@ -510,7 +513,8 @@ package starlingEngine
 						
 					case ENGINE_BUTTON:
 						var btn:IAbstractButton = requestButton();
-						var upSkin:IAbstractImage = requestImage(_assetsManager.getTexture(sortedElements[i].name));
+						//var upSkin:IAbstractImage = requestImage(_assetsManager.getTexture(sortedElements[i].name));
+						var upSkin:IAbstractMovie = requestMovie(_assetsManager.getTextures(sortedElements[i].name), sortedElements[i].fps);
 						btn.idName = sortedElements[i].name;
 						btn.upSkin_ = upSkin;
 						

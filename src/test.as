@@ -187,42 +187,42 @@ package
 			anchors.push(buttonPressed);
 			(_bridgeGraphics.signalsManager as SignalsHub).addSignal(Signals.GENERIC_BUTTON_PRESSED, new Signal(), anchors);
 						//
-			var transIn:IAbstractLayerTransitionIn = new EngineLayerTransitionIn();
-			var transOut:IAbstractLayerTransitionOut = new EngineLayerTransitionOut();
-						
-			var outLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
-			outLayers.push(layersVO.retrieveLayer("Layer 2"));
-						
-			var newLayer:IAbstractLayer = new EngineLayer("Tzeapa", 0);
-			newLayer.addNewChild(_bridgeGraphics.requestImage("Preloader-Background"));
-						
-			var inLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
-			inLayers.push(newLayer);
-						
-			_bridgeGraphics.updateLayers(inLayers, null, transIn, transOut);
-						
-			var state2:IAbstractState = _bridgeGraphics.requestState();
-			var stateTransition:IAbstractStateTransition = new EngineStateTransition();
-			_bridgeGraphics.tranzitionToState(state2, stateTransition);
-				
-			var video:IAbstractVideo = new EngineVideo();
-			video.addVideoPath("../bin/assets/test.flv");
-			state2.addNewChild(video);
-			
- 
-			var texture:Texture = Texture.fromBitmap(new TimesTexture());
-			var xml:XML = XML(new TimesXml());
-			TextField.registerBitmapFont(new BitmapFont(texture, xml))
-			
-			var tField:TextField = new TextField(150, 150, "äöüßÖ", "Times", 50);
-			tField.x = 100;
-			tField.y = 200;
-			_bridgeGraphics.addChild(tField);
-			
-			var t:IAbstractTextField = _bridgeGraphics.requestTextField(350, 350, "Yaaaay", "Times", 80);
-			_bridgeGraphics.addChild(t);
-			
-			t.text = "Overwrite";
+			//var transIn:IAbstractLayerTransitionIn = new EngineLayerTransitionIn();
+			//var transOut:IAbstractLayerTransitionOut = new EngineLayerTransitionOut();
+						//
+			//var outLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
+			//outLayers.push(layersVO.retrieveLayer("Layer 2"));
+						//
+			//var newLayer:IAbstractLayer = new EngineLayer("Tzeapa", 0);
+			//newLayer.addNewChild(_bridgeGraphics.requestImage("Preloader-Background"));
+						//
+			//var inLayers:Vector.<IAbstractLayer> = new Vector.<IAbstractLayer>;
+			//inLayers.push(newLayer);
+						//
+			//_bridgeGraphics.updateLayers(inLayers, null, transIn, transOut);
+						//
+			//var state2:IAbstractState = _bridgeGraphics.requestState();
+			//var stateTransition:IAbstractStateTransition = new EngineStateTransition();
+			//_bridgeGraphics.tranzitionToState(state2, stateTransition);
+				//
+			//var video:IAbstractVideo = new EngineVideo();
+			//video.addVideoPath("../bin/assets/test.flv");
+			//state2.addNewChild(video);
+			//
+ //
+			//var texture:Texture = Texture.fromBitmap(new TimesTexture());
+			//var xml:XML = XML(new TimesXml());
+			//TextField.registerBitmapFont(new BitmapFont(texture, xml))
+			//
+			//var tField:TextField = new TextField(150, 150, "äöüßÖ", "Times", 50);
+			//tField.x = 100;
+			//tField.y = 200;
+			//_bridgeGraphics.addChild(tField);
+			//
+			//var t:IAbstractTextField = _bridgeGraphics.requestTextField(350, 350, "Yaaaay", "Times", 80);
+			//_bridgeGraphics.addChild(t);
+			//
+			//t.text = "Overwrite";
 			
 		}
 		
