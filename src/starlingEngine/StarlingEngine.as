@@ -488,7 +488,7 @@ package starlingEngine
 			}
 		}
 		
-		/**
+		/** @TODO width and height from layout. Currently it is commented below.
 		 * 
 		 * @param	layer
 		 * @param	sortedElements
@@ -504,6 +504,8 @@ package starlingEngine
 						layer.addNewChildAt(img, i);
 						img.x = Number(sortedElements[i].x);
 						img.y = Number(sortedElements[i].y);
+						//img.width = Number(sortedElements[i].width);
+						//img.height = Number(sortedElements[i].height);
 						break;
 						
 					case ENGINE_BUTTON:
@@ -511,10 +513,21 @@ package starlingEngine
 						var upSkin:IAbstractImage = requestImage(_assetsManager.getTexture(sortedElements[i].name));
 						btn.idName = sortedElements[i].name;
 						btn.upSkin_ = upSkin;
+						
 						layer.addNewChildAt(btn, i);
 						btn.x = Number(sortedElements[i].x);
 						btn.y = Number(sortedElements[i].y);
+						//btn.width = Number(sortedElements[i].width);
+						//btn.height = Number(sortedElements[i].height);
 						(btn as IAbstractButton).addEventListener(EngineEvent.TRIGGERED, button_triggeredHandler);
+						
+						break;
+						
+					case ENGINE_MOVIE_CLIP:
+						break;
+						
+					case ENGINE_FLV:
+						break;
 					default:
 						break;
 				}

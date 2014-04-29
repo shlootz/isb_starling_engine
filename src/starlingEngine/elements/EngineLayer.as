@@ -105,6 +105,8 @@ package starlingEngine.elements
 				var onStage:String = _layout.child("Element")[i].attribute("onStage");
 				var x:String = _layout.child("Element")[i].attribute("x");
 				var y:String = _layout.child("Element")[i].attribute("y");
+				var w:String = _layout.child("Element")[i].attribute("width");
+				var h:String = _layout.child("Element")[i].attribute("height");
 				var depth:String = _layout.child("Element")[i].attribute("depth");
 				
 				var o:EngineLayerLayoutElementVo = new EngineLayerLayoutElementVo();
@@ -113,6 +115,8 @@ package starlingEngine.elements
 				o.onStage = onStage;
 				o.x = Number(x);
 				o.y = Number(y);
+				o.width = Number(w);
+				o.height = Number(h);
 				o.layerDepth = Number(depth)
 				
 				_layoutDictionary[name] = o;
