@@ -10,7 +10,7 @@ package bridge.abstract
 	 * Creates and retrieves lauers.
 	 * @see bridge.abstract.IAbstractLayer
 	 */
-	public interface IAbstractEngineLayerProxy 
+	public interface IAbstractEngineLayerVO 
 	{
 		/**
 		 * 

@@ -4,7 +4,7 @@ package
 	import away3d.controllers.SpringController;
 	import bridge.abstract.events.IAbstractEvent;
 	import bridge.abstract.IAbstractDisplayObject;
-	import bridge.abstract.IAbstractEngineLayerProxy;
+	import bridge.abstract.IAbstractEngineLayerVO;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractMovie;
@@ -50,7 +50,7 @@ package
 	import starling.utils.AssetManager;
 	import starling.utils.Color;
 	import starlingEngine.elements.EngineLayer;
-	import starlingEngine.elements.EngineLayerProxy;
+	import starlingEngine.elements.EngineLayerVO;
 	import starlingEngine.elements.EngineTexture;
 	import starlingEngine.elements.EngineVideo;
 	import starlingEngine.events.EngineEvent;
@@ -162,7 +162,7 @@ package
 			//sprite.addNewChild(img);
 			//img.x = 150
 						//
-			//var mc:IAbstractMovie = _bridgeGraphics.requestMovie("Bet", 30);
+			var mc:IAbstractMovie = _bridgeGraphics.requestMovie("Bet", 30);
 			//mc.x = 0;
 			//mc.y = 0;
 						//
@@ -174,15 +174,15 @@ package
 			var x:XML = new XML();
 			x = _bridgeGraphics.requestXML("layerLayout");
 			
-			var layersProxy:IAbstractEngineLayerProxy = new EngineLayerProxy();
-			layersProxy.addLayer("Layer 1", 0);
-			layersProxy.addLayer("Layer 2", 1);
-			layersProxy.addLayer("Layer 3", 2);
-			layersProxy.addLayer("Layer 4", 3, x);
+			var layersVO:IAbstractEngineLayerVO = _bridgeGraphics.requestLayersVO();
+			layersVO.addLayer("Layer 1", 0);
+			layersVO.addLayer("Layer 2", 1);
+			layersVO.addLayer("Layer 3", 2);
+			layersVO.addLayer("Layer 4", 3, x);
 						
-			//layersProxy.retrieveLayer("Layer 3").addNewChild(mc);
+			layersVO.retrieveLayer("Layer 3").addNewChild(mc);
 						//
-			_bridgeGraphics.initLayers(layersProxy.layers);
+			_bridgeGraphics.initLayers(layersVO.layers);
 			var anchors:Vector.<Function> = new Vector.<Function>;
 			anchors.push(buttonPressed);
 			(_bridgeGraphics.signalsManager as SignalsHub).addSignal(Signals.GENERIC_BUTTON_PRESSED, new Signal(), anchors);
@@ -223,6 +223,8 @@ package
 			//_bridgeGraphics.addChild(t);
 			//
 			//t.text = "Overwrite";
+			
+			cleanUp();
 		}
 		
 		private function buttonPressed(type:String, event:Object):void

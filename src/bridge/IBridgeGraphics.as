@@ -1,5 +1,6 @@
 package bridge 
 {
+	import bridge.abstract.IAbstractEngineLayerVO;
 	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.transitions.IAbstractStateTransition;
@@ -171,6 +172,12 @@ package bridge
 		 * @return
 		 */
 		function requestTextField(width:int, height:int, text:String, fontName:String="Verdana", fontSize:Number=12, color:uint=0, bold:Boolean=false):IAbstractTextField
+		
+		/**
+		 * 
+		 * @return
+		 */
+		function requestLayersVO():IAbstractEngineLayerVO
 		
 		/**
 		 * 

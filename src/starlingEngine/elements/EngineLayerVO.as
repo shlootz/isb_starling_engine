@@ -1,18 +1,18 @@
 package starlingEngine.elements 
 {
-	import bridge.abstract.IAbstractEngineLayerProxy;
+	import bridge.abstract.IAbstractEngineLayerVO;
 	import bridge.abstract.IAbstractLayer;
 	import flash.utils.Dictionary;
 	/**
 	 * ...
 	 * @author Alex Popescu
 	 */
-	public class EngineLayerProxy implements IAbstractEngineLayerProxy
+	public class EngineLayerVO implements IAbstractEngineLayerVO
 	{
 		
 		private var _layers:Dictionary = new Dictionary(true);
 		
-		public function EngineLayerProxy() 
+		public function EngineLayerVO() 
 		{
 			
 		}

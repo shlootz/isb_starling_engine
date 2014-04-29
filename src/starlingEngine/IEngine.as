@@ -1,6 +1,7 @@
 package  starlingEngine
 {
 	import bridge.abstract.IAbstractEngine;
+	import bridge.abstract.IAbstractEngineLayerVO;
 	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
@@ -82,6 +83,12 @@ package  starlingEngine
 		function requestTextField(width:int, height:int, text:String, fontName:String="Verdana", fontSize:Number=12, color:uint=0, bold:Boolean=false):IAbstractTextField
 		
 		/**
+		 * 
+		 * @return
+		 */
+		function requestLayersVO():IAbstractEngineLayerVO;
+		
+		/**
 		 * @TODO build a abstractization for Juggler
 		 * @return Returns the engine Juggler
 		 */
@@ -98,7 +105,7 @@ package  starlingEngine
 		/**
 		 * 
 		 */
-		 function cleanUp():void
+		function cleanUp():void
 	}
 	
 }

@@ -2,6 +2,7 @@ package starlingEngine
 {
 	import abstract.AbstractPool;
 	import bridge.abstract.IAbstractDisplayObject;
+	import bridge.abstract.IAbstractEngineLayerVO;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractMovie;
@@ -40,6 +41,7 @@ package starlingEngine
 	import starlingEngine.elements.EngineImage;
 	import starlingEngine.elements.EngineLayer;
 	import starlingEngine.elements.EngineLayerLayoutElementVo;
+	import starlingEngine.elements.EngineLayerVO;
 	import starlingEngine.elements.EngineMovie;
 	import starlingEngine.elements.EngineSprite;
 	import starlingEngine.elements.EngineState;
@@ -251,6 +253,15 @@ package starlingEngine
 		{
 			var t:IAbstractTextField = new EngineTextField(width, height, text, fontName, fontSize, color, bold) as IAbstractTextField;
 			return t;
+		}
+		
+		/**
+		 * 
+		 * @return
+		 */
+		public function requestLayersVO():IAbstractEngineLayerVO
+		{
+			return new EngineLayerVO();
 		}
 		
 		/**
@@ -538,7 +549,29 @@ package starlingEngine
 		 */
 		public function cleanUp():void
 		{
+			_initCompleteCallback = null;
+			_engineStage = null;
+			
+			for (var k:String in _layers)
+			{
+				_layers[k] = null
+			}
+			
+			_layers = null;
+			_space = null;
+			_currentState = null; 
+			_assetsManager = null;
+			_signalsHub = null;
+			
+			state.destroy();
+			if (futureState != null)
+			{
+				futureState.destroy();
+			}
+			
 			super.destroy();
+			
+			trace(this + " -> destroyed");
 		}
 		
 	}

@@ -1,5 +1,6 @@
 package bridge 
 {
+	import bridge.abstract.IAbstractEngineLayerVO;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractMovie;
@@ -304,6 +305,15 @@ package bridge
 			return _assetsManager.getXml(name);
 		}
 		
+		/**
+		 * 
+		 * @return
+		 */
+		public function requestLayersVO():IAbstractEngineLayerVO
+		{
+			return (_graphicsEngine as IEngine).requestLayersVO();
+		}
+		
 		/** Makes the transition to a new state
 		 * 
 		 * @param	newState @see bridge.abstract.IAbstractState
@@ -415,7 +425,30 @@ package bridge
 		 */
 		public function cleanUp():void
 		{
+			display = null;
+		
+			imageClass = null;
+			movieclipClass = null;
+			
+			for (var k:String in _injectedClasses)
+			{
+				_injectedClasses[k] = null
+			}
+			
+			_injectedClasses = null;
+			
+			_assetsManager = null;
+			
+			_signalsManager = null;
+			
+			_poolClass = null;
+			
+			_juggler = null;
+			
+			_space = null;
+		
 			(_graphicsEngine as IEngine).cleanUp();
+			_graphicsEngine = null;
 		}
 	}
 
