@@ -133,8 +133,26 @@ package starlingEngine
 			_currentState = requestState();
 			state = _currentState as IState;
 			
+			initSignals();
+			
 			_initCompleteCallback.call();
 			_engineStage = starling.stage;
+		}
+		
+		/**
+		 * 
+		 */
+		public function initSignals():void
+		{
+			(_signalsHub as SignalsHub).addSignal(Signals.STARLING_READY, new Signal(), new Vector.<Function>);
+			
+			(_signalsHub as SignalsHub).addSignal(Signals.CHANGE_GRAPHICS_STATE, new Signal(), new Vector.<Function>);
+			
+			(_signalsHub as SignalsHub).addSignal(Signals.LAYER_TRANSITION_IN_COMPLETE, new Signal(), new Vector.<Function>);
+			(_signalsHub as SignalsHub).addSignal(Signals.LAYER_TRANSITION_OUT_COMPLETE, new Signal(), new Vector.<Function>);
+			
+			(_signalsHub as SignalsHub).addSignal(Signals.GENERIC_BUTTON_PRESSED, new Signal(), new Vector.<Function>);
+			(_signalsHub as SignalsHub).addSignal(Signals.MOVIE_CLIP_ENDED, new Signal(), new Vector.<Function>);
 		}
 		
 		/**
@@ -422,7 +440,12 @@ package starlingEngine
 		{
 			if(target1)
 			{
-				trace("Transition in complete for: " + (target1 as EngineLayer).layerName)
+				var o:Object = {
+					type:"LayerTransitionInComplete",
+					layer:target1
+				}
+				
+				_signalsHub.dispatchSignal(Signals.LAYER_TRANSITION_IN_COMPLETE, Signals.LAYER_TRANSITION_IN_COMPLETE, o);
 			}
 		}
 		
@@ -433,11 +456,16 @@ package starlingEngine
 		{
 			if (target1)
 			{
-				trace("Transition out complete for: " + target1);
 				_currentState.removeChildAndDispose(target1 as EngineLayer);
 				
 				(target1 as EngineLayer).destroyAll();
+					
+				var o:Object = {
+					type:"LayerTransitionOutComplete",
+					layer:target1
+				}
 				
+				_signalsHub.dispatchSignal(Signals.LAYER_TRANSITION_OUT_COMPLETE, Signals.LAYER_TRANSITION_OUT_COMPLETE, o);
 			}
 		}
 		
@@ -561,7 +589,7 @@ package starlingEngine
 		 */
 		private function movieClip_Completed(e:Object):void
 		{
-			_signalsHub.dispatchSignal(Signals.GENERIC_BUTTON_PRESSED, (e.currentTarget as IAbstractMovie).name, e);
+			_signalsHub.dispatchSignal(Signals.MOVIE_CLIP_ENDED, (e.currentTarget as IAbstractMovie).name, e);
 		}
 		
 		/**
@@ -570,7 +598,7 @@ package starlingEngine
 		 */
 		private function button_triggeredHandler(e:Object):void
 		{
-			_signalsHub.dispatchSignal(Signals.MOVIE_CLIP_ENDED, (e.currentTarget as IAbstractMovie).name, e);
+			_signalsHub.dispatchSignal(Signals.GENERIC_BUTTON_PRESSED, (e.currentTarget as IAbstractButton).idName, e);
 		}
 		
 		/**

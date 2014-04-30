@@ -194,9 +194,8 @@ package
 			layersVO.retrieveLayer("Layer 3").addNewChild(mc);
 						//
 			_bridgeGraphics.initLayers(layersVO.layers);
-			var anchors:Vector.<Function> = new Vector.<Function>;
-			anchors.push(buttonPressed);
-			(_bridgeGraphics.signalsManager as SignalsHub).addSignal(Signals.GENERIC_BUTTON_PRESSED, new Signal(), anchors);
+			
+			(_bridgeGraphics.signalsManager as SignalsHub).addListenerToSignal(Signals.GENERIC_BUTTON_PRESSED, buttonPressed);
 			
 			layersVO.addLayer("TEST", 4, x);
 			

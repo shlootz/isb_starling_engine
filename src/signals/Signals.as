@@ -10,6 +10,12 @@ package signals
 		//General signals
 		public static const CHANGE_GRAPHICS_STATE:String = "GEchangeGraphicsState";
 		
+		//
+		public static const LAYER_TRANSITION_IN_COMPLETE:String = "GELayerTransitionInComplete"
+		
+		//
+		public static const LAYER_TRANSITION_OUT_COMPLETE:String = "GELayerTransitionOutComplete"
+		
 		//Init signals
 		public static const STARLING_READY:String = "GEstarlingReady";
 		

@@ -50,6 +50,11 @@ package  starlingEngine
 		function injectSignalsHub(signalsHub:Object):void
 		 
 		/**
+		 * Inits the default signals for outter communication
+		 */
+		function initSignals():void
+		
+		/**
 		 * 
 		 * @param	name
 		 * @return
