@@ -24,7 +24,7 @@ package starlingEngine.elements
 		 * @param	child
 		 * @return
 		 */
-		public function addNewChild(child:IAbstractDisplayObject):IAbstractDisplayObject
+		public function addNewChild(child:Object):IAbstractDisplayObject
 		{
 			return super.addChild(child as DisplayObject) as IAbstractDisplayObject;
 		}

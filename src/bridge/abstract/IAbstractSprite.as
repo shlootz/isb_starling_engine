@@ -20,7 +20,7 @@ package bridge.abstract
 	 * This limitation is inherited from the underlying "scissoring" technique that is used
 	 * internally.</p>
 	 */
-	public interface IAbstractSprite extends IAbstractEngineDisplayObjectContainer
+	public interface IAbstractSprite extends IAbstractDisplayObjectContainer
 	{
 		/**
 		 * The object's clipping rectangle in its local coordinate system.

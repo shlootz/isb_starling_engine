@@ -17,6 +17,7 @@ package
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import bridge.abstract.ui.IAbstractButton;
+	import bridge.abstract.ui.LabelProperties;
 	import bridge.BridgeGraphics;
 	import bridge.IBridgeGraphics;
 	import citrus.core.starling.StarlingCitrusEngine;
@@ -28,6 +29,7 @@ package
 	import flash.events.AsyncErrorEvent;
 	import flash.events.MouseEvent;
 	import flash.events.NetStatusEvent;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	import flash.net.NetConnection;
 	import flash.net.NetStream;
@@ -49,6 +51,7 @@ package
 	import starling.textures.Texture;
 	import starling.utils.AssetManager;
 	import starling.utils.Color;
+	import starlingEngine.elements.EngineLabel;
 	import starlingEngine.elements.EngineLayer;
 	import starlingEngine.elements.EngineLayerVO;
 	import starlingEngine.elements.EngineTexture;
@@ -144,7 +147,15 @@ package
 			
 			uiHolder.addNewChild(button as IAbstractDisplayObject);
 			
-			trace(button.label);
+			var t:IAbstractTextField = _bridgeGraphics.requestTextField(150, 150, "Yaaaay", "Times", 30);
+			t.autoScale = true;
+			t.hAlign = LabelProperties.ALIGN_CENTER;
+			var label:EngineLabel = new EngineLabel(t);
+			
+			button.addCustomLabel(label, LabelProperties.ALIGN_CUSTOM, new Point(100,100));
+			button.updateCustomLabel("Haha");
+			
+			//trace(button.label);
 		}
 		
 		private function button_triggeredHandler(e:Event):void
@@ -227,15 +238,6 @@ package
 			//var xml:XML = XML(new TimesXml());
 			//TextField.registerBitmapFont(new BitmapFont(texture, xml))
 			//
-			//var tField:TextField = new TextField(150, 150, "äöüßÖ", "Times", 50);
-			//tField.x = 100;
-			//tField.y = 200;
-			//_bridgeGraphics.addChild(tField);
-			//
-			//var t:IAbstractTextField = _bridgeGraphics.requestTextField(350, 350, "Yaaaay", "Times", 80);
-			//_bridgeGraphics.addChild(t);
-			//
-			//t.text = "Overwrite";
 			
 		}
 		

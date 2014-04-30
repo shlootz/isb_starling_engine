@@ -2,7 +2,10 @@ package starlingEngine.ui
 {
 	import bridge.abstract.IAbstractDisplayObject;
 	import bridge.abstract.ui.IAbstractButton;
+	import bridge.abstract.ui.IAbstractLabel;
+	import bridge.abstract.ui.LabelProperties;
 	import feathers.controls.Button;
+	import flash.geom.Point;
 	import starling.display.DisplayObject;
 	import starling.events.Event;
 	/**
@@ -13,6 +16,7 @@ package starlingEngine.ui
 	{
 		
 		private var _idName:String;
+		private var _customLabel:IAbstractLabel;
 		
 		public function EngineButton() 
 		{
@@ -600,6 +604,55 @@ package starlingEngine.ui
 		public function scaleSkin_ () : void
 		{
 			super.scaleSkin();
+		}
+		
+		public function addCustomLabel(customLabel:IAbstractLabel, align:String = "center", customAlign:Point = null):void
+		{
+			_customLabel = customLabel;
+			this.addChild(_customLabel as DisplayObject);
+			alignLabel(align, customAlign);
+		}
+		
+		public function updateCustomLabel(labelText:String):void
+		{
+			_customLabel.updateLabel(labelText);
+		}
+		
+		private function alignLabel(align:String = "center", customAlign:Point = null):void
+		{
+			switch(align)
+			{
+				case LabelProperties.ALIGN_CENTER:
+					_customLabel.x = this.upSkin.width / 2 - _customLabel.width / 2;
+					_customLabel.y = this.upSkin.height / 2 - _customLabel.height / 2;
+				break;
+				
+				case LabelProperties.ALIGN_BOTTOM:
+					_customLabel.x = this.upSkin.width / 2 - _customLabel.width / 2;
+					_customLabel.y = this.upSkin.height - _customLabel.height / 2;
+				break;
+				
+				case LabelProperties.ALIGN_TOP:
+					_customLabel.x = this.upSkin.width / 2 - _customLabel.width / 2;
+					_customLabel.y = 0;
+				break;
+				
+				case LabelProperties.ALIGN_LEFT:
+					_customLabel.x = 0;
+					_customLabel.y = this.upSkin.height / 2 - _customLabel.height / 2;
+				break;
+				
+				case LabelProperties.ALIGN_RIGHT:
+					_customLabel.x = this.upSkin.width - _customLabel.width / 2;
+					_customLabel.y = this.upSkin.height / 2 - _customLabel.height / 2;
+				break;
+				
+				case LabelProperties.ALIGN_CUSTOM:
+					_customLabel.x = customAlign.x;
+					_customLabel.y = customAlign.y;
+				break;
+			}
+			
 		}
 		
 	}

@@ -32,7 +32,7 @@ package bridge.abstract
 	 * first time.
 	 */
 	 
-	public interface IAbstractEngineDisplayObjectContainer extends IAbstractDisplayObject
+	public interface IAbstractDisplayObjectContainer extends IAbstractDisplayObject
 	{	
 		/**
 		 * @return Returns the number of children contained
@@ -44,7 +44,7 @@ package bridge.abstract
 		 * @param	child
 		 * @return @see bridge.abstract.IAbstractDisplayObject
 		 */
-		function addNewChild (child:IAbstractDisplayObject) : IAbstractDisplayObject;
+		function addNewChild (child:Object) : IAbstractDisplayObject;
 		
 		/** Adds a new child to the container at a specified index
 		 * 

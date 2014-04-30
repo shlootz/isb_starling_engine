@@ -1,6 +1,7 @@
 package bridge.abstract.ui 
 {
 	import bridge.abstract.IAbstractDisplayObject;
+	import flash.geom.Point;
 	/**
 	 * ...
 	 * @author Alex Popescu
@@ -259,6 +260,10 @@ package bridge.abstract.ui
 		function refreshSkin_ () : void
 		
 		function scaleSkin_ () : void
+		
+		function addCustomLabel(customLabel:IAbstractLabel,align:String = "center", customAlign:Point = null):void
+		
+		function updateCustomLabel(labelText:String):void
 		
 	}
 
