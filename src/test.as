@@ -147,12 +147,12 @@ package
 			
 			uiHolder.addNewChild(button as IAbstractDisplayObject);
 			
-			var t:IAbstractTextField = _bridgeGraphics.requestTextField(150, 150, "Yaaaay", "Times", 30);
+			var t:IAbstractTextField = _bridgeGraphics.requestTextField(150, 30, "Yaaaay", "Times", 30);
 			t.autoScale = true;
 			t.hAlign = LabelProperties.ALIGN_CENTER;
 			var label:EngineLabel = new EngineLabel(t);
 			
-			button.addCustomLabel(label, LabelProperties.ALIGN_CUSTOM, new Point(100,100));
+			button.addCustomLabel(label, LabelProperties.ALIGN_CENTER, new Point(100,100));
 			button.updateCustomLabel("Haha");
 			
 			//trace(button.label);

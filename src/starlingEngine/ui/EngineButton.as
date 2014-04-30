@@ -625,6 +625,10 @@ package starlingEngine.ui
 				case LabelProperties.ALIGN_CENTER:
 					_customLabel.x = this.upSkin.width / 2 - _customLabel.width / 2;
 					_customLabel.y = this.upSkin.height / 2 - _customLabel.height / 2;
+					
+					trace(this.upSkin.height);
+					trace(_customLabel.height);
+					trace(_customLabel.y)
 				break;
 				
 				case LabelProperties.ALIGN_BOTTOM:
