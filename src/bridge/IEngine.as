@@ -16,6 +16,10 @@ package  bridge
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractState;
 	import bridge.abstract.IAbstractTexture;
+	import starlingEngine.elements.EngineImage;
+	import starlingEngine.elements.EngineMovie;
+	import starlingEngine.elements.EngineSprite;
+	import starlingEngine.elements.EngineState;
 	import bridge.abstract.IAbstractTextField;
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
