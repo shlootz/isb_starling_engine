@@ -150,12 +150,12 @@ package
 			var t:IAbstractTextField = _bridgeGraphics.requestTextField(150, 30, "Yaaaay", "Times", 30);
 			t.autoScale = true;
 			t.hAlign = LabelProperties.ALIGN_CENTER;
+			
 			var label:EngineLabel = new EngineLabel(t);
 			
 			button.addCustomLabel(label, LabelProperties.ALIGN_CENTER, new Point(100,100));
 			button.updateCustomLabel("Haha");
 			
-			//trace(button.label);
 		}
 		
 		private function button_triggeredHandler(e:Event):void
@@ -238,7 +238,7 @@ package
 			//var xml:XML = XML(new TimesXml());
 			//TextField.registerBitmapFont(new BitmapFont(texture, xml))
 			//
-			
+			/////////////////////////////////////////////////////
 		}
 		
 		private function buttonPressed(type:String, event:Object):void

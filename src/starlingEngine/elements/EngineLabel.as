@@ -17,9 +17,7 @@ package starlingEngine.elements
 		
 		public function EngineLabel(textField:IAbstractTextField) 
 		{
-			_tField = textField;
-			trace("-> " + _tField);
-			
+			_tField = textField;			
 			addNewChild(_tField as TextField);
 		}
 		

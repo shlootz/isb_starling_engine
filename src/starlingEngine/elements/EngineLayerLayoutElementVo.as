@@ -10,6 +10,8 @@ package starlingEngine.elements
 		public var name:String;
 		public var type:String;
 		
+		public var resource:String
+		
 		public var onStage:String;
 		
 		public var x:Number;

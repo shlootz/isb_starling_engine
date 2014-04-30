@@ -28,6 +28,7 @@ package starlingEngine
 	import signals.ISignalsHub;
 	import signals.Signals;
 	import signals.SignalsHub;
+	import starling.animation.IAnimatable;
 	import starling.animation.Juggler;
 	import starling.core.Starling;
 	import starling.display.DisplayObject;
@@ -181,6 +182,7 @@ package starlingEngine
 		{
 			var t:IAbstractTexture = new EngineTexture() as IAbstractTexture;
 			t = _assetsManager.getTexture(name) as IAbstractTexture;
+			trace(t);
 			return t as IAbstractTexture;
 		}
 		
@@ -512,7 +514,7 @@ package starlingEngine
 				switch (sortedElements[i].type) 
 				{
 					case ENGINE_IMAGE:
-						var img:IAbstractImage = requestImage(_assetsManager.getTexture(sortedElements[i].name));
+						var img:IAbstractImage = requestImage(_assetsManager.getTexture(sortedElements[i].resource));
 						layer.addNewChildAt(img, i);
 						img.x = Number(sortedElements[i].x);
 						img.y = Number(sortedElements[i].y);
@@ -523,7 +525,7 @@ package starlingEngine
 					case ENGINE_BUTTON:
 						var btn:IAbstractButton = requestButton();
 						//var upSkin:IAbstractImage = requestImage(_assetsManager.getTexture(sortedElements[i].name));
-						var upSkin:IAbstractMovie = requestMovie(_assetsManager.getTextures(sortedElements[i].name), sortedElements[i].fps);
+						var upSkin:IAbstractMovie = requestMovie(_assetsManager.getTextures(sortedElements[i].resource), sortedElements[i].fps);
 						btn.idName = sortedElements[i].name;
 						btn.upSkin_ = upSkin;
 						
@@ -537,6 +539,9 @@ package starlingEngine
 						break;
 						
 					case ENGINE_MOVIE_CLIP:
+						var mc:IAbstractMovie = requestMovie(_assetsManager.getTextures(sortedElements[i].resource), sortedElements[i].fps);
+						layer.addNewChildAt(mc, i);
+						juggler.add(mc as IAnimatable);
 						break;
 						
 					case ENGINE_FLV:

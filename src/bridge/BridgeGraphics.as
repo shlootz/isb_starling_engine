@@ -1,5 +1,6 @@
 package bridge 
 {
+	import abstract.AbstractPool;
 	import bridge.abstract.IAbstractEngineLayerVO;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractLayer;
@@ -69,6 +70,8 @@ package bridge
 		private var _poolClass:Class;
 		private var _juggler:Object;
 		private var _space:Object;
+		
+		private var _pools:Dictionary = new Dictionary(true);
 		
 		/** Creates a new BridgeGraphics instance
 		 * 

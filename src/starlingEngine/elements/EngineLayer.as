@@ -111,9 +111,11 @@ package starlingEngine.elements
 				var h:String = _layout.child("Element")[i].attribute("height");
 				var fps:uint = uint(_layout.child("Element")[i].attribute("fps"));
 				var depth:String = _layout.child("Element")[i].attribute("depth");
+				var resource:String = _layout.child("Element")[i].attribute("resource");
 				
 				var o:EngineLayerLayoutElementVo = new EngineLayerLayoutElementVo();
 				o.name = name;
+				o.resource = resource;
 				o.type = type;
 				o.onStage = onStage;
 				o.x = Number(x);

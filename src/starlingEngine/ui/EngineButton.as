@@ -623,32 +623,28 @@ package starlingEngine.ui
 			switch(align)
 			{
 				case LabelProperties.ALIGN_CENTER:
-					_customLabel.x = this.upSkin.width / 2 - _customLabel.width / 2;
-					_customLabel.y = this.upSkin.height / 2 - _customLabel.height / 2;
-					
-					trace(this.upSkin.height);
-					trace(_customLabel.height);
-					trace(_customLabel.y)
+					_customLabel.x = int(this.upSkin.width / 2 - _customLabel.width / 2);
+					_customLabel.y = int(this.upSkin.height / 2 - _customLabel.height / 2);
 				break;
 				
 				case LabelProperties.ALIGN_BOTTOM:
-					_customLabel.x = this.upSkin.width / 2 - _customLabel.width / 2;
-					_customLabel.y = this.upSkin.height - _customLabel.height / 2;
+					_customLabel.x = int(this.upSkin.width / 2 - _customLabel.width / 2);
+					_customLabel.y = int(this.upSkin.height - _customLabel.height / 2);
 				break;
 				
 				case LabelProperties.ALIGN_TOP:
-					_customLabel.x = this.upSkin.width / 2 - _customLabel.width / 2;
+					_customLabel.x = int(this.upSkin.width / 2 - _customLabel.width / 2);
 					_customLabel.y = 0;
 				break;
 				
 				case LabelProperties.ALIGN_LEFT:
 					_customLabel.x = 0;
-					_customLabel.y = this.upSkin.height / 2 - _customLabel.height / 2;
+					_customLabel.y =  int(this.upSkin.height / 2 - _customLabel.height / 2);
 				break;
 				
 				case LabelProperties.ALIGN_RIGHT:
-					_customLabel.x = this.upSkin.width - _customLabel.width / 2;
-					_customLabel.y = this.upSkin.height / 2 - _customLabel.height / 2;
+					_customLabel.x = int(this.upSkin.width - _customLabel.width / 2);
+					_customLabel.y = int(this.upSkin.height / 2 - _customLabel.height / 2);
 				break;
 				
 				case LabelProperties.ALIGN_CUSTOM:

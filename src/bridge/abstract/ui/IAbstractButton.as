@@ -23,17 +23,17 @@ package bridge.abstract.ui
 		
 		function set defaultIcon_ (value:IAbstractDisplayObject) : void
 		
-		function get defaultLabelProperties () : Object
+		//function get defaultLabelProperties () : Object
 		
-		function set defaultLabelProperties (value:Object) : void
+		//function set defaultLabelProperties (value:Object) : void
 		
 		function get defaultSelectedIcon_ () : IAbstractDisplayObject
 		
 		function set defaultSelectedIcon_ (value:IAbstractDisplayObject) : void
 		
-		function get defaultSelectedLabelProperties () : Object
+		//function get defaultSelectedLabelProperties () : Object
 		
-		function set defaultSelectedLabelProperties (value:Object) : void
+		//function set defaultSelectedLabelProperties (value:Object) : void
 		
 		function get defaultSelectedSkin_ () : IAbstractDisplayObject
 		
@@ -47,7 +47,7 @@ package bridge.abstract.ui
 		
 		function set disabledIcon_ (value:IAbstractDisplayObject) : void
 		
-		function get disabledLabelProperties () : Object
+		//function get disabledLabelProperties () : Object
 		
 		function get disabledSkin_ () : IAbstractDisplayObject
 		
@@ -57,9 +57,9 @@ package bridge.abstract.ui
 		
 		function set downIcon_ (value:IAbstractDisplayObject) : void
 		
-		function get downLabelProperties () : Object
+		//function get downLabelProperties () : Object
 		
-		function set downLabelProperties (value:Object) : void
+		//function set downLabelProperties (value:Object) : void
 		
 		function get downSkin_ () : IAbstractDisplayObject
 		
@@ -77,9 +77,9 @@ package bridge.abstract.ui
 	
 		function set hoverIcon_ (value:IAbstractDisplayObject) : void
 
-		function get hoverLabelProperties () : Object
+		//function get hoverLabelProperties () : Object
 		
-		function set hoverLabelProperties (value:Object) : void
+		//function set hoverLabelProperties (value:Object) : void
 		
 		function get hoverSkin_ () : IAbstractDisplayObject
 		
@@ -111,21 +111,21 @@ package bridge.abstract.ui
 		
 		function set isToggle (value:Boolean) : void
 		
-		function get label () : String
+		//function get label () : String
 		
-		function set label (value:String) : void
+		//function set label (value:String) : void
 	
-		function get labelFactory () : Function
+		//function get labelFactory () : Function
 		
-		function set labelFactory (value:Function) : void
+		//function set labelFactory (value:Function) : void
 		
-		function get labelOffsetX () : Number
+		//function get labelOffsetX () : Number
 		
-		function set labelOffsetX (value:Number) : void
+		//function set labelOffsetX (value:Number) : void
 		
-		function get labelOffsetY () : Number
+		//function get labelOffsetY () : Number
 		
-		function set labelOffsetY (value:Number) : void
+		//function set labelOffsetY (value:Number) : void
 		
 		function get longPressDuration () : Number
 		
@@ -155,9 +155,9 @@ package bridge.abstract.ui
 		
 		function set selectedDisabledIcon_ (value:IAbstractDisplayObject) : void
 		
-		function get selectedDisabledLabelProperties () : Object
+		//function get selectedDisabledLabelProperties () : Object
 		
-		function set selectedDisabledLabelProperties (value:Object) : void
+		//function set selectedDisabledLabelProperties (value:Object) : void
 		
 		function get selectedDisabledSkin_ () : IAbstractDisplayObject
 		
@@ -167,9 +167,9 @@ package bridge.abstract.ui
 		
 		function set selectedDownIcon_ (value:IAbstractDisplayObject) : void
 		
-		function get selectedDownLabelProperties () : Object
+		//function get selectedDownLabelProperties () : Object
 		
-		function set selectedDownLabelProperties (value:Object) : void
+		//function set selectedDownLabelProperties (value:Object) : void
 		
 		function get selectedDownSkin_ () : IAbstractDisplayObject
 		
@@ -179,9 +179,9 @@ package bridge.abstract.ui
 		
 		function set selectedHoverIcon_ (value:IAbstractDisplayObject) : void
 		
-		function get selectedHoverLabelProperties () : Object
+		//function get selectedHoverLabelProperties () : Object
 		
-		function set selectedHoverLabelProperties (value:Object) : void
+		//function set selectedHoverLabelProperties (value:Object) : void
 		
 		function get selectedHoverSkin_ () : IAbstractDisplayObject
 		
@@ -191,9 +191,9 @@ package bridge.abstract.ui
 		
 		function set selectedUpIcon_ (value:IAbstractDisplayObject) : void
 		
-		function get selectedUpLabelProperties () : Object
+		//function get selectedUpLabelProperties () : Object
 		
-		function set selectedUpLabelProperties (value:Object) : void
+		//function set selectedUpLabelProperties (value:Object) : void
 		
 		function get selectedUpSkin_ () : IAbstractDisplayObject
 		
@@ -205,9 +205,9 @@ package bridge.abstract.ui
 		
 		function set stateToIconFunction (value:Function) : void
 		
-		function get stateToLabelPropertiesFunction () : Function
+		//function get stateToLabelPropertiesFunction () : Function
 		
-		function set stateToLabelPropertiesFunction (value:Function) : void
+		//function set stateToLabelPropertiesFunction (value:Function) : void
 		
 		function get stateToSkinFunction () : Function
 		
@@ -217,9 +217,9 @@ package bridge.abstract.ui
 		
 		function set upIcon_ (value:IAbstractDisplayObject) : void
 		
-		function get upLabelProperties () : Object
+		//function get upLabelProperties () : Object
 		
-		function set upLabelProperties (value:Object) : void
+		//function set upLabelProperties (value:Object) : void
 		
 		function get upSkin_ () : IAbstractDisplayObject
 		
@@ -233,7 +233,7 @@ package bridge.abstract.ui
 		
 		//function button_removedFromStageHandler (event:Event) : void
 		
-		function createLabel_ () : void
+		//function createLabel_ () : void
 		
 		function draw_ () : void
 		
@@ -245,17 +245,17 @@ package bridge.abstract.ui
 		
 		//function longPress_enterFrameHandler (event:Event) : void
 		
-		function positionLabelAndIcon_ () : void
+		//function positionLabelAndIcon_ () : void
 		
 		function positionSingleChild_ (displayObject:IAbstractDisplayObject) : void
 		
 		function refreshIcon_ () : void
 		
-		function refreshLabel_ () : void
+		//function refreshLabel_ () : void
 		
-		function refreshLabelStyles_ () : void
+		//function refreshLabelStyles_ () : void
 		
-		function refreshMaxLabelWidth_ (forMeasurement:Boolean) : void
+		//function refreshMaxLabelWidth_ (forMeasurement:Boolean) : void
 		
 		function refreshSkin_ () : void
 		
