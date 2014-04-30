@@ -542,6 +542,9 @@ package starlingEngine
 						var mc:IAbstractMovie = requestMovie(_assetsManager.getTextures(sortedElements[i].resource), sortedElements[i].fps);
 						layer.addNewChildAt(mc, i);
 						juggler.add(mc as IAnimatable);
+						(mc as IAbstractMovie).name = sortedElements[i].name;
+						(mc as IAbstractMovie).loop = sortedElements[i].loop;
+						(mc as IAbstractMovie).addEventListener(EngineEvent.COMPLETE, movieClip_Completed)
 						break;
 						
 					case ENGINE_FLV:
@@ -556,9 +559,18 @@ package starlingEngine
 		 * 
 		 * @param	e
 		 */
+		private function movieClip_Completed(e:Object):void
+		{
+			_signalsHub.dispatchSignal(Signals.GENERIC_BUTTON_PRESSED, (e.currentTarget as IAbstractMovie).name, e);
+		}
+		
+		/**
+		 * 
+		 * @param	e
+		 */
 		private function button_triggeredHandler(e:Object):void
 		{
-			_signalsHub.dispatchSignal(Signals.GENERIC_BUTTON_PRESSED, (e.currentTarget as EngineButton).idName, e);
+			_signalsHub.dispatchSignal(Signals.MOVIE_CLIP_ENDED, (e.currentTarget as IAbstractMovie).name, e);
 		}
 		
 		/**

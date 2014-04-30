@@ -22,6 +22,8 @@ package starlingEngine.elements
 		public var fps:uint = 30;
 		
 		public var layerDepth:Number;
+		
+		public var loop:Boolean = false;
 					
 		public function EngineLayerLayoutElementVo() 
 		{

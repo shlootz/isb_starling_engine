@@ -112,6 +112,7 @@ package starlingEngine.elements
 				var fps:uint = uint(_layout.child("Element")[i].attribute("fps"));
 				var depth:String = _layout.child("Element")[i].attribute("depth");
 				var resource:String = _layout.child("Element")[i].attribute("resource");
+				var loop:String = _layout.child("Element")[i].attribute("loop");
 				
 				var o:EngineLayerLayoutElementVo = new EngineLayerLayoutElementVo();
 				o.name = name;
@@ -124,6 +125,15 @@ package starlingEngine.elements
 				o.height = Number(h);
 				o.fps = fps;
 				o.layerDepth = Number(depth)
+				
+				if (loop == "true")
+				{
+					o.loop = true;
+				}
+				else
+				{
+					o.loop = false;
+				}
 				
 				_layoutDictionary[name] = o;
 			}

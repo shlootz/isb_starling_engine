@@ -16,6 +16,9 @@ package signals
 		//Generic button
 		public static const GENERIC_BUTTON_PRESSED:String = "GEbuttonPressed";
 		
+		//Generic movieclip ended
+		public static const MOVIE_CLIP_ENDED:String = "GEMovieClipEnded"
+		
 	}
 
 }
