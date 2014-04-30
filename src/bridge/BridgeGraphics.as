@@ -20,7 +20,6 @@ package bridge
 	import flash.utils.getQualifiedClassName;
 	import signals.ISignalsHub;
 	import signals.Signals;
-	import starlingEngine.IEngine;
 	/**
 	 * ...
 	 * @author Alex Popescu

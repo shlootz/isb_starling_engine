@@ -15,6 +15,7 @@ package starlingEngine
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import bridge.abstract.ui.IAbstractButton;
 	import bridge.BridgeGraphics;
+	import bridge.IEngine;
 	import citrus.core.IState;
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.core.starling.StarlingState;

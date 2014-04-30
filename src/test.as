@@ -196,6 +196,7 @@ package
 			_bridgeGraphics.initLayers(layersVO.layers);
 			
 			(_bridgeGraphics.signalsManager as SignalsHub).addListenerToSignal(Signals.GENERIC_BUTTON_PRESSED, buttonPressed);
+			(_bridgeGraphics.signalsManager as SignalsHub).addListenerToSignal(Signals.MOVIE_CLIP_ENDED, movieclipEnded);
 			
 			layersVO.addLayer("TEST", 4, x);
 			
@@ -243,6 +244,11 @@ package
 		private function buttonPressed(type:String, event:Object):void
 		{
 			trace("Caught "+type+" "+event)
+		}
+		
+		private function movieclipEnded(type:String, event:Object):void
+		{
+			trace("!!!!!!!!!!!!!!!!!!!Caught "+type+" "+event)
 		}
 		
 		private function cleanUp():void
