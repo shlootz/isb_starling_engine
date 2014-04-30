@@ -1,4 +1,4 @@
-package starling.extensions.quadtree
+package Quadtree
 {
     import flash.geom.Point;
     import flash.geom.Rectangle;

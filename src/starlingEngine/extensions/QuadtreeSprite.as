@@ -1,8 +1,8 @@
-package starling.extensions
+package starlingEngine.extensions
 {
     import flash.utils.Dictionary;
 
-    import starling.extensions.quadtree.Quadtree;
+    import starlingEngine.extensions.quadtree.Quadtree;
 
     import flash.geom.Rectangle;
 
