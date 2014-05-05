@@ -235,7 +235,8 @@ package bridge
 		/** Retrieves a new texture from stored Atlas
 		 * 
 		 * @param	name
-		 * @return @see bridge.abstract.IAbstractTexture
+		 * @return IAbstractTexture
+		 * @see bridge.abstract.IAbstractTexture
 		 */
 		public function requestTexture(name:String):IAbstractTexture
 		{
@@ -245,7 +246,8 @@ package bridge
 		/** Request an image
 		 * 
 		 * @param	name
-		 * @return Returns an @see bridge.abstract.IAbstractImage
+		 * @return Returns an IAbstractImage
+		 * @see bridge.abstract.IAbstractImage
 		 */
 		public function requestImage(name:String):IAbstractImage
 		{
@@ -256,7 +258,8 @@ package bridge
 		 * 
 		 * @param	prefix - retrieves all the images from an atlas using this prefix
 		 * @param	fps - sets the frames per second that the movie clip will play at independently
-		 * @return Returns an @see bridge.abstract.IAbstractMovie
+		 * @return Returns an IAbstractMovie
+		 * @see bridge.abstract.IAbstractMovie
 		 */
 		public function requestMovie(prefix:String, fps:uint = 24):IAbstractMovie
 		{
@@ -265,7 +268,8 @@ package bridge
 		
 		/** Build an empty sprite
 		 * 
-		 * @return Returns an @see bridge.abstract.IAbstractSprite
+		 * @return Returns an IAbstractSprite
+		 * @see bridge.abstract.IAbstractSprite
 		 */
 		public function requestSprite():IAbstractSprite
 		{
@@ -274,7 +278,8 @@ package bridge
 		
 		/** Builds an empty button
 		 * 
-		 * @return Returns @see bridge.abstract.IAbstractButton
+		 * @return Returns IAbstractButton
+		 * @see bridge.abstract.IAbstractButton
 		 */
 		public function requestButton():IAbstractButton
 		{
@@ -283,7 +288,8 @@ package bridge
 		
 		/** Builds an empty state
 		 * 
-		 * @return Returns an @see bridge.abstract.IAbstractState
+		 * @return Returns an IAbstractState
+		 * @see bridge.abstract.IAbstractState
 		 */
 		public function requestState():IAbstractState
 		{
@@ -291,8 +297,16 @@ package bridge
 		}
 		
 		/**
-		 * 
-		 * @return
+		 * Returns a new IAbstractTextField
+		 * @param	width
+		 * @param	height
+		 * @param	text
+		 * @param	fontName
+		 * @param	fontSize
+		 * @param	color
+		 * @param	bold
+		 * @return Textfield
+		 * @see bridge.abstract.IAbstractTextField
 		 */
 		public function requestTextField(width:int, height:int, text:String, fontName:String="Verdana", fontSize:Number=12, color:uint=0, bold:Boolean=false):IAbstractTextField
 		{
@@ -302,8 +316,8 @@ package bridge
 		
 		/**
 		 * 
-		 * @param	name
-		 * @return
+		 * @param name
+		 * @return XML
 		 */
 		public function requestXML(name:String):XML
 		{
@@ -312,7 +326,8 @@ package bridge
 		
 		/**
 		 * 
-		 * @return
+		 * @return IAbstractEngineLayerVO
+		 * @see  bridge.abstract.IAbstractEngineLayerVO
 		 */
 		public function requestLayersVO():IAbstractEngineLayerVO
 		{
@@ -321,8 +336,10 @@ package bridge
 		
 		/** Makes the transition to a new state
 		 * 
-		 * @param	newState @see bridge.abstract.IAbstractState
-		 * @param	transitionEffect @see bridge.abstract.transitions.IAbstractStateTransition
+		 * @param	newState 
+		 * @see bridge.abstract.IAbstractState
+		 * @param	transitionEffect
+		 * @see bridge.abstract.transitions.IAbstractStateTransition
 		 */
 		public function tranzitionToState(newState:IAbstractState, transitionEffect:IAbstractStateTransition = null):void
 		{
@@ -341,6 +358,8 @@ package bridge
 		/**
 		 * 
 		 * @param	inputLayers
+		 * @param	inTransition
+		 * @param	outTransition
 		 */
 		public function initLayers(inputLayers:Dictionary, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut = null):void
 		{
@@ -351,6 +370,8 @@ package bridge
 		 * 
 		 * @param	inLayers
 		 * @param	outLayers
+		 * @param	inTransition
+		 * @param	outTransition
 		 */
 		public function updateLayers(inLayers:Vector.<IAbstractLayer> = null, outLayers:Vector.<IAbstractLayer> = null, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut= null ):void
 		{
@@ -425,8 +446,8 @@ package bridge
 			_assetsManager.addXml(name, xml)
 		}
 		
-		/**
-		 * 
+		/** Pretty much destroys everything
+		 * @todo check the above
 		 */
 		public function cleanUp():void
 		{

@@ -20,7 +20,8 @@ package bridge.abstract
 		/**
 		 * 
 		 * @param	layerName
-		 * @return
+		 * @return IAbstractLayer
+		 * @see bridge.abstract.IAbstractLayer
 		 */
 		function retrieveLayer(layerName:String):IAbstractLayer
 		/**

@@ -54,7 +54,8 @@ package  bridge
 		/**
 		 * 
 		 * @param	texture
-		 * @return @see bridge.abstract.IAbstractImage
+		 * @return IAbstractImage
+		 * @see bridge.abstract.IAbstractImage
 		 */
 		function requestImage(texture:Object):IAbstractImage
 		/**
@@ -75,13 +76,15 @@ package  bridge
 		 * @param	fontSize
 		 * @param	color
 		 * @param	bold
-		 * @return
+		 * @return IAbstractTextField
+		 * @see bridge.abstract.IAbstractTextField
 		 */
 		function requestTextField(width:int, height:int, text:String, fontName:String="Verdana", fontSize:Number=12, color:uint=0, bold:Boolean=false):IAbstractTextField
 		
 		/**
 		 * 
-		 * @return
+		 * @return IAbstractEngineLayerVO
+		 * @see bridge.abstract.IAbstractEngineLayerVO
 		 */
 		function requestLayersVO():IAbstractEngineLayerVO;
 		

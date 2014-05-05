@@ -228,7 +228,7 @@ package bridge.abstract
 		 * 
 		 * @param	globalPoint
 		 * @param	resultPoint
-		 * @return
+		 * @return Point
 		 */
 		function globalToLocal (globalPoint:Point, resultPoint:Point=null) : Point;
 		/**
@@ -239,7 +239,7 @@ package bridge.abstract
 		 * 
 		 * @param	localPoint
 		 * @param	resultPoint
-		 * @return
+		 * @return Point
 		 */
 		function localToGlobal (localPoint:Point, resultPoint:Point=null) : Point;
 		/**

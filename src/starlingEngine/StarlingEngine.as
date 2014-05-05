@@ -195,7 +195,8 @@ package starlingEngine
 		/**
 		 * @TODO this function still return null for some reason
 		 * @param	name
-		 * @return
+		 * @return IAbstractTexture
+		 * @see bridge.abstract.IAbstractTexture
 		 */
 		public function requestTexture(name:String ):IAbstractTexture
 		{
@@ -208,7 +209,8 @@ package starlingEngine
 		/**
 		 * 
 		 * @param	texture
-		 * @return
+		 * @return IAbstractImage
+		 * @see bridge.abstract.IAbstractImage
 		 */
 		public function requestImage(texture:Object):IAbstractImage
 		{
@@ -220,7 +222,8 @@ package starlingEngine
 		 * 
 		 * @param	textures
 		 * @param	fps
-		 * @return
+		 * @return IAbstractMovie
+		 * @see bridge.abstract.IAbstractMovie
 		 */
 		public function requestMovie(prefix:String, fps:uint = 24):IAbstractMovie
 		{
@@ -231,7 +234,8 @@ package starlingEngine
 		
 		/**
 		 * 
-		 * @return
+		 * @return IAbstractSprite
+		 * @see bridge.abstract.IAbstractSprite
 		 */
 		public function requestSprite():IAbstractSprite
 		{
@@ -241,7 +245,8 @@ package starlingEngine
 		
 		/**
 		 * 
-		 * @return
+		 * @return IAbstractButton
+		 * @see bridge.abstract.IAbstractButton
 		 */
 		public function requestButton():IAbstractButton
 		{
@@ -251,7 +256,7 @@ package starlingEngine
 		
 		/**
 		 * 
-		 * @return
+		 * @return IAbstractState
 		 */
 		public function requestState():IAbstractState
 		{
@@ -260,7 +265,7 @@ package starlingEngine
 		
 		/**
 		 * 
-		 * @return
+		 * @return EngineLayer
 		 */
 		public function requestLayer(name:String):EngineLayer
 		{
@@ -269,7 +274,7 @@ package starlingEngine
 		
 		/**
 		 * 
-		 * @return
+		 * @return IAbstractTextField
 		 */
 		public function requestTextField(width:int, height:int, text:String, fontName:String="Verdana", fontSize:Number=12, color:uint=0, bold:Boolean=false):IAbstractTextField
 		{
@@ -279,7 +284,7 @@ package starlingEngine
 		
 		/**
 		 * 
-		 * @return
+		 * @return IAbstractEngineLayerVO
 		 */
 		public function requestLayersVO():IAbstractEngineLayerVO
 		{
@@ -378,7 +383,7 @@ package starlingEngine
 		 * 
 		 * @param	a
 		 * @param	b
-		 * @return
+		 * @return int
 		 */
 		private function sortDepths(a:Object, b:Object):int
 		{
