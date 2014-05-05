@@ -4,11 +4,13 @@ package bridge.abstract
 	/**
 	 * ...
 	 * @author Alex Popescu
-	 * 
+	 */
+	/**
 	 * A layer is basically a state that is not managed by 3rd party engine.
 	 * <p>Layers are managed internally and the engine bridge has depth sorting and swaping methods</p>
 	 * <p>Use layers to organise the display tree</p>
-	 * <p>At its core, the Layer is a Sprite @see bridge.abstract.IAbstractSprite</p>
+	 * <p>At its core, the Layer is a Sprite </p>
+	 * @see bridge.abstract.IAbstractSprite
 	 */
 	public interface IAbstractLayer extends IAbstractState
 	{

@@ -17,14 +17,16 @@ package  bridge
 	/**
 	 * ...
 	 * @author Alex Popescu
-	 * 
+	 */
+	/**
 	 * IEngine interface contains only the tight coupled methods.
-	 * All the generic methods are in the @see bridge.abstract.IAbstractEngine
+	 * All the generic methods are in the IAbstractEngine
 	 * <p>In order to implement a new graphics engine, follow these steps:
 	 * <li>build an IEngine containing the coupled methods</li> 
 	 * <li>extend the IAbstractEngine</li> 
 	 * <li>build the business logig implementing IEngine</li> 
 	 * </p>
+	 * @see bridge.abstract.IAbstractEngine
 	 */
 	public interface IEngine extends IAbstractEngine
 	{

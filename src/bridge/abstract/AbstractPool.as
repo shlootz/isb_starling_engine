@@ -1,11 +1,18 @@
-package abstract 
+package bridge.abstract 
 {
 	import flash.utils.getDefinitionByName;
 	import flash.utils.getQualifiedClassName;
 	
 	/**
-	 * ...
+	 * An abstract pool receives any type of class to manage.
 	 * @author Alex Popescu
+	 */
+	/**
+	 * Object pooling: involves reusing objects over time. You create a defined number of objects during the initialization 
+	 * of your application and store them inside a pool, such as an Array or Vector object. Once you are done with an object, 
+	 * you deactivate it so that it does not consume CPU resources, and you remove all mutual references. However, you do not 
+	 * set the references to null, which would make it eligible for garbage collection. You just put the object back into the 
+	 * pool, and retrieve it when you need a new object.
 	 */
 	public class AbstractPool 
 	{

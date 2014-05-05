@@ -8,9 +8,10 @@ package bridge.abstract
 	import bridge.abstract.ui.IAbstractButton;
 	import flash.utils.Dictionary
 	/**
-	 * ...
+	 * IAbstractEngine interface contains all the methods required by the client
 	 * @author Alex Popescu
-	 * 
+	 */
+	/**
 	 * <p> The IAbstractEngine interface contains all the methods required by the client, except for the tightly coupled ones
 	 * that are included in IEngine, an interface extending IAbstractEngine</p>
 	 */
@@ -18,7 +19,7 @@ package bridge.abstract
 	{
 		/**
 		 * Initializes the engine.
-		 * <b>Without propor init, the graphics will not be displayed</b>
+		 * <b>Without proper init, the graphics will not be displayed</b>
 		 */
 		function initEngine():void
 		

@@ -4,7 +4,6 @@ package bridge
 	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.transitions.IAbstractStateTransition;
-	import citrus.objects.complex.box2dstarling.Bridge;
 	import flash.utils.Dictionary;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractSprite;

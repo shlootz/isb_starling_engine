@@ -1,9 +1,7 @@
 package bridge 
 {
-	import abstract.AbstractPool;
 	import bridge.abstract.IAbstractEngineLayerVO;
 	import bridge.abstract.IAbstractImage;
-	import bridge.abstract.IAbstractJuggler;
 	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
@@ -19,7 +17,6 @@ package bridge
 	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
-	import signals.ISignalsHub;
 	import signals.Signals;
 	/**
 	 * ...

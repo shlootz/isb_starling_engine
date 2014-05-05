@@ -2,8 +2,11 @@ package signals
 {
 	import flash.utils.getQualifiedClassName;
 	/**
-	 * ...
+	 * The default operating signals withing the engine.
 	 * @author Alex Popescu
+	 */
+	/**
+	 * <b>In order to add new signals or new listeners, use the injected Signals Hub!</b>
 	 */
 	public class Signals 
 	{
