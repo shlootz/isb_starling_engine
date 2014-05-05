@@ -3,6 +3,7 @@ package bridge
 	import abstract.AbstractPool;
 	import bridge.abstract.IAbstractEngineLayerVO;
 	import bridge.abstract.IAbstractImage;
+	import bridge.abstract.IAbstractJuggler;
 	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
@@ -447,6 +448,8 @@ package bridge
 			
 			_poolClass = null;
 			
+			_juggler.purge();
+			defaultJuggler.purge();
 			_juggler = null;
 			
 			_space = null;

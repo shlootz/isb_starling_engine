@@ -19,7 +19,7 @@ package bridge.abstract
 	 * <codeph>advanceTime</codeph> method called regularly) to run. The movie will dispatch 
 	 * an event of type "Event.COMPLETE" whenever it has displayed its last frame.</p>
 	 */
-	public interface IAbstractMovie extends IAbstractDisplayObject
+	public interface IAbstractMovie extends IAbstractImage
 	{
 		/**
 		 * The index of the frame that is currently displayed.

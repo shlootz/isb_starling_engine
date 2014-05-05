@@ -1,5 +1,6 @@
 package starlingEngine.elements 
 {
+	import bridge.abstract.IAbstractAnimatable;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractTexture;
 	import flash.media.Sound;
@@ -9,7 +10,7 @@ package starlingEngine.elements
 	 * ...
 	 * @author Alex Popescu
 	 */
-	public class EngineMovie extends MovieClip implements IAbstractMovie
+	public class EngineMovie extends MovieClip implements IAbstractMovie, IAbstractAnimatable
 	{
 		/**
 		 * 

@@ -1,42 +1,35 @@
 package bridge.abstract 
 {
 	
-	/**
+	/** Based on the original Juggler model from Starling
 	 * ...
 	 * @author Alex Popescu
 	 */
 	public interface IAbstractJuggler 
 	{
 		/// The total life time of the juggler (in seconds).
-		public function get elapsedTime () : Number;
+		function get elapsedTime () : Number;
 
 		/// Adds an object to the juggler.
-		public function add (object:IAnimatable) : void;
+		function add (object:IAbstractAnimatable) : void;
 
 		/// Advances all objects by a certain time (in seconds).
-		public function advanceTime (time:Number) : void;
+		function advanceTime (time:Number) : void;
 
 		/// Determines if an object has been added to the juggler.
-		public function contains (object:IAnimatable) : Boolean;
+		function contains (object:IAbstractAnimatable) : Boolean;
 
 		/// Figures out if the juggler contains one or more tweens with a certain target.
-		public function containsTweens (target:Object) : Boolean;
-
-		/**
-		 * Delays the execution of a function until delay seconds have passed.
-		 * Creates an object of type 'DelayedCall' internally and returns it. Remove that object
-		 * from the juggler to cancel the function call.
-		 */
-		public function delayCall (call:Function, delay:Number, ...rest) : starling.animation.DelayedCall;
+		function containsTweens (target:Object) : Boolean;
 
 		/// Removes all objects at once.
-		public function purge () : void;
+		function purge () : void;
 
 		/// Removes an object from the juggler.
-		public function remove (object:IAnimatable) : void;
+		function remove (object:IAbstractAnimatable) : void;
 
 		/// Removes all tweens with a certain target.
-		public function removeTweens (target:Object) : void;
+		function removeTweens (target:Object) : void;
 
 		/**
 		 * Utilizes a tween to animate the target object over time seconds. Internally,
@@ -52,7 +45,7 @@ package bridge.abstract
 		 * x: 50      // -> tween.animate("x", 50)
 		 * });
 		 */
-		public function tween (target:Object, time:Number, properties:Object) : void;
+		function tween (target:Object, time:Number, properties:Object) : void;
 	}
 	
 }
