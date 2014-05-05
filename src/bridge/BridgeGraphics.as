@@ -1,5 +1,6 @@
 package bridge 
 {
+	import abstract.AbstractPool;
 	import bridge.abstract.IAbstractEngineLayerVO;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractLayer;
@@ -17,13 +18,13 @@ package bridge
 	import flash.utils.ByteArray;
 	import flash.utils.Dictionary;
 	import flash.utils.getQualifiedClassName;
+	import signals.ISignalsHub;
 	import signals.Signals;
 	/**
 	 * ...
 	 * @author Alex Popescu
 	 * @version 1.0.0
-	 */  
-	/**
+	 *  
 	 * <p>The BridgeGraphics class represents the linkage between the logic end of the app and the actual
 	 * display. The display itself can differ: DisplayList, Stage3D, etc. It uses a collection of abstract
 	 * interfaces that make the actual liasion.</p>
@@ -231,8 +232,7 @@ package bridge
 		/** Retrieves a new texture from stored Atlas
 		 * 
 		 * @param	name
-		 * @return IAbstractTexture
-		 * @see bridge.abstract.IAbstractTexture
+		 * @return @see bridge.abstract.IAbstractTexture
 		 */
 		public function requestTexture(name:String):IAbstractTexture
 		{
@@ -242,8 +242,7 @@ package bridge
 		/** Request an image
 		 * 
 		 * @param	name
-		 * @return Returns an IAbstractImage
-		 * @see bridge.abstract.IAbstractImage
+		 * @return Returns an @see bridge.abstract.IAbstractImage
 		 */
 		public function requestImage(name:String):IAbstractImage
 		{
@@ -263,8 +262,7 @@ package bridge
 		
 		/** Build an empty sprite
 		 * 
-		 * @return Returns an IAbstractSprite
-		 * @see bridge.abstract.IAbstractSprite
+		 * @return Returns an @see bridge.abstract.IAbstractSprite
 		 */
 		public function requestSprite():IAbstractSprite
 		{
@@ -273,8 +271,7 @@ package bridge
 		
 		/** Builds an empty button
 		 * 
-		 * @return Returns IAbstractButton
-		 * @see bridge.abstract.IAbstractButton
+		 * @return Returns @see bridge.abstract.IAbstractButton
 		 */
 		public function requestButton():IAbstractButton
 		{
@@ -292,7 +289,7 @@ package bridge
 		
 		/**
 		 * 
-		 * @return an empty TextField
+		 * @return
 		 */
 		public function requestTextField(width:int, height:int, text:String, fontName:String="Verdana", fontSize:Number=12, color:uint=0, bold:Boolean=false):IAbstractTextField
 		{
@@ -303,7 +300,7 @@ package bridge
 		/**
 		 * 
 		 * @param	name
-		 * @return an XML by its name
+		 * @return
 		 */
 		public function requestXML(name:String):XML
 		{
@@ -312,7 +309,7 @@ package bridge
 		
 		/**
 		 * 
-		 * @return IAbstractEngineLayerVO
+		 * @return
 		 */
 		public function requestLayersVO():IAbstractEngineLayerVO
 		{

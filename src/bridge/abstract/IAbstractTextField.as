@@ -1,5 +1,6 @@
 package bridge.abstract 
 {
+	import bridge.abstract.IAbstractDisplayObjectContainer
 	import flash.geom.Rectangle;
 	
 	/**

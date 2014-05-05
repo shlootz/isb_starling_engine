@@ -10,8 +10,7 @@ package bridge.abstract
 	/**
 	 * ...
 	 * @author Alex Popescu
-	 */ 
-	/**
+	 * 
 	 * <p> The IAbstractEngine interface contains all the methods required by the client, except for the tightly coupled ones
 	 * that are included in IEngine, an interface extending IAbstractEngine</p>
 	 */
@@ -44,30 +43,26 @@ package bridge.abstract
 		
 		/**
 		 * 
-		 * @return IAbstractSprite
-		 * @see bridge.abstract.IAbstractSprite
+		 * @return @see bridge.abstract.IAbstractSprite
 		 */
 		function requestSprite():IAbstractSprite
 		
 		/**
 		 * 
-		 * @return IAbstractButton
-		 * @see bridge.abstract.IAbstractButton
+		 * @return @see bridge.abstract.IAbstractButton
 		 */
 		function requestButton():IAbstractButton
 		
 		
 		/**
 		 * 
-		 * @return IAbstractState
-		 * @see bridge.abstract.IAbstractState
+		 * @return @see bridge.abstract.IAbstractState
 		 */
 		function requestState():IAbstractState
 		
 		/**
 		 * 
-		 * @param	newState IAbstractState
-		 * @see bridge.abstract.IAbstractState
+		 * @param	newState @see bridge.abstract.IAbstractState
 		 */
 		function tranzitionToState(newState:IAbstractState, transitionEffect:IAbstractStateTransition = null):void
 		

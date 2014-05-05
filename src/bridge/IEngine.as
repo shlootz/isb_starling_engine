@@ -8,27 +8,32 @@ package  bridge
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import flash.events.Event;
 	import flash.utils.Dictionary;
-	import bridge.abstract.IAbstractJuggler;
-	import bridge.abstract.IAbstractStage
+	import starling.animation.Juggler;
+	import starling.display.Image;
+	import starling.display.MovieClip;
+	import starling.display.Stage;
+	import starling.textures.Texture;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractState;
 	import bridge.abstract.IAbstractTexture;
+	import starlingEngine.elements.EngineImage;
+	import starlingEngine.elements.EngineMovie;
+	import starlingEngine.elements.EngineSprite;
+	import starlingEngine.elements.EngineState;
 	import bridge.abstract.IAbstractTextField;
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
 	/**
 	 * ...
 	 * @author Alex Popescu
-	 */
-	/**
+	 * 
 	 * IEngine interface contains only the tight coupled methods.
-	 * All the generic methods are in the IAbstractEngine
+	 * All the generic methods are in the @see bridge.abstract.IAbstractEngine
 	 * <p>In order to implement a new graphics engine, follow these steps:
 	 * <li>build an IEngine containing the coupled methods</li> 
 	 * <li>extend the IAbstractEngine</li> 
 	 * <li>build the business logig implementing IEngine</li> 
 	 * </p>
-	 * @see bridge.abstract.IAbstractEngine
 	 */
 	public interface IEngine extends IAbstractEngine
 	{
@@ -52,24 +57,22 @@ package  bridge
 		/**
 		 * 
 		 * @param	name
-		 * @return IAbstractTexture
+		 * @return
 		 */
 		function requestTexture(name:String):IAbstractTexture
 		/**
 		 * 
 		 * @param	texture
-		 * @return IAbstractImage
-		 * @see bridge.abstract.
+		 * @return @see bridge.abstract.IAbstractImage
 		 */
-		function requestImage(texture:IAbstractTexture):IAbstractImage
+		function requestImage(texture:Texture):IAbstractImage
 		/**
 		 * 
 		 * @param	textures
 		 * @param	fps
-		 * @return IAbstractMovie
-		 * @see bridge.abstract.
+		 * @return@see bridge.abstract.IAbstractMovie
 		 */
-		function requestMovie(textures:Vector.<IAbstractTexture>, fps:uint = 24):IAbstractMovie
+		function requestMovie(textures:Vector.<Texture>, fps:uint = 24):IAbstractMovie
 		
 		/**
 		 * 
@@ -80,13 +83,13 @@ package  bridge
 		 * @param	fontSize
 		 * @param	color
 		 * @param	bold
-		 * @return IAbstractTextField
+		 * @return
 		 */
 		function requestTextField(width:int, height:int, text:String, fontName:String="Verdana", fontSize:Number=12, color:uint=0, bold:Boolean=false):IAbstractTextField
 		
 		/**
 		 * 
-		 * @return IAbstractEngineLayerVO
+		 * @return
 		 */
 		function requestLayersVO():IAbstractEngineLayerVO;
 		
@@ -94,7 +97,7 @@ package  bridge
 		 * @TODO build a abstractization for Juggler
 		 * @return Returns the engine Juggler
 		 */
-		function get juggler():IAbstractJuggler
+		function get juggler():Juggler
 		
 		/**
 		 * Returns the instance of the default stage used by the engine.
@@ -102,7 +105,7 @@ package  bridge
 		 * @TODO build a abstractization for Stage
 		 * @return Returns the engine stage
 		 */
-		function get engineStage():IAbstractStage
+		function get engineStage():Stage
 		
 		/**
 		 * 

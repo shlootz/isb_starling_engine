@@ -49,7 +49,7 @@ package abstract
 		
 		/**
 		 * 
-		 * @return Object
+		 * @return
 		 */
 		public function getNewObject():Object
 		{
