@@ -7,8 +7,7 @@ package bridge.abstract
 	 * ...
 	 * @author Alex Popescu
 	 */
-	public interface IAbstractDisplayObject 
-	{
+	
 	/**
 	 * The DisplayObject class is the base class for all objects that are rendered on the 
 	 * screen.
@@ -43,7 +42,8 @@ package bridge.abstract
 	 * were accumulated before by different render methods (for performance reasons). Otherwise, 
 	 * the z-ordering will be incorrect.</p>
 	 */
-		
+	public interface IAbstractDisplayObject 
+	{	
 		/**
 		 * Setting x coordinate
 		 */
@@ -228,7 +228,7 @@ package bridge.abstract
 		 * 
 		 * @param	globalPoint
 		 * @param	resultPoint
-		 * @return
+		 * @return Point
 		 */
 		function globalToLocal (globalPoint:Point, resultPoint:Point=null) : Point;
 		/**
@@ -239,7 +239,7 @@ package bridge.abstract
 		 * 
 		 * @param	localPoint
 		 * @param	resultPoint
-		 * @return
+		 * @return Point
 		 */
 		function localToGlobal (localPoint:Point, resultPoint:Point=null) : Point;
 		/**

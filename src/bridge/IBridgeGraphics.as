@@ -4,7 +4,6 @@ package bridge
 	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.transitions.IAbstractStateTransition;
-	import citrus.objects.complex.box2dstarling.Bridge;
 	import flash.utils.Dictionary;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractSprite;
@@ -21,7 +20,8 @@ package bridge
 	 * ...
 	 * @author Alex Popescu
 	 * @version 1.0.0
-	 *  
+	 */  
+	/**
 	 * <p>The BridgeGraphics class represents the linkage between the logic end of the app and the actual
 	 * display. The display itself can differ: DisplayList, Stage3D, etc. It uses a collection of abstract
 	 * interfaces that make the actual liasion.</p>
@@ -122,14 +122,16 @@ package bridge
 		/** Retrieves a new texture from stored Atlas
 		 * 
 		 * @param	name
-		 * @return @see bridge.abstract.IAbstractTexture
+		 * @return IAbstractTexture
+		 * @see bridge.abstract.IAbstractTexture
 		 */
 		function requestTexture(name:String):IAbstractTexture
 		
 		/** Request an image
 		 * 
 		 * @param	name
-		 * @return Returns an @see bridge.abstract.IAbstractImage
+		 * @return Returns an IAbstractImage
+		 * @see bridge.abstract.IAbstractImage
 		 */
 		function requestImage(name:String):IAbstractImage
 		
@@ -137,29 +139,34 @@ package bridge
 		 * 
 		 * @param	prefix - retrieves all the images from an atlas using this prefix
 		 * @param	fps - sets the frames per second that the movie clip will play at independently
-		 * @return Returns an @see bridge.abstract.IAbstractMovie
+		 * @return Returns an IAbstractMovie
+		 * @see bridge.abstract.IAbstractMovie
 		 */
 		function requestMovie(prefix:String, fps:uint = 24):IAbstractMovie
 		
 		/** Build an empty sprite
 		 * 
-		 * @return Returns an @see bridge.abstract.IAbstractSprite
+		 * @return Returns an IAbstractSprite
+		 * @see bridge.abstract.IAbstractSprite
 		 */
 		function requestSprite():IAbstractSprite
 		
 		/** Build an empty button
 		 * 
-		 * @return Returns an @see bridge.abstract.IAbstractButton
+		 * @return Returns an IAbstractButton
+		 * @see bridge.abstract.IAbstractButton
 		 */
 		function requestButton():IAbstractButton
 		
 		/** Builds an empty state
 		 * 
-		 * @return Returns an @see bridge.abstract.IAbstractState
+		 * @return Returns an IAbstractState
+		 * @see bridge.abstract.IAbstractState
 		 */
 		function requestState():IAbstractState
 		
-		/** Return a a new textField @see bridge.abstract.IAbstractTextField
+		/** Return a a new textField IAbstractTextField
+		 * @see bridge.abstract.IAbstractTextField
 		 * 
 		 * @param	width
 		 * @param	height
@@ -168,27 +175,29 @@ package bridge
 		 * @param	fontSize
 		 * @param	color
 		 * @param	bold
-		 * @return
+		 * @return IAbstractTextField
 		 */
 		function requestTextField(width:int, height:int, text:String, fontName:String="Verdana", fontSize:Number=12, color:uint=0, bold:Boolean=false):IAbstractTextField
 		
 		/**
 		 * 
-		 * @return
+		 * @return IAbstractEngineLayerVO
 		 */
 		function requestLayersVO():IAbstractEngineLayerVO
 		
 		/**
 		 * 
 		 * @param	name
-		 * @return
+		 * @return XML
 		 */
 		function requestXML(name:String):XML
 		
 		/** Makes the transition to a new state
 		 * 
-		 * @param	newState @see bridge.abstract.IAbstractState
-		 * @param	transitionEffect @see bridge.abstract.transitions.IAbstractStateTransition
+		 * @param	newState 
+		 * @see bridge.abstract.IAbstractState
+		 * @param	transitionEffect 
+		 * @see bridge.abstract.transitions.IAbstractStateTransition
 		 */
 		function tranzitionToState(newState:IAbstractState, transitionEffect:IAbstractStateTransition = null):void
 		
@@ -198,7 +207,8 @@ package bridge
 		 */
 		function initLayers(inputLayers:Dictionary, inTransition:IAbstractLayerTransitionIn = null, outTransition:IAbstractLayerTransitionOut = null):void
 		
-		/** Receives 2 vectors of @see  bridge.abstract.IAbstractLayer and updates the layers in the current state
+		/** Receives 2 vectors of IAbstractLayer and updates the layers in the current state
+		 * @see  bridge.abstract.IAbstractLayer
 		 * 
 		 * @param	inLayers
 		 * @param	outLayers
@@ -207,8 +217,10 @@ package bridge
 		
 		/** Swaps layer1 with layer2
 		 * 
-		 * @param	layer1 @see  bridge.abstract.IAbstractLayer
-		 * @param	layer2 @see  bridge.abstract.IAbstractLayer
+		 * @param	layer1 
+		 * @see  bridge.abstract.IAbstractLayer
+		 * @param	layer2 
+		 * @see  bridge.abstract.IAbstractLayer
 		 */
 		function swapLayers(layer1:IAbstractLayer, layer2:IAbstractLayer):void
 		

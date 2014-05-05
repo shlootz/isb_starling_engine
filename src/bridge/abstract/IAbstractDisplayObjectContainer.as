@@ -42,7 +42,8 @@ package bridge.abstract
 		/** Adds a new child to the container
 		 * 
 		 * @param	child
-		 * @return @see bridge.abstract.IAbstractDisplayObject
+		 * @return IAbstractDisplayObject
+		 * @see bridge.abstract.IAbstractDisplayObject
 		 */
 		function addNewChild (child:Object) : IAbstractDisplayObject;
 		
@@ -50,7 +51,8 @@ package bridge.abstract
 		 * 
 		 * @param	child
 		 * @param	index
-		 * @return @see bridge.abstract.IAbstractDisplayObject
+		 * @return IAbstractDisplayObject
+		 * @see bridge.abstract.IAbstractDisplayObject
 		 */
 		function addNewChildAt (child:IAbstractDisplayObject, index:int) : IAbstractDisplayObject;
 		
@@ -64,7 +66,7 @@ package bridge.abstract
 		/** Returns true if it contains a certain child or false if it doesn't
 		 * 
 		 * @param	child
-		 * @return
+		 * @return Boolean
 		 */
 		function containsChild (child:IAbstractDisplayObject) : Boolean;
 		
@@ -72,21 +74,22 @@ package bridge.abstract
 		 * 
 		 * @param	targetSpace
 		 * @param	resultRect
-		 * @return
+		 * @return Rectangle
 		 */
 		function getChildBounds (targetSpace:IAbstractDisplayObject, resultRect:Rectangle = null) : Rectangle;
 		
 		/** Returns the child a specific index
 		 * 
 		 * @param	index
-		 * @return
+		 * @return IAbstractDisplayObject
 		 */
 		function getChildAtIndex (index:int) : IAbstractDisplayObject;
 		
 		/** Returns a child by its name
 		 * 
 		 * @param	name
-		 * @return @see bridge.abstract.IAbstractDisplayObject
+		 * @return IAbstractDisplayObject
+		 * @see bridge.abstract.IAbstractDisplayObject
 		 */
 		function getChildByNameStr (name:String) : IAbstractDisplayObject;
 		
@@ -96,8 +99,9 @@ package bridge.abstract
 		//function getChildEventListeners (object:IAbstractDisplayObject, eventType:String, listeners:Vector.<*>) : void;
 		/** Returns the index number of a child
 		 * 
-		 * @param	child @see bridge.abstract.IAbstractDisplayObject
-		 * @return
+		 * @param	child IAbstractDisplayObject
+		 * @see bridge.abstract.IAbstractDisplayObject
+		 * @return int
 		 */
 		function getChildIndexNr (child:IAbstractDisplayObject) : int;
 		
@@ -107,9 +111,11 @@ package bridge.abstract
 		//function hitTest (localPoint:Point, forTouch:Boolean=false) : IAbstractDisplayObject;
 		/** Removes a child from the container.
 		 * 
-		 * @param	child @see bridge.abstract.IAbstractDisplayObject
+		 * @param	child 
+		 * @see bridge.abstract.IAbstractDisplayObject
 		 * @param	dispose. Set this to true if you want to completely remove this object from memory
-		 * @return @see bridge.abstract.IAbstractDisplayObject
+		 * @return IAbstractDisplayObject
+		 * @see bridge.abstract.IAbstractDisplayObject
 		 */
 		function removeChildAndDispose (child:IAbstractDisplayObject, dispose:Boolean = false) : IAbstractDisplayObject;
 		
@@ -117,7 +123,8 @@ package bridge.abstract
 		 * 
 		 * @param	index
 		 * @param	dispose. Set this to true if you want to completely remove this object from memory
-		 * @return @see bridge.abstract.IAbstractDisplayObject
+		 * @return IAbstractDisplayObject
+		 * @see bridge.abstract.IAbstractDisplayObject
 		 */
 		function removeChildAtIndex (index:int, dispose:Boolean = false) : IAbstractDisplayObject;
 		
@@ -131,7 +138,8 @@ package bridge.abstract
 		
 		/** Manually set the index number of a child
 		 * 
-		 * @param	child @see bridge.abstract.IAbstractDisplayObject
+		 * @param	child 
+		 * @see bridge.abstract.IAbstractDisplayObject
 		 * @param	index
 		 */
 		function setChildIndexNr (child:IAbstractDisplayObject, index:int) : void;
@@ -144,8 +152,10 @@ package bridge.abstract
 		
 		/** Swaps the child1 with child2
 		 * 
-		 * @param	child1 @see bridge.abstract.IAbstractDisplayObject
-		 * @param	child2 @see bridge.abstract.IAbstractDisplayObject
+		 * @param	child1 
+		 * @see bridge.abstract.IAbstractDisplayObject
+		 * @param	child2
+		 * @see bridge.abstract.IAbstractDisplayObject
 		 */
 		function swapChildrenF (child1:IAbstractDisplayObject, child2:IAbstractDisplayObject) : void;
 		

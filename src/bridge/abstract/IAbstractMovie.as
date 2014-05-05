@@ -106,21 +106,21 @@ package bridge.abstract
 		/**
 		 * Returns the duration of a certain frame (in seconds).
 		 * @param	frameID
-		 * @return
+		 * @return Number
 		 */
 		function getFrameDuration (frameID:int) : Number;
 		
 		/**
 		 * Returns the sound of a certain frame.
 		 * @param	frameID
-		 * @return
+		 * @return Sound
 		 */
 		function getFrameSound (frameID:int) : Sound;
 		
 		/**
 		 * Returns the texture of a certain frame.
 		 * @param	frameID
-		 * @return
+		 * @return IAbstractTexture
 		 */
 		function getTextureFromFrame(frameID:uint):IAbstractTexture
 		
