@@ -21,7 +21,8 @@ package bridge
 	 * ...
 	 * @author Alex Popescu
 	 * @version 1.0.0
-	 *  
+	 */
+	/**
 	 * <p>The BridgeGraphics class represents the linkage between the logic end of the app and the actual
 	 * display. The display itself can differ: DisplayList, Stage3D, etc. It uses a collection of abstract
 	 * interfaces that make the actual liasion.</p>

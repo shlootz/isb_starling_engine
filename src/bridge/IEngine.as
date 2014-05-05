@@ -8,18 +8,9 @@ package  bridge
 	import bridge.abstract.transitions.IAbstractStateTransition;
 	import flash.events.Event;
 	import flash.utils.Dictionary;
-	import starling.animation.Juggler;
-	import starling.display.Image;
-	import starling.display.MovieClip;
-	import starling.display.Stage;
-	import starling.textures.Texture;
 	import bridge.abstract.IAbstractImage;
 	import bridge.abstract.IAbstractState;
 	import bridge.abstract.IAbstractTexture;
-	import starlingEngine.elements.EngineImage;
-	import starlingEngine.elements.EngineMovie;
-	import starlingEngine.elements.EngineSprite;
-	import starlingEngine.elements.EngineState;
 	import bridge.abstract.IAbstractTextField;
 	import bridge.abstract.transitions.IAbstractLayerTransitionOut;
 	import bridge.abstract.transitions.IAbstractLayerTransitionIn;
@@ -65,14 +56,15 @@ package  bridge
 		 * @param	texture
 		 * @return @see bridge.abstract.IAbstractImage
 		 */
-		function requestImage(texture:Texture):IAbstractImage
+		function requestImage(texture:Object):IAbstractImage
 		/**
 		 * 
-		 * @param	textures
+		 * @param	prefix
 		 * @param	fps
-		 * @return@see bridge.abstract.IAbstractMovie
+		 * @return 	a movie clip
+		 * @see bridge.abstract.IAbstractMovie
 		 */
-		function requestMovie(textures:Vector.<Texture>, fps:uint = 24):IAbstractMovie
+		function requestMovie(prefix:String, fps:uint = 24):IAbstractMovie
 		
 		/**
 		 * 
@@ -97,7 +89,7 @@ package  bridge
 		 * @TODO build a abstractization for Juggler
 		 * @return Returns the engine Juggler
 		 */
-		function get juggler():Juggler
+		function get juggler():Object
 		
 		/**
 		 * Returns the instance of the default stage used by the engine.
@@ -105,7 +97,7 @@ package  bridge
 		 * @TODO build a abstractization for Stage
 		 * @return Returns the engine stage
 		 */
-		function get engineStage():Stage
+		function get engineStage():Object
 		
 		/**
 		 * 

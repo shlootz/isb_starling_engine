@@ -6,6 +6,7 @@ package
 	import bridge.abstract.IAbstractDisplayObject;
 	import bridge.abstract.IAbstractEngineLayerVO;
 	import bridge.abstract.IAbstractImage;
+	import bridge.abstract.IAbstractJuggler;
 	import bridge.abstract.IAbstractLayer;
 	import bridge.abstract.IAbstractMovie;
 	import bridge.abstract.IAbstractSprite;
@@ -180,7 +181,7 @@ package
 			sprite.x = 150;
 			sprite.y = 150;
 			sprite.rotation = .1;
-			_bridgeGraphics.defaultJuggler.add(mc);
+			(_bridgeGraphics.defaultJuggler).add(mc);
 						//
 			var x:XML = new XML();
 			x = _bridgeGraphics.requestXML("layerLayout");

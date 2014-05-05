@@ -210,9 +210,9 @@ package starlingEngine
 		 * @param	texture
 		 * @return
 		 */
-		public function requestImage(texture:Texture):IAbstractImage
+		public function requestImage(texture:Object):IAbstractImage
 		{
-			var i:IAbstractImage = new EngineImage(texture) as IAbstractImage;
+			var i:IAbstractImage = new EngineImage(texture as Texture) as IAbstractImage;
 			return i;
 		}
 		
@@ -222,8 +222,9 @@ package starlingEngine
 		 * @param	fps
 		 * @return
 		 */
-		public function requestMovie(textures:Vector.<Texture>, fps:uint = 24):IAbstractMovie
+		public function requestMovie(prefix:String, fps:uint = 24):IAbstractMovie
 		{
+			var textures:Vector.<Texture> =  _assetsManager.getTextures(prefix);
 			var m:IAbstractMovie = new EngineMovie(textures, fps) as IAbstractMovie;
 			return m;
 		}
@@ -320,7 +321,7 @@ package starlingEngine
 		/**
 		 * 
 		 */
-		public function get juggler():Juggler
+		public function get juggler():Object
 		{
 			return starling.juggler;
 		}
@@ -328,7 +329,7 @@ package starlingEngine
 		/**
 		 * 
 		 */
-		public function get engineStage():Stage
+		public function get engineStage():Object
 		{
 			return _engineStage;
 		}
@@ -554,7 +555,7 @@ package starlingEngine
 					case ENGINE_BUTTON:
 						var btn:IAbstractButton = requestButton();
 						//var upSkin:IAbstractImage = requestImage(_assetsManager.getTexture(sortedElements[i].name));
-						var upSkin:IAbstractMovie = requestMovie(_assetsManager.getTextures(sortedElements[i].resource), sortedElements[i].fps);
+						var upSkin:IAbstractMovie = requestMovie(sortedElements[i].resource, sortedElements[i].fps);
 						btn.idName = sortedElements[i].name;
 						btn.upSkin_ = upSkin;
 						
@@ -568,7 +569,7 @@ package starlingEngine
 						break;
 						
 					case ENGINE_MOVIE_CLIP:
-						var mc:IAbstractMovie = requestMovie(_assetsManager.getTextures(sortedElements[i].resource), sortedElements[i].fps);
+						var mc:IAbstractMovie = requestMovie(sortedElements[i].resource, sortedElements[i].fps);
 						layer.addNewChildAt(mc, i);
 						juggler.add(mc as IAnimatable);
 						(mc as IAbstractMovie).name = sortedElements[i].name;

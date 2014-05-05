@@ -24,7 +24,9 @@ package bridge
 	 * ...
 	 * @author Alex Popescu
 	 * @version 1.0.0
-	 *  
+	 */
+	
+	 /**
 	 * <p>The BridgeGraphics class represents the linkage between the logic end of the app and the actual
 	 * display. The display itself can differ: DisplayList, Stage3D, etc. It uses a collection of abstract
 	 * interfaces that make the actual liasion.</p>
@@ -46,7 +48,7 @@ package bridge
 	 * 
 	 * <p>The bridge makes all the necessary instantiations and dispatches a native signal when the system
 	 * is up and running - e.g. for StarlingEngine: Signals :: trying to dispatch GEstarlingReady</p>
-	 */
+	  */
 	public class BridgeGraphics implements IBridgeGraphics
 	{
 		
@@ -257,7 +259,7 @@ package bridge
 		 */
 		public function requestMovie(prefix:String, fps:uint = 24):IAbstractMovie
 		{
-			return (_graphicsEngine as IEngine).requestMovie(_assetsManager.getTextures(prefix), fps) as IAbstractMovie;
+			return (_graphicsEngine as IEngine).requestMovie(prefix, fps) as IAbstractMovie;
 		}
 		
 		/** Build an empty sprite
